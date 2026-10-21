@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT US | SATRUS Energy Technologies</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Leaflet.js (Videodaki Koyu Tema Canlı Harita İçin) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Ortak Ana Stil + Sadece Contact Sayfası Stili -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <!-- Kırmızı Halkalı & Noktalı Özel Mouse İmleci -->
+    <div id="cursor-ring">
+        <div id="cursor-dot"></div>
+    </div>
+
+    <!-- Sağ Altta Sabit Duran "REQUEST A PROPOSAL" Butonu -->
+    <a href="contact.html" class="floating-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        REQUEST A PROPOSAL
+    </a>
+
+    <!-- ÜST MENÜ (NAVBAR) -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <img src="media/satrus.png" alt="SATRUS" class="logo-img">
+        </a>
+
+        <nav class="nav-links">
+            <a href="about.html">ABOUT</a>
+            <a href="products.html">PRODUCTS</a>
+            <a href="services.html">SERVICES</a>
+            <a href="stories.html">SUCCESS STORIES</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="lang-switch">
+                <span class="active">EN</span> · <span>TR</span>
+            </div>
+            <a href="contact.html" class="btn-primary btn-sm">
+                <span>CONTACT US</span>
+                <span class="arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. BÖLÜM: BAŞLIK ALANI (TALK TO US.) -->
+    <section class="contact-hero">
+        <div class="bg-grid"></div>
+        <div class="container">
+            <div class="eyebrow">CONTACT</div>
+            <h1 class="hero-title contact-title">
+                TALK <span class="text-outline-red">TO US.</span>
+            </h1>
+            <p class="contact-sub">
+                We answer fast. No weeks of waiting.
+            </p>
+        </div>
+    </section>
+
+    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
+    <div class="angled-divider"></div>
+
+    <!-- 2. BÖLÜM: İLETİŞİM FORMU VE SAĞ BİLGİ KUTULARI -->
+    <section class="contact-main">
+        <div class="bg-grid"></div>
+        <div class="container contact-grid">
+
+            <!-- SOL TARAF: İLETİŞİM FORMU -->
+            <form class="contact-form" id="satrusContactForm" onsubmit="event.preventDefault(); alert('Your request has been sent! We will respond within hours.');">
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>NAME <span>*</span></label>
+                        <input type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL <span>*</span></label>
+                        <input type="email" placeholder="you@company.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>COMPANY</label>
+                        <input type="text" placeholder="Company name">
+                    </div>
+                    <div class="form-group">
+                        <label>COUNTRY</label>
+                        <input type="text" placeholder="Country">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>I'M INTERESTED IN <span>*</span></label>
+                    <div class="select-wrap">
+                        <select required>
+                            <option value="Hardware" selected>Hardware</option>
+                            <option value="Software">Software</option>
+                            <option value="Engineering & Consulting">Engineering & Consulting</option>
+                            <option value="OEM">OEM</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="select-arrow">⌄</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>MESSAGE <span>*</span></label>
+                    <textarea rows="5" placeholder="Tell us what you need built." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary send-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    SEND REQUEST
+                </button>
+            </form>
+
+            <!-- SAĞ TARAF: DIRECT LINES + HARİTA + SLOGAN KUTUSU -->
+            <div class="contact-sidebar">
+
+                <!-- 1. Kutu: DIRECT LINES -->
+                <div class="sidebar-card direct-card">
+                    <div class="sidebar-eyebrow">DIRECT LINES</div>
+
+                    <div class="direct-list">
+                        <div class="direct-item">
+                            <span class="d-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="2">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                </svg>
+                            </span>
+                            <span>info@satrus.com</span>
+                        </div>
+
+                        <div class="direct-item">
+                            <span class="d-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </span>
+                            <span>+90 (___) ___ __ __</span>
+                        </div>
+
+                        <div class="direct-item muted-item">
+                            <span class="d-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="2">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </span>
+                            <span>İstanbul, Türkiye</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/" target="_blank" class="whatsapp-btn">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                        WHATSAPP US
+                    </a>
+                </div>
+
+                <!-- 2. Kutu: KOYU TEMA İSTANBUL HARİTASI (00:00 - 00:04) -->
+                <div class="sidebar-card map-card">
+                    <div id="istanbulMap"></div>
+                </div>
+
+                <!-- 3. Kutu: WE ANSWER FAST. IN HOURS, NOT WEEKS. -->
+                <div class="sidebar-card fast-card">
+                    <div class="fast-title">
+                        WE ANSWER FAST.<br>
+                        <span class="text-outline-red">IN HOURS, NOT WEEKS.</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BÖLÜM: FOOTER (ALT BİLGİ) -->
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="media/satrus.png" alt="SATRUS" class="logo-img">
+                </a>
+                <div class="footer-tagline">
+                    ENGINEERED FOR THE BEST.<br>DELIVERED AT SPEED.
+                </div>
+            </div>
+
+            <div class="footer-nav">
+                <div class="footer-heading">NAVIGATE</div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="stories.html">Success Stories</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <div class="footer-heading">CONTACT</div>
+                <p>info@satrus.com</p>
+                <p>+90 (___) ___ __ __</p>
+                <p class="muted">İstanbul, Türkiye</p>
+                <div class="social-links">
+                    <a href="#">in</a>
+                    <a href="#">◎</a>
+                    <a href="#">↗</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>© 2025 SATRUS Energy Technologies. All rights reserved.</div>
+            <div class="mono-tag">ENGINEERED IN TÜRKİYE</div>
+        </div>
+    </footer>
+
+    <!-- Harita ve Özel Mouse İmleci Scripti -->
+    <script>
+        // 1. Özel Kırmızı Mouse İmleci
+        const cursorRing = document.getElementById('cursor-ring');
+        window.addEventListener('mousemove', (e) => {
+            cursorRing.style.left = `${e.clientX}px`;
+            cursorRing.style.top = `${e.clientY}px`;
+        });
+        document.querySelectorAll('a, button, input, select, textarea').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.width = '44px';
+                cursorRing.style.height = '44px';
+                cursorRing.style.borderColor = '#ff1e32';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.width = '28px';
+                cursorRing.style.height = '28px';
+                cursorRing.style.borderColor = 'rgba(220, 20, 40, 0.75)';
+            });
+        });
+
+        // 2. Videodaki Koyu Tema Canlı İstanbul Haritası (Leaflet + CartoDB Dark Matter)
+        const map = L.map('istanbulMap', {
+            center: [41.015, 28.979],
+            zoom: 10,
+            zoomControl: false
+        });
+
+        // Sağ Üst Köşeye + / - Zoom Butonlarını Ekleme (Videodaki Gibi)
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // İstanbul Merkez Kırmızı Pin Noktası
+        const redIcon = L.divIcon({
+            className: 'custom-map-pin',
+            html: '<div class="pin-core"></div><div class="pin-pulse"></div>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+        });
+        L.marker([41.0082, 28.9784], { icon: redIcon }).addTo(map);
+    </script>
+    <script src="lang.js"></script>
+</body>
+</html>

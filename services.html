@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVICES | SATRUS Energy Technologies</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Ortak Ana Stil + Kart & Sekme Stilleri -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+
+    <!-- Özel Mouse İmleci -->
+    <div id="cursor-ring">
+        <div id="cursor-dot"></div>
+    </div>
+
+    <!-- Sağ Alt Sabit Buton -->
+    <a href="contact.html" class="floating-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        REQUEST A PROPOSAL
+    </a>
+
+    <!-- ÜST MENÜ (NAVBAR) -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <img src="media/satrus.png" alt="SATRUS" class="logo-img">
+        </a>
+
+        <nav class="nav-links">
+            <a href="about.html">ABOUT</a>
+            <a href="products.html">PRODUCTS</a>
+            <a href="services.html" class="active">SERVICES</a>
+            <a href="stories.html">SUCCESS STORIES</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="lang-switch">
+                <span class="active">EN</span> · <span>TR</span>
+            </div>
+            <a href="contact.html" class="btn-primary btn-sm">
+                <span>CONTACT US</span>
+                <span class="arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. BÖLÜM: SERVICES HERO, 3 SEKME VE 3 HİZMET KARTI -->
+    <section class="products-hero">
+        <div class="bg-grid"></div>
+        <div class="container">
+            <div class="eyebrow">SERVICES & SOFTWARE</div>
+            <h1 class="hero-title products-main-title">
+                TURNKEY EXECUTION. <span class="text-outline-red">CUSTOM INTELLIGENCE.</span>
+            </h1>
+            <p class="products-sub">
+                From proprietary OCPP & AI grid management platforms to end-to-end EPC consulting and factory setup.
+            </p>
+
+            <!-- İSTEDİĞİN 3 SEKME: 1) ALL (HEPSİ) | 2) SOFTWARE & AI | 3) ENGINEERING & CONSULTING -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="software">SOFTWARE & AI</button>
+                <button class="filter-btn" data-filter="engineering">ENGINEERING & CONSULTING</button>
+            </div>
+
+            <!-- İSTEDİĞİN 3 ADET KART -->
+            <div class="products-grid">
+
+                <!-- Kart 1: EV CHARGER NETWORK & OCPP SOFTWARE (SOFTWARE & AI) -->
+                <div class="prod-card" data-category="software">
+                    <div>
+                        <div class="prod-top">
+                            <div class="prod-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="1.8">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <span class="prod-cat">SOFTWARE & AI</span>
+                        </div>
+                        <h3 class="prod-title">EV CHARGER NETWORK MANAGEMENT SOFTWARE</h3>
+                        <p class="prod-desc">Operate, monitor and monetize charger networks from one central dashboard with full OCPP support.</p>
+                    </div>
+                    <div>
+                        <div class="prod-specs">
+                            <div class="spec-row"><span>PROTOCOL</span><span class="spec-val">OCPP 1.6J / 2.0.1</span></div>
+                            <div class="spec-row"><span>WHITE-LABEL</span><span class="spec-val">Yes</span></div>
+                        </div>
+                        <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                    </div>
+                </div>
+
+                <!-- Kart 2: AI ENERGY MANAGEMENT & TELEMETRY (SOFTWARE & AI) -->
+                <div class="prod-card" data-category="software">
+                    <div>
+                        <div class="prod-top">
+                            <div class="prod-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="1.8">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                            </div>
+                            <span class="prod-cat">SOFTWARE & AI</span>
+                        </div>
+                        <h3 class="prod-title">AI ENERGY MANAGEMENT & SOLAR MONITORING</h3>
+                        <p class="prod-desc">Real-time production telemetry, load forecasting and AI optimization that cuts energy cost per kWh.</p>
+                    </div>
+                    <div>
+                        <div class="prod-specs">
+                            <div class="spec-row"><span>SAMPLING</span><span class="spec-val">1s Real-Time</span></div>
+                            <div class="spec-row"><span>MODELS</span><span class="spec-val">Proprietary AI</span></div>
+                        </div>
+                        <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                    </div>
+                </div>
+
+                <!-- Kart 3: TURNKEY EPC & FACTORY ENGINEERING (ENGINEERING & CONSULTING) -->
+                <div class="prod-card" data-category="engineering">
+                    <div>
+                        <div class="prod-top">
+                            <div class="prod-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="1.8">
+                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                                </svg>
+                            </div>
+                            <span class="prod-cat">ENGINEERING & CONSULTING</span>
+                        </div>
+                        <h3 class="prod-title">TURNKEY FACTORY SETUP & EPC CONSULTING</h3>
+                        <p class="prod-desc">Feasibility, system design, OEM white-label production lines, staff training and technology transfer.</p>
+                    </div>
+                    <div>
+                        <div class="prod-specs">
+                            <div class="spec-row"><span>DELIVERY</span><span class="spec-val">Turnkey / Global</span></div>
+                            <div class="spec-row"><span>SCOPE</span><span class="spec-val">Design to Line</span></div>
+                        </div>
+                        <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
+    <div class="angled-divider"></div>
+
+    <!-- 2. BÖLÜM: ENGINEERING & CONSULTING FIELD EXECUTION -->
+    <section class="section consulting-section">
+        <div class="container">
+            <div class="eyebrow">ENGINEERING & CONSULTING</div>
+            <h2 class="section-title">
+                EXECUTED IN THE FIELD. <span class="text-outline-red">NOT IN SLIDEWARE.</span>
+            </h2>
+            <p class="section-desc">
+                Feasibility, system design, EPC support and commissioning — delivered where others don't go.
+            </p>
+
+            <div class="country-tags">
+                <div class="c-tag"><span class="check">✓</span> BELGIUM</div>
+                <div class="c-tag"><span class="check">✓</span> UZBEKISTAN</div>
+                <div class="c-tag"><span class="check">✓</span> SYRIA</div>
+                <div class="c-tag"><span class="check">✓</span> SOUTH AFRICA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BÖLÜM: FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="media/satrus.png" alt="SATRUS Logo" class="logo-img" onerror="this.outerHTML='<svg class=\'logo-svg\' viewBox=\'0 0 24 24\' width=\'20\' height=\'20\'><rect x=\'4\' y=\'4\' width=\'16\' height=\'16\' fill=\'#ffffff\'/><rect x=\'4\' y=\'4\' width=\'16\' height=\'16\' fill=\'#ffffff\' transform=\'rotate(45 12 12)\'/><circle cx=\'12\' cy=\'12\' r=\'4.2\' fill=\'#040203\'/></svg>'">
+                    <span class="logo-text">SATRUS</span>
+                </a>
+                <div class="footer-tagline">
+                    ENGINEERED FOR THE BEST.<br>DELIVERED AT SPEED.
+                </div>
+            </div>
+
+            <div class="footer-nav">
+                <div class="footer-heading">NAVIGATE</div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="services.html">Services</a>
+                <a href="stories.html">Success Stories</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <div class="footer-heading">CONTACT</div>
+                <p>info@satrus.com</p>
+                <p>+90 (___) ___ __ __</p>
+                <p class="muted">İstanbul, Türkiye</p>
+                <div class="social-links">
+                    <a href="#">in</a>
+                    <a href="#">◎</a>
+                    <a href="#">↗</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>© 2025 SATRUS Energy Technologies. All rights reserved.</div>
+            <div class="mono-tag">ENGINEERED IN TÜRKİYE</div>
+        </div>
+    </footer>
+
+    <!-- SERVICES FİLTRE VE MOUSE SCRIPTI -->
+    <script>
+        const cursorRing = document.getElementById('cursor-ring');
+        window.addEventListener('mousemove', (e) => {
+            cursorRing.style.left = `${e.clientX}px`;
+            cursorRing.style.top = `${e.clientY}px`;
+        });
+        document.querySelectorAll('a, button, .prod-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.width = '44px';
+                cursorRing.style.height = '44px';
+                cursorRing.style.borderColor = '#ff1e32';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.width = '28px';
+                cursorRing.style.height = '28px';
+                cursorRing.style.borderColor = 'rgba(220, 20, 40, 0.75)';
+            });
+        });
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.prod-card');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.getAttribute('data-filter');
+                cards.forEach(c => {
+                    c.style.display = (f === 'all' || c.getAttribute('data-category') === f) ? 'flex' : 'none';
+                });
+            });
+        });
+    </script>
+    <script src="lang.js"></script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+
+/* PRODUCTS SAYFASI ÖZEL STİLLERİ */
+
+.products-hero {
+    position: relative;
+    padding: 145px 0 90px 0;
+}
+
+.products-main-title {
+    font-size: clamp(2.8rem, 4.8vw, 4.3rem);
+    margin-bottom: 16px;
+}
+
+.products-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 580px;
+    margin-bottom: 42px;
+}
+
+/* FİLTRE SEKME BUTONLARI (ALL, ENERGY HARDWARE, EV & CHARGING...) */
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+}
+
+.filter-btn {
+    background: rgba(14, 6, 8, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    color: #ffffff;
+    border-color: rgba(220, 20, 40, 0.5);
+}
+
+.filter-btn.active {
+    background: var(--red-primary);
+    border-color: var(--red-bright);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(220, 20, 40, 0.4);
+}
+
+/* 11'Lİ ÜRÜN KARTLARI GRİDİ (3 SÜTUN) */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.prod-card {
+    background: linear-gradient(180deg, rgba(18, 7, 9, 0.82) 0%, rgba(10, 4, 5, 0.92) 100%);
+    border: 1px solid rgba(220, 20, 40, 0.2);
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 315px;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.prod-card:hover {
+    border-color: var(--red-bright);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(220, 20, 40, 0.12);
+}
+
+.prod-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.prod-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(220, 20, 40, 0.1);
+    border: 1px solid rgba(220, 20, 40, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prod-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1.5px;
+}
+
+.prod-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.prod-desc {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin-bottom: 24px;
+}
+
+/* KART İÇİ TEKNİK ÖZELLİK SATIRLARI */
+.prod-specs {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    margin-bottom: 18px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 1px;
+}
+
+.spec-val {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* KART ALTI INQUIRE BUTONU */
+.inquire-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 11px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(220, 20, 40, 0.28);
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: all 0.2s ease;
+}
+
+.inquire-btn span {
+    color: var(--red-bright);
+}
+
+.inquire-btn:hover {
+    background: var(--red-primary);
+    border-color: var(--red-bright);
+}
+
+.inquire-btn:hover span {
+    color: #ffffff;
+}
+
+/* 2. BÖLÜM: TURNKEY FACTORY SETUP */
+.factory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.factory-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.f-step {
+    background: rgba(16, 7, 9, 0.8);
+    border: 1px solid rgba(220, 20, 40, 0.22);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.f-step:hover {
+    border-color: var(--red-bright);
+    transform: translateX(6px);
+}
+
+.f-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.45rem;
+    color: rgba(210, 20, 35, 0.25);
+    -webkit-text-stroke: 1px #ff1e32;
+    letter-spacing: 1px;
+}
+
+.f-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+/* 3. BÖLÜM: ENGINEERING & CONSULTING ÜLKE ETİKETLERİ */
+.country-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.c-tag {
+    background: rgba(16, 7, 9, 0.85);
+    border: 1px solid rgba(220, 20, 40, 0.28);
+    padding: 12px 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.c-tag .check {
+    color: var(--red-bright);
+    font-weight: 700;
+}
+
+/* 4. BÖLÜM: SATRUS AI ENERGY DASHBOARD (CANLI GRAFİK KUTUSU) */
+.dashboard-box {
+    background: rgba(12, 5, 7, 0.92);
+    border: 1px solid rgba(220, 20, 40, 0.32);
+    padding: 28px 32px;
+}
+
+.dash-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.dash-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--red-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--red-bright);
+}
+
+.dash-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 1.5px;
+}
+
+.dash-toggles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.dash-toggle {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    padding: 8px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dash-toggle.active {
+    border-color: var(--red-bright);
+    background: rgba(220, 20, 40, 0.14);
+    color: #ffffff;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+.red-dot { background: #ff1e32; }
+.white-dot { background: #ffffff; }
+.maroon-dot { background: #a61c2b; }
+
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 320px;
+}
+
+#energyChart {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+/* Grafik Üzeri Hover Bilgi Kutusu (00:14) */
+.chart-tooltip {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    background: rgba(8, 3, 4, 0.95);
+    border: 1px solid rgba(220, 20, 40, 0.55);
+    padding: 12px 16px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease, left 0.1s ease;
+    min-width: 195px;
+    z-index: 10;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+.tt-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.tt-row {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+}
+
+.tt-white { color: #ffffff; }
+.tt-muted { color: #b08d92; }
+.tt-red { color: #ff1e32; font-weight: 600; }
+
+/* MOBİL & TABLET UYUMLULUK */
+@media (max-width: 1024px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .factory-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 650px) {
+    .products-grid { grid-template-columns: 1fr; }
+}
+
+/* AKILLI FİLTRE BARI (ALL / ✕ + ALT SEKMELER) */
+.smart-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 44px;
+}
+
+#allResetBtn.close-mode {
+    background: rgba(220, 20, 40, 0.18);
+    border-color: var(--red-bright);
+    color: var(--red-bright);
+    font-size: 0.85rem;
+    padding: 9px 15px;
+}
+
+#allResetBtn.close-mode:hover {
+    background: var(--red-primary);
+    color: #ffffff;
+}
+
+.sub-tabs-group {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding-left: 10px;
+    border-left: 2px solid rgba(220, 20, 40, 0.45);
+    animation: fadeSlideIn 0.25s ease forwards;
+}
+
+.sub-tabs-group.open {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.sub-filter-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    padding: 9px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sub-filter-btn:hover {
+    color: #ffffff;
+    border-color: rgba(220, 20, 40, 0.5);
+}
+
+.sub-filter-btn.active {
+    background: rgba(220, 20, 40, 0.22);
+    border-color: var(--red-bright);
+    color: #ffffff;
+}
+
+/* KATEGORİ SATIR BAŞLIKLARI (ALL SEÇİLİYKEN ALT ALTA GRUPLAMA) */
+.category-row-section {
+    margin-bottom: 54px;
+}
+
+.cat-row-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.cat-row-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--red-bright);
+    box-shadow: 0 0 10px var(--red-bright);
+}
+
+.cat-row-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.cat-row-line {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(220, 20, 40, 0.4), transparent);
+}

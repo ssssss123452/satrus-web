@@ -1,0 +1,228 @@
+/* ABOUT SAYFASI ÖZEL STİLLERİ */
+
+.about-hero {
+    position: relative;
+    padding: 150px 0 80px 0;
+    overflow: hidden;
+}
+
+.about-hero-desc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 580px;
+    margin-bottom: 64px;
+}
+
+/* 1. BÖLÜM: 3'LÜ ÜST KUTULAR (WHO WE ARE / FIELD-TESTED / CORE PROMISE) */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.pillar-card {
+    background: rgba(15, 7, 9, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 32px 28px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.pillar-card:hover {
+    border-color: rgba(220, 20, 40, 0.5);
+    transform: translateY(-3px);
+}
+
+.pillar-label {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--red-bright);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.pillar-card p {
+    color: #d1d5db;
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+/* 2. BÖLÜM: BRAND STORY (THREE SYMBOLS. ONE CODE.) */
+.symbols-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 44px;
+}
+
+.symbol-row {
+    background: linear-gradient(90deg, rgba(22, 8, 10, 0.85) 0%, rgba(12, 5, 7, 0.85) 100%);
+    border: 1px solid rgba(220, 20, 40, 0.22);
+    padding: 34px 40px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.symbol-row.reverse-row {
+    justify-content: space-between;
+    padding-left: 110px;
+    background: linear-gradient(270deg, rgba(28, 9, 12, 0.9) 0%, rgba(12, 5, 7, 0.85) 100%);
+}
+
+.symbol-row:hover {
+    border-color: var(--red-bright);
+    box-shadow: inset 0 0 28px rgba(220, 20, 40, 0.1);
+}
+
+.symbol-icon-box {
+    width: 68px;
+    height: 68px;
+    min-width: 68px;
+    border-radius: 50%;
+    background: rgba(220, 20, 40, 0.1);
+    border: 1px solid rgba(220, 20, 40, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Videodaki Parlak Kırmızı Küre (THE SATRUS RED İkonu) */
+.red-orb {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ff2a3c, #990815 75%);
+    box-shadow: 0 0 20px rgba(255, 30, 50, 0.55);
+}
+
+.symbol-text h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.55rem;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.symbol-text p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 620px;
+}
+
+/* 3. BÖLÜM: MILESTONES (DİKEY TIMELINE) */
+.timeline-sub {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    margin-bottom: 48px;
+}
+
+.timeline {
+    position: relative;
+    margin-left: 10px;
+    padding-left: 36px;
+    border-left: 1px solid rgba(220, 20, 40, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -42px;
+    top: 8px;
+    width: 11px;
+    height: 11px;
+    background-color: var(--red-bright);
+    border: 2px solid #070304;
+    box-shadow: 0 0 10px rgba(255, 30, 50, 0.8);
+}
+
+.timeline-year {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.1rem;
+    color: rgba(210, 20, 35, 0.25);
+    -webkit-text-stroke: 1.2px #ff1e32;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.timeline-desc {
+    color: #d1d5db;
+    font-size: 0.9rem;
+}
+
+/* 4. BÖLÜM: THE TEAM (4x2 EKİP KARTLARI) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 48px;
+}
+
+.team-card {
+    background: rgba(14, 6, 8, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 22px;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    border-color: var(--red-bright);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(220, 20, 40, 0.12);
+}
+
+.avatar-box {
+    width: 100%;
+    aspect-ratio: 1 / 0.88;
+    background: radial-gradient(circle at center, rgba(45, 10, 14, 0.55) 0%, rgba(10, 4, 5, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.avatar-box span {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+}
+
+.member-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.member-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--red-bright);
+    letter-spacing: 1.4px;
+}
+
+/* MOBİL & TABLET UYUMLULUK */
+@media (max-width: 1024px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .symbol-row.reverse-row { padding-left: 40px; }
+}
+
+@media (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .symbol-row, .symbol-row.reverse-row { flex-direction: column; text-align: center; }
+}

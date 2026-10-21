@@ -1,0 +1,170 @@
+/* SUCCESS STORIES SAYFASI ÖZEL STİLLERİ */
+
+.stories-hero {
+    position: relative;
+    padding: 150px 0 55px 0;
+    overflow: hidden;
+}
+
+.stories-title {
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    margin-bottom: 18px;
+}
+
+.stories-hero-desc {
+    color: var(--text-muted);
+    font-size: 0.96rem;
+    line-height: 1.65;
+    max-width: 580px;
+}
+
+/* KART BÖLÜMÜ VE DÜZENİ */
+.stories-section {
+    position: relative;
+    padding: 50px 0 90px 0;
+}
+
+/* Üst Satır: 2 Geniş Kart */
+.stories-grid-top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* Alt Satır: 3 Orta Kart */
+.stories-grid-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* TEKİL VAKA ANALİZİ KARTI */
+.story-card {
+    background: linear-gradient(180deg, rgba(18, 7, 9, 0.85) 0%, rgba(10, 4, 5, 0.95) 100%);
+    border: 1px solid rgba(220, 20, 40, 0.22);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-card:hover {
+    border-color: var(--red-bright);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(220, 20, 40, 0.14);
+}
+
+/* KART GÖRSEL ALANI VE SOL ÜST ETİKET (BADGE) */
+.story-img-box {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.stories-grid-bottom .story-img-box {
+    height: 195px;
+}
+
+.story-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+    filter: contrast(1.06) brightness(0.92);
+}
+
+.story-card:hover .story-img {
+    transform: scale(1.05);
+}
+
+/* Görselin Alt Kısmını Karta Yumuşak Bağlayan Karartma (Videodaki Efekt) */
+.story-img-vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7,3,4,0.15) 0%, rgba(7,3,4,0) 40%, rgba(14,5,7,0.95) 100%);
+    pointer-events: none;
+}
+
+/* Sol Üst Köşedeki Etiket (CONFLICT & REMOTE ZONES vb.) */
+.story-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    background: rgba(8, 3, 4, 0.82);
+    border: 1px solid rgba(220, 20, 40, 0.45);
+    color: var(--red-bright);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 5px 10px;
+    backdrop-filter: blur(6px);
+    text-transform: uppercase;
+}
+
+/* KART İÇERİĞİ (BAŞLIK, AÇIKLAMA, DETAILS ON REQUEST) */
+.story-body {
+    padding: 22px 26px 26px 26px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.story-body h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    line-height: 1.35;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.story-body p {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.story-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.38);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.story-card:hover .story-meta {
+    color: var(--red-bright);
+}
+
+/* ALT CTA BÖLÜMÜ (YOUR PROJECT COULD BE NEXT.) */
+.stories-cta {
+    padding: 110px 5%;
+}
+
+.stories-cta-title {
+    font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+    margin-bottom: 28px;
+}
+
+.stories-cta-btn-wrap {
+    margin-top: 10px;
+}
+
+/* MOBİL & TABLET UYUMLULUK */
+@media (max-width: 1024px) {
+    .stories-grid-top,
+    .stories-grid-bottom {
+        grid-template-columns: 1fr;
+    }
+}

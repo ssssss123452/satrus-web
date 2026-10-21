@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRODUCTS | SATRUS Energy Technologies</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Ortak Ana Stil + Products Sayfası Stili -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+
+    <!-- Özel Mouse İmleci -->
+    <div id="cursor-ring">
+        <div id="cursor-dot"></div>
+    </div>
+
+    <!-- Sağ Alt Sabit Buton -->
+    <a href="contact.html" class="floating-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        REQUEST A PROPOSAL
+    </a>
+
+    <!-- ÜST MENÜ (NAVBAR) -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <img src="media/satrus.png" alt="SATRUS" class="logo-img">
+        </a>
+
+        <nav class="nav-links">
+            <a href="about.html">ABOUT</a>
+            <a href="products.html" class="active">PRODUCTS</a>
+            <a href="services.html">SERVICES</a>
+            <a href="stories.html">SUCCESS STORIES</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="lang-switch">
+                <span class="active">EN</span> · <span>TR</span>
+            </div>
+            <a href="contact.html" class="btn-primary btn-sm">
+                <span>CONTACT US</span>
+                <span class="arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. BÖLÜM: ÜRÜNLER & AKILLI ALT SEKME (SUB-TAB) FİLTRESİ -->
+    <section class="products-hero">
+        <div class="bg-grid"></div>
+        <div class="container">
+            <div class="eyebrow">PRODUCTS & SOLUTIONS</div>
+            <h1 class="hero-title products-main-title">
+                BUILT TO RUN. <span class="text-outline-red">READY TO SHIP.</span>
+            </h1>
+            <p class="products-sub">
+                Every product below ships with SATRUS engineering support. Specs are placeholders — full datasheets on request.
+            </p>
+
+            <!-- AKILLI FİLTRE BARI (ALL / ✕ + ANA KATEGORİ + YANINDA AÇILAN ALT SEKMELER) -->
+            <div class="smart-filter-bar">
+                <!-- ALL Butonu (Kategori seçilince ✕ olur) -->
+                <button class="filter-btn active" id="allResetBtn" title="Reset to All">ALL</button>
+
+                <!-- Ana Kategori 1: EV CHARGING -->
+                <button class="filter-btn main-cat-btn" data-cat="ev">EV CHARGING</button>
+
+                <!-- EV CHARGING Tıklanınca Yanında Açılan Alt Sekmeler (AC, DC, CABLES, COMPONENTS) -->
+                <div class="sub-tabs-group" id="sub-ev">
+                    <button class="sub-filter-btn active" data-sub="all">ALL EV</button>
+                    <button class="sub-filter-btn" data-sub="ac">AC</button>
+                    <button class="sub-filter-btn" data-sub="dc">DC</button>
+                    <button class="sub-filter-btn" data-sub="cables">CABLES</button>
+                    <button class="sub-filter-btn" data-sub="components">COMPONENTS</button>
+                </div>
+
+                <!-- Ana Kategori 2 (İkinci Örnek Sistem): ENERGY HARDWARE -->
+                <button class="filter-btn main-cat-btn" data-cat="hardware">ENERGY HARDWARE</button>
+
+                <!-- ENERGY HARDWARE Tıklanınca Yanında Açılan Örnek Alt Sekmeler -->
+                <div class="sub-tabs-group" id="sub-hardware">
+                    <button class="sub-filter-btn active" data-sub="all">ALL HARDWARE</button>
+                    <button class="sub-filter-btn" data-sub="solar">SOLAR & PV</button>
+                    <button class="sub-filter-btn" data-sub="wind">WIND & THERMAL</button>
+                    <button class="sub-filter-btn" data-sub="bess">BESS STORAGE</button>
+                </div>
+            </div>
+
+            <!-- KATEGORİ SATIRLARI (ALL SEÇİLİYKEN ALT ALTA KATEGORİLER, YAN YANA ÜRÜNLER) -->
+            <div id="catalogContainer">
+
+                <!-- 1. SATIR GRUBU: EV CHARGING ÜRÜNLERİ -->
+                <div class="category-row-section" data-cat-section="ev">
+                    <div class="cat-row-header">
+                        <span class="cat-row-dot"></span>
+                        <h2 class="cat-row-title">EV CHARGING</h2>
+                        <div class="cat-row-line"></div>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- EV Ürün 1: AC Charger -->
+                        <div class="prod-card" data-sub="ac">
+                            <div>
+                                <div class="prod-top">
+                                    <div class="prod-icon">⚡</div>
+                                    <span class="prod-cat">EV CHARGING · AC</span>
+                                </div>
+                                <h3 class="prod-title">AC WALLBOX & COMMERCIAL CHARGERS</h3>
+                                <p class="prod-desc">Smart 7.4 kW to 22 kW AC charging stations for residential, fleet and workplace parks.</p>
+                            </div>
+                            <div>
+                                <div class="prod-specs">
+                                    <div class="spec-row"><span>OUTPUT</span><span class="spec-val">7.4 kW — 22 kW</span></div>
+                                    <div class="spec-row"><span>INTERFACE</span><span class="spec-val">Type 2 / OCPP 1.6J</span></div>
+                                </div>
+                                <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                            </div>
+                        </div>
+
+                        <!-- EV Ürün 2: DC Fast Charger -->
+                        <div class="prod-card" data-sub="dc">
+                            <div>
+                                <div class="prod-top">
+                                    <div class="prod-icon">⚡</div>
+                                    <span class="prod-cat">EV CHARGING · DC</span>
+                                </div>
+                                <h3 class="prod-title">HIGH-POWER DC ULTRA-FAST CHARGERS</h3>
+                                <p class="prod-desc">Modular 60 kW up to 1 MW DC fast charging hardware built for highway corridors.</p>
+                            </div>
+                            <div>
+                                <div class="prod-specs">
+                                    <div class="spec-row"><span>OUTPUT</span><span class="spec-val">60 kW — 1 MW</span></div>
+                                    <div class="spec-row"><span>STANDARD</span><span class="spec-val">CCS2 / CHAdeMO</span></div>
+                                </div>
+                                <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                            </div>
+                        </div>
+
+                        <!-- EV Ürün 3: Cables -->
+                        <div class="prod-card" data-sub="cables">
+                            <div>
+                                <div class="prod-top">
+                                    <div class="prod-icon">🔌</div>
+                                    <span class="prod-cat">EV CHARGING · CABLES</span>
+                                </div>
+                                <h3 class="prod-title">HIGH-CURRENT EV CHARGING CABLES</h3>
+                                <p class="prod-desc">Liquid-cooled and standard TPU charging cables, connectors and holsters.</p>
+                            </div>
+                            <div>
+                                <div class="prod-specs">
+                                    <div class="spec-row"><span>CURRENT RATING</span><span class="spec-val">32A — 500A</span></div>
+                                    <div class="spec-row"><span>PROTECTION</span><span class="spec-val">IP67 / IK10</span></div>
+                                </div>
+                                <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                            </div>
+                        </div>
+
+                        <!-- EV Ürün 4: Components -->
+                        <div class="prod-card" data-sub="components">
+                            <div>
+                                <div class="prod-top">
+                                    <div class="prod-icon">⚙️</div>
+                                    <span class="prod-cat">EV CHARGING · COMPONENTS</span>
+                                </div>
+                                <h3 class="prod-title">POWER MODULES & CONTROLLER BOARDS</h3>
+                                <p class="prod-desc">SiC power rectifiers, OCPP mainboards, RFID readers and MID metering kits for OEMs.</p>
+                            </div>
+                            <div>
+                                <div class="prod-specs">
+                                    <div class="spec-row"><span>EFFICIENCY</span><span class="spec-val">> 96.5%</span></div>
+                                    <div class="spec-row"><span>PROTOCOL</span><span class="spec-val">ISO 15118 / OCPP 2.0.1</span></div>
+                                </div>
+                                <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SATIR GRUBU: ENERGY HARDWARE (İKİNCİ ÖRNEK KATEGORİ) -->
+                <div class="category-row-section" data-cat-section="hardware">
+                    <div class="cat-row-header">
+                        <span class="cat-row-dot"></span>
+                        <h2 class="cat-row-title">ENERGY HARDWARE</h2>
+                        <div class="cat-row-line"></div>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Hardware 1: PV Electric -->
+                        <div class="prod-card" data-sub="solar">
+                            <div>
+                                <div class="prod-top">
+                                    <div class="prod-icon">☀️</div>
+                                    <span class="prod-cat">ENERGY HARDWARE · SOLAR & PV</span>
+                                </div>
+                                <h3 class="prod-title">PV ELECTRIC & SOLAR THERMAL</h3>
+                                <p class="prod-desc">Modules, hybrid inverters and high-efficiency collectors from rooftop to utility scale.</p>
+                            </div>
+                            <div>
+                                <div class="prod-specs">
+                                    <div class="spec-row"><span>CAPACITY</span><span class="spec-val">Custom Scale</span></div>
+                                    <div class="spec-row"><span>TIER</span><span class="spec-val">Tier-1 Export</span></div>
+                                </div>
+                                <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                            </div>
+                        </div>
+
+                        <!-- Hardware 2: Wind & Geothermal -->
+                        <div class="prod-card" data-sub="wind">
+                            <div>
+                                <div class="prod-top">
+                                    <div class="prod-icon">🌬️</div>
+                                    <span class="prod-cat">ENERGY HARDWARE · WIND & THERMAL</span>
+                                </div>
+                                <h3 class="prod-title">WIND TURBINES & HEAT PUMPS</h3>
+                                <p class="prod-desc">Distributed generation turbines and industrial air/ground-source heat pump systems.</p>
+                            </div>
+                            <div>
+                                <div class="prod-specs">
+                                    <div class="spec-row"><span>RATED POWER</span><span class="spec-val">—</span></div>
+                                    <div class="spec-row"><span>APPLICATION</span><span class="spec-val">Industrial / Grid</span></div>
+                                </div>
+                                <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                            </div>
+                        </div>
+
+                        <!-- Hardware 3: BESS -->
+                        <div class="prod-card" data-sub="bess">
+                            <div>
+                                <div class="prod-top">
+                                    <div class="prod-icon">🔋</div>
+                                    <span class="prod-cat">ENERGY HARDWARE · BESS STORAGE</span>
+                                </div>
+                                <h3 class="prod-title">BESS CONTAINERIZED STORAGE</h3>
+                                <p class="prod-desc">Battery energy storage systems. Grid-scale or behind-the-meter microgrid ready.</p>
+                            </div>
+                            <div>
+                                <div class="prod-specs">
+                                    <div class="spec-row"><span>CAPACITY</span><span class="spec-val">100 kWh — 5 MWh</span></div>
+                                    <div class="spec-row"><span>CHEMISTRY</span><span class="spec-val">LFP</span></div>
+                                </div>
+                                <a href="contact.html" class="inquire-btn">INQUIRE <span>↗</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
+    <div class="angled-divider"></div>
+
+    <!-- 2. BÖLÜM: TURNKEY FACTORY SETUP -->
+    <section class="section factory-section">
+        <div class="container factory-grid">
+            <div class="factory-left">
+                <div class="eyebrow">TURNKEY FACTORY SETUP</div>
+                <h2 class="section-title">
+                    FROM EMPTY GROUND <span class="text-outline-red">TO<br>PRODUCTION LINE.</span>
+                </h2>
+                <p class="section-desc">
+                    We deliver complete manufacturing capability — not advice, not slides. Proven with Africa's first EV charger factory.
+                </p>
+                <a href="contact.html" class="btn-primary">
+                    DISCUSS A FACTORY PROJECT <span class="arrow">↗</span>
+                </a>
+            </div>
+
+            <div class="factory-steps">
+                <div class="f-step"><span class="f-num">01</span><span class="f-text">MARKET & SITE FEASIBILITY</span></div>
+                <div class="f-step"><span class="f-num">02</span><span class="f-text">MACHINERY & PRODUCTION LINE DESIGN</span></div>
+                <div class="f-step"><span class="f-num">03</span><span class="f-text">PROCESS KNOW-HOW TRANSFER</span></div>
+                <div class="f-step"><span class="f-num">04</span><span class="f-text">STAFF TRAINING</span></div>
+                <div class="f-step"><span class="f-num">05</span><span class="f-text">COMMISSIONING & RAMP-UP</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BÖLÜM: LIVE DEMO - AI ENERGY INTELLIGENCE DASHBOARD -->
+    <section class="section dashboard-section">
+        <div class="container">
+            <div class="eyebrow">LIVE DEMO</div>
+            <h2 class="section-title">
+                AI ENERGY <span class="text-outline-red">INTELLIGENCE.</span>
+            </h2>
+            <p class="section-desc">
+                A taste of our energy software: solar production, EV charger load and AI-predicted consumption. Simulated data — the real system runs on your assets.
+            </p>
+
+            <div class="dashboard-box">
+                <div class="dash-topbar">
+                    <div class="dash-title"><span class="live-dot"></span> SATRUS AI ENERGY DASHBOARD</div>
+                    <div class="dash-note">SIMULATED 24H DATA</div>
+                </div>
+
+                <div class="dash-toggles">
+                    <button class="dash-toggle active" data-series="solar"><span class="dot red-dot"></span> SOLAR PRODUCTION</button>
+                    <button class="dash-toggle" data-series="ev"><span class="dot white-dot"></span> EV CHARGER LOAD</button>
+                    <button class="dash-toggle" data-series="predicted"><span class="dot maroon-dot"></span> PREDICTED CONSUMPTION</button>
+                </div>
+
+                <div class="chart-wrapper" id="chartWrapper">
+                    <svg id="energyChart" viewBox="0 0 960 320" preserveAspectRatio="none"></svg>
+                    <div class="chart-tooltip" id="chartTooltip">
+                        <div class="tt-time" id="ttTime">18:00</div>
+                        <div class="tt-row tt-white" id="ttEv">EV Charger Load : 45</div>
+                        <div class="tt-row tt-muted" id="ttPred">Predicted Consumption : 71</div>
+                        <div class="tt-row tt-red" id="ttSolar">Solar Production : 8</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. BÖLÜM: FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="media/satrus.png" alt="SATRUS Logo" class="logo-img" onerror="this.outerHTML='<svg class=\'logo-svg\' viewBox=\'0 0 24 24\' width=\'20\' height=\'20\'><rect x=\'4\' y=\'4\' width=\'16\' height=\'16\' fill=\'#ffffff\'/><rect x=\'4\' y=\'4\' width=\'16\' height=\'16\' fill=\'#ffffff\' transform=\'rotate(45 12 12)\'/><circle cx=\'12\' cy=\'12\' r=\'4.2\' fill=\'#040203\'/></svg>'">
+                    <span class="logo-text">SATRUS</span>
+                </a>
+                <div class="footer-tagline">
+                    ENGINEERED FOR THE BEST.<br>DELIVERED AT SPEED.
+                </div>
+            </div>
+
+            <div class="footer-nav">
+                <div class="footer-heading">NAVIGATE</div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="services.html">Services</a>
+                <a href="stories.html">Success Stories</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-contact">
+                <div class="footer-heading">CONTACT</div>
+                <p>info@satrus.com</p>
+                <p>+90 (___) ___ __ __</p>
+                <p class="muted">İstanbul, Türkiye</p>
+                <div class="social-links">
+                    <a href="#">in</a>
+                    <a href="#">◎</a>
+                    <a href="#">↗</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <div>© 2025 SATRUS Energy Technologies. All rights reserved.</div>
+            <div class="mono-tag">ENGINEERED IN TÜRKİYE</div>
+        </div>
+    </footer>
+
+    <!-- PRODUCTS AKILLI SEKME & GRAFİK SCRIPTI -->
+    <script>
+        // 1. Mouse İmleci
+        const cursorRing = document.getElementById('cursor-ring');
+        window.addEventListener('mousemove', (e) => {
+            cursorRing.style.left = `${e.clientX}px`;
+            cursorRing.style.top = `${e.clientY}px`;
+        });
+        document.querySelectorAll('a, button, .prod-card, .f-step').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.width = '44px';
+                cursorRing.style.height = '44px';
+                cursorRing.style.borderColor = '#ff1e32';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.width = '28px';
+                cursorRing.style.height = '28px';
+                cursorRing.style.borderColor = 'rgba(220, 20, 40, 0.75)';
+            });
+        });
+
+        // 2. AKILLI ALT SEKME SİSTEMİ (ALL <-> ✕ DÖNÜŞÜMÜ VE ALT KATEGORİLER)
+        const allResetBtn = document.getElementById('allResetBtn');
+        const mainCatBtns = document.querySelectorAll('.main-cat-btn');
+        const subGroups = document.querySelectorAll('.sub-tabs-group');
+        const catSections = document.querySelectorAll('.category-row-section');
+
+        function resetToAll() {
+            // ALL butonunu eski haline döndür
+            allResetBtn.textContent = 'ALL';
+            allResetBtn.classList.add('active');
+            allResetBtn.classList.remove('close-mode');
+
+            // Tüm ana kategori butonlarını göster ve pasif yap
+            mainCatBtns.forEach(btn => {
+                btn.style.display = 'inline-flex';
+                btn.classList.remove('active');
+            });
+
+            // Açık olan alt sekmeleri gizle
+            subGroups.forEach(grp => grp.classList.remove('open'));
+
+            // Tüm kategori satırlarını ve içindeki kartları göster
+            catSections.forEach(sec => {
+                sec.style.display = 'block';
+                sec.querySelectorAll('.prod-card').forEach(c => c.style.display = 'flex');
+            });
+        }
+
+        allResetBtn.addEventListener('click', resetToAll);
+
+        mainCatBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedCat = btn.getAttribute('data-cat');
+
+                // ALL butonunu "✕" kapatma butonuna dönüştür
+                allResetBtn.textContent = '✕';
+                allResetBtn.classList.remove('active');
+                allResetBtn.classList.add('close-mode');
+
+                // Diğer ana kategori butonlarını gizle, sadece tıklananı aktif bırak
+                mainCatBtns.forEach(b => {
+                    if (b === btn) {
+                        b.classList.add('active');
+                        b.style.display = 'inline-flex';
+                    } else {
+                        b.classList.remove('active');
+                        b.style.display = 'none';
+                    }
+                });
+
+                // İlgili alt sekme grubunu (AC, DC, CABLES, COMPONENTS) yanında aç
+                subGroups.forEach(grp => {
+                    if (grp.id === `sub-${selectedCat}`) {
+                        grp.classList.add('open');
+                        grp.querySelectorAll('.sub-filter-btn').forEach((sb, i) => {
+                            sb.classList.toggle('active', i === 0);
+                        });
+                    } else {
+                        grp.classList.remove('open');
+                    }
+                });
+
+                // Sadece seçilen kategorinin satırını göster
+                catSections.forEach(sec => {
+                    if (sec.getAttribute('data-cat-section') === selectedCat) {
+                        sec.style.display = 'block';
+                        sec.querySelectorAll('.prod-card').forEach(c => c.style.display = 'flex');
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Alt sekmelere (AC, DC, CABLES, COMPONENTS) tıklanınca filtreleme
+        document.querySelectorAll('.sub-filter-btn').forEach(subBtn => {
+            subBtn.addEventListener('click', () => {
+                const parentGroup = subBtn.parentElement;
+                parentGroup.querySelectorAll('.sub-filter-btn').forEach(b => b.classList.remove('active'));
+                subBtn.classList.add('active');
+
+                const subVal = subBtn.getAttribute('data-sub');
+                const activeCat = parentGroup.id.replace('sub-', '');
+                const activeSection = document.querySelector(`.category-row-section[data-cat-section="${activeCat}"]`);
+
+                activeSection.querySelectorAll('.prod-card').forEach(card => {
+                    if (subVal === 'all' || card.getAttribute('data-sub') === subVal) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 3. SATRUS AI ENERGY DASHBOARD GRAFİĞİ
+        const hours = ['00:00','02:00','04:00','06:00','08:00','10:00','12:00','14:00','16:00','18:00','20:00','22:00'];
+        const solarData = [0, 0, 0, 8, 42, 78, 95, 88, 56, 8, 0, 0];
+        const evData    = [26, 18, 14, 20, 45, 38, 32, 36, 40, 45, 72, 40];
+        const predData  = [32, 24, 22, 35, 58, 64, 70, 68, 62, 71, 82, 48];
+
+        const svg = document.getElementById('energyChart');
+        const tooltip = document.getElementById('chartTooltip');
+        const padLeft = 65, padRight = 30, padTop = 25, padBottom = 40;
+        const width = 960, height = 320;
+        const plotW = width - padLeft - padRight;
+        const plotH = height - padTop - padBottom;
+
+        const getX = i => padLeft + (i / (hours.length - 1)) * plotW;
+        const getY = val => padTop + plotH - (val / 100) * plotH;
+
+        function buildSmoothPath(data) {
+            const pts = data.map((v, i) => [getX(i), getY(v)]);
+            let d = `M ${pts[0][0]},${pts[0][1]}`;
+            for (let i = 0; i < pts.length - 1; i++) {
+                const p0 = pts[i === 0 ? 0 : i - 1], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2 < pts.length ? i + 2 : i + 1];
+                d += ` C ${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`;
+            }
+            return d;
+        }
+
+        let activeHighlight = 'solar';
+        function renderChart() {
+            const solarPath = buildSmoothPath(solarData), evPath = buildSmoothPath(evData), predPath = buildSmoothPath(predData);
+            const baseLineY = getY(0);
+            const solarArea = `${solarPath} L ${getX(hours.length - 1)},${baseLineY} L ${getX(0)},${baseLineY} Z`;
+            const predArea = `${predPath} L ${getX(hours.length - 1)},${baseLineY} L ${getX(0)},${baseLineY} Z`;
+
+            let html = `<defs>
+                <linearGradient id="solarGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff1e32" stop-opacity="${activeHighlight === 'solar' ? 0.42 : 0.18}"/><stop offset="100%" stop-color="#ff1e32" stop-opacity="0"/></linearGradient>
+                <linearGradient id="predGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#991122" stop-opacity="0.28"/><stop offset="100%" stop-color="#991122" stop-opacity="0"/></linearGradient>
+            </defs>`;
+            [0, 25, 50, 75, 100].forEach(val => {
+                const y = getY(val);
+                html += `<line x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3 3"/>
+                         <text x="${padLeft - 14}" y="${y + 4}" fill="#7a7476" font-family="JetBrains Mono" font-size="10" text-anchor="end">${val} kW</text>`;
+            });
+            [0, 2, 4, 6, 8, 10, 11].forEach(idx => {
+                html += `<text x="${getX(idx)}" y="${height - 10}" fill="#7a7476" font-family="JetBrains Mono" font-size="10" text-anchor="middle">${hours[idx]}</text>`;
+            });
+            html += `<path d="${predArea}" fill="url(#predGrad)"/><path d="${solarArea}" fill="url(#solarGrad)"/>
+                     <path d="${predPath}" fill="none" stroke="#a61c2b" stroke-width="${activeHighlight === 'predicted' ? 2.8 : 1.6}" stroke-dasharray="5 4"/>
+                     <path d="${solarPath}" fill="none" stroke="#ff1e32" stroke-width="${activeHighlight === 'solar' ? 2.8 : 1.8}"/>
+                     <path d="${evPath}" fill="none" stroke="#ffffff" stroke-width="${activeHighlight === 'ev' ? 2.8 : 1.8}"/>`;
+            svg.innerHTML = html;
+        }
+        renderChart();
+
+        document.querySelectorAll('.dash-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.dash-toggle').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeHighlight = btn.getAttribute('data-series');
+                renderChart();
+            });
+        });
+    </script>
+    <script src="lang.js"></script>
+</body>
+</html>
