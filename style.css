@@ -85,90 +85,92 @@ body {
     background-color: var(--red-bright);
 }
 
-/* ÜST MENÜ (ŞEFFAF / TRANSPARENT LIQUID GLASS KAPSÜL NAVBAR - BÜYÜK LOGO UYUMLU) */
+/* ÜST MENÜ (SOLIPARTS STİLİ ZARİF LIQUID GLASS & KAPSÜL HOVER EFEKTLİ) */
 .navbar {
     position: fixed;
-    top: 22px;
+    top: 24px;
     left: 50%;
     transform: translateX(-50%);
-    width: 92%;
-    max-width: 1180px;
-    height: 86px; /* Bar yüksekliği büyük logoya göre artırıldı */
-    padding: 0 14px 0 32px;
+    width: 90%;
+    max-width: 980px; /* Videodaki gibi daha toplu ve kibar genişlik */
+    height: 64px; /* Videodaki ince yükseklik */
+    padding: 0 10px 0 28px;
     border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 500;
     background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0.02) 50%,
-        rgba(255, 255, 255, 0.05) 100%
+        180deg,
+        rgba(28, 28, 32, 0.55) 0%,
+        rgba(14, 14, 18, 0.65) 100%
     );
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: 
-        0 16px 40px rgba(0, 0, 0, 0.55),
-        inset 0 1px 1px rgba(255, 255, 255, 0.25),
-        inset 0 -1px 1px rgba(255, 255, 255, 0.06);
+        0 14px 35px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
     transition: all 0.3s ease;
 }
 
 .navbar:hover {
-    border-color: rgba(255, 255, 255, 0.28);
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.09) 0%,
-        rgba(255, 255, 255, 0.03) 50%,
-        rgba(255, 255, 255, 0.08) 100%
-    );
+    border-color: rgba(255, 255, 255, 0.24);
 }
 
 .logo {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
+    height: 100%;
 }
 
 .logo-img {
-    height: 64px; /* İstediğin gibi 48'den çok daha büyük yapıldı */
+    height: 44px;
     width: auto;
-    max-width: 360px; /* Geniş yatay logonun rahat sığması için artırıldı */
+    max-width: 260px;
     object-fit: contain;
     display: block;
+    /* Barı kalınlaştırmadan logoyu büyük göstermek için büyüteç etkisi */
+    transform: scale(1.35);
+    transform-origin: left center;
 }
 
 .footer-brand .logo-img {
-    height: 30px; /* Footer'da yatay logo yüksekliği */
+    height: 36px;
 }
 
+/* MENÜ YAZILARI VE MOUSE ÜZERİNE GELİNCE ÇIKAN YUVARLAK KAPSÜL EFEKTİ */
 .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 6px;
     align-items: center;
 }
 
 .nav-links a {
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.78);
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 1.2px;
-    transition: color 0.25s ease, text-shadow 0.25s ease;
+    letter-spacing: 0.6px;
+    padding: 8px 16px;
+    border-radius: 999px; /* Yuvarlak kapsül şekli */
+    background: transparent;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* Mouse üzerine gelince videodaki gibi buzlu gri/beyaz kapsül çıkar */
 .nav-links a:hover,
 .nav-links a.active {
     color: #ffffff;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
 }
 
 .lang-switch {
@@ -182,7 +184,7 @@ body {
 
 .lang-switch span {
     padding: 4px 6px;
-    border-radius: 2px;
+    border-radius: 4px;
     transition: color 0.2s ease, background 0.2s ease;
 }
 
