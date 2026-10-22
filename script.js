@@ -115,8 +115,8 @@ if (document.getElementById('realDeliveryMap')) {
     // Sağ alt köşeye + / - zoom tuşları
     L.control.zoom({ position: 'bottomright' }).addTo(deliveryMap);
 
-    // API Anahtarı İstemeyen Ücretsiz Koyu Tema Harita Katmanı
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    // Hiçbir API Key istemeyen, %100 ücretsiz OpenStreetMap Katmanı
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19
     }).addTo(deliveryMap);
 

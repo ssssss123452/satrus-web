@@ -743,7 +743,7 @@ body {
 
 /* Gerçek Haritayı Sitenin Bordo-Siyah Temasına Uyarlayan Filtre */
 #realDeliveryMap .leaflet-tile-pane {
-    filter: brightness(0.88) contrast(1.25) sepia(0.35) hue-rotate(315deg) saturate(2.2);
+    filter: brightness(0.12) invert(1) contrast(1.6) hue-rotate(200deg) saturate(0.4);
 }
 
 /* Harita Üzerindeki İnce Kırmızı Grid Katmanı */
