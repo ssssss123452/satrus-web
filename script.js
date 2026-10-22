@@ -19,23 +19,46 @@ document.querySelectorAll('a, button, .map-node, .service-card').forEach(el => {
     });
 });
 
-// 2. HERO BÖLÜMÜNDEKİ 3D NOKTALI DÖNEN DÜNYA
+// 2. HERO BÖLÜMÜNDEKİ 3D NOKTALI DÖNEN DÜNYA (ADMİN PANELİ & OTOMATİK LAZER BAĞLANTILI)
 const globeContainer = document.getElementById('globe-container');
 
-const stations = [
-    { name: 'ANKARA HQ', lat: 39.9334, lng: 32.8597, icon: '⚡', info: 'Central R&D & Grid Hub — Active' },
-    { name: 'ISTANBUL', lat: 41.0082, lng: 28.9784, icon: '🔋', info: '4.5x faster charging telemetry' },
-    { name: 'BERLIN', lat: 52.5200, lng: 13.4050, icon: '🛡️', info: 'EU Distribution Node — 99.9% Load' },
-    { name: 'LONDON', lat: 51.5074, lng: -0.1278, icon: '👤', info: 'UK Smart Grid Partner Network' },
-    { name: 'DUBAI', lat: 25.2048, lng: 55.2708, icon: '⚡', info: 'MENA High-Temp Battery Testing' }
+const defaultStations = [
+    { id: 1, name: 'ANKARA HQ', lat: 39.9334, lng: 32.8597, type: 'emoji', icon: '⚡', info: 'Central R&D & Grid Hub — Active', isHQ: true },
+    { id: 2, name: 'ISTANBUL', lat: 41.0082, lng: 28.9784, type: 'emoji', icon: '🔋', info: '4.5x faster charging telemetry', isHQ: false },
+    { id: 3, name: 'BERLIN', lat: 52.5200, lng: 13.4050, type: 'emoji', icon: '🛡️', info: 'EU Distribution Node — 99.9% Load', isHQ: false },
+    { id: 4, name: 'LONDON', lat: 51.5074, lng: -0.1278, type: 'emoji', icon: '👤', info: 'UK Smart Grid Partner Network', isHQ: false },
+    { id: 5, name: 'DUBAI', lat: 25.2048, lng: 55.2708, type: 'emoji', icon: '⚡', info: 'MENA High-Temp Battery Testing', isHQ: false },
+    { id: 6, name: 'SOUTH AFRICA', lat: -26.2041, lng: 28.0473, type: 'image', icon: 'media/satrus.png', info: 'Turnkey EV Charger Factory Line', isHQ: false }
 ];
 
-const arcsData = [
-    { startLat: 39.9334, startLng: 32.8597, endLat: 41.0082, endLng: 28.9784 },
-    { startLat: 39.9334, startLng: 32.8597, endLat: 52.5200, endLng: 13.4050 },
-    { startLat: 39.9334, startLng: 32.8597, endLat: 51.5074, endLng: -0.1278 },
-    { startLat: 39.9334, startLng: 32.8597, endLat: 25.2048, endLng: 55.2708 }
-];
+// Admin Panelinden Kaydedilen Verileri Oku (Yoksa Varsayılanları Kullan)
+function getActiveStations() {
+    try {
+        const saved = localStorage.getItem('satrus_globe_stations');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+    } catch (e) {}
+    return defaultStations;
+}
+
+// Merkez (HQ) Noktasından Diğer Tüm Noktalara Otomatik Lazer Çizgileri Oluştur
+function buildAutoArcs(stationList) {
+    if (!stationList || stationList.length < 2) return [];
+    const hq = stationList.find(s => s.isHQ) || stationList[0];
+    return stationList
+        .filter(s => s !== hq)
+        .map(target => ({
+            startLat: Number(hq.lat),
+            startLng: Number(hq.lng),
+            endLat: Number(target.lat),
+            endLng: Number(target.lng)
+        }));
+}
+
+const stations = getActiveStations();
+const arcsData = buildAutoArcs(stations);
 
 const world = Globe()(globeContainer)
     .width(650)
@@ -62,24 +85,31 @@ const world = Globe()(globeContainer)
     .ringPropagationSpeed(2)
     .ringRepeatPeriod(900)
     .labelsData(stations)
-    .labelLat(d => d.lat)
-    .labelLng(d => d.lng)
+    .labelLat(d => Number(d.lat))
+    .labelLng(d => Number(d.lng))
     .labelText(d => d.name)
     .labelSize(1.1)
     .labelDotRadius(0.4)
     .labelColor(() => '#ffffff')
     .labelResolution(2)
     .htmlElementsData(stations)
-    .htmlLat(d => d.lat)
-    .htmlLng(d => d.lng)
+    .htmlLat(d => Number(d.lat))
+    .htmlLng(d => Number(d.lng))
     .htmlAltitude(0.04)
     .htmlElement(d => {
         const el = document.createElement('div');
         el.className = 'globe-pin';
-        el.innerHTML = d.icon;
+        if (d.type === 'image' && d.icon) {
+            el.innerHTML = `<img src="${d.icon}" alt="${d.name}" style="width:20px;height:20px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
+        } else {
+            el.innerHTML = d.icon || '⚡';
+        }
+        // Üzerine gelince sol alttaki (hud-1) kutuda bilgiyi göster
         el.addEventListener('mouseenter', () => {
-            document.querySelector('#hud-1 .hud-title').textContent = d.name;
-            document.querySelector('#hud-1 .hud-text').textContent = d.info;
+            const titleEl = document.querySelector('#hud-1 .hud-title');
+            const textEl = document.querySelector('#hud-1 .hud-text');
+            if (titleEl) titleEl.textContent = d.name;
+            if (textEl) textEl.textContent = d.info;
         });
         return el;
     });
@@ -99,6 +129,17 @@ world.pointOfView({ lat: 34, lng: 30, altitude: 2.15 });
 world.controls().autoRotate = true;
 world.controls().autoRotateSpeed = 0.9;
 world.controls().enableZoom = false;
+
+// Admin panelinde başka sekmede değişiklik yapılırsa ana sayfayı anında canlı güncelle
+window.addEventListener('storage', (e) => {
+    if (e.key === 'satrus_globe_stations') {
+        const updated = getActiveStations();
+        world.ringsData(updated);
+        world.labelsData(updated);
+        world.htmlElementsData(updated);
+        world.arcsData(buildAutoArcs(updated));
+    }
+});
 
 // 3. GERÇEK GEOJSON NOKTALI (DOT-MATRIX) HARİTA & HD TÜRKİYE GEÇİŞ SİSTEMİ
 const mapLeftStatus = document.getElementById('map-left-status');

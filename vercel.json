@@ -1,0 +1,6 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/adminda2adjnwjioej21aod", "destination": "/adminda2adjnwjioej21aod.html" }
+  ]
+}
