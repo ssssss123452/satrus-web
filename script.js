@@ -115,8 +115,9 @@ if (document.getElementById('realDeliveryMap')) {
     // Sağ alt köşeye + / - zoom tuşları
     L.control.zoom({ position: 'bottomright' }).addTo(deliveryMap);
 
-    // Hiçbir API Key istemeyen, %100 ücretsiz OpenStreetMap Katmanı
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Tamamen Siyah / Koyu Temalı Dahili Harita Katmanı (API Key İstemez)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
         maxZoom: 19
     }).addTo(deliveryMap);
 
