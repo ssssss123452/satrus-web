@@ -808,8 +808,12 @@ body {
     transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.dot-map-stage.dragging {
-    transition: none;
+.dot-map-stage {
+    position: relative;
+    width: 1100px;
+    height: 520px;
+    transform-origin: center center;
+    transition: opacity 0.22s ease, transform 0.25s ease;
 }
 
 #dottedWorldCanvas {
@@ -825,12 +829,12 @@ body {
     pointer-events: none;
 }
 
-/* Harita Üzerindeki Parlayan Kırmızı Pinler (Arkadaşının Görselindeki Gibi) */
+/* 1. Görseldeki Gibi Keskin ve Parlak Kırmızı Nokta Pinleri */
 .dot-pin {
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
+    width: 22px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -840,51 +844,41 @@ body {
 }
 
 .dot-pin-core {
-    width: 8px;
-    height: 8px;
-    background: #ff1e32;
+    width: 7px;
+    height: 7px;
+    background: #ff2a3c;
     border-radius: 50%;
-    box-shadow: 0 0 12px #ff1e32, 0 0 22px rgba(255, 30, 50, 0.85);
-    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 0 0 3px rgba(220, 20, 40, 0.35), 0 0 12px #ff1e32;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dot-pin.hq-pin .dot-pin-core {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     background: #ffffff;
     border: 2px solid #ff1e32;
-    box-shadow: 0 0 16px #ff1e32, 0 0 30px #ff1e32;
+    box-shadow: 0 0 0 4px rgba(255, 30, 50, 0.4), 0 0 16px #ff1e32;
 }
 
 .dot-pin-pulse {
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 30, 50, 0.65);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 30, 50, 0.45) 0%, transparent 70%);
     animation: dotPulse 2s infinite ease-out;
     pointer-events: none;
 }
 
-/* Zoom yapıldığında pinlerin devasa büyümemesi için ters ölçekleme */
-.dot-pin.sub-pin .dot-pin-core {
-    width: 4.5px;
-    height: 4.5px;
-}
-
-.dot-pin.sub-pin .dot-pin-pulse {
-    width: 11px;
-    height: 11px;
-}
-
 .dot-pin:hover .dot-pin-core {
-    transform: scale(1.45);
+    transform: scale(1.35);
     background: #ffffff;
+    box-shadow: 0 0 0 5px rgba(255, 30, 50, 0.55), 0 0 18px #ffffff;
 }
 
 @keyframes dotPulse {
     0% { transform: scale(0.5); opacity: 1; }
-    100% { transform: scale(1.8); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
 }
 
 /* Sağ Alt Zoom Butonları */
