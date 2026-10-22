@@ -206,7 +206,7 @@
     <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
     <div class="angled-divider"></div>
 
-    <!-- 4. BÖLÜM: GLOBAL REACH (WHERE WE DELIVER - GERÇEK 2D SÜRÜKLENEBİLİR HARİTA) -->
+    <!-- 4. BÖLÜM: GLOBAL REACH (ARKADAŞININ ATTIĞI NOKTALI DÜNYA HARİTASI + SİSTEMİMİZ) -->
     <section class="section" id="about">
         <div class="container">
             <div class="eyebrow">GLOBAL REACH</div>
@@ -214,7 +214,7 @@
                 WHERE WE <span class="text-outline-red">DELIVER.</span>
             </h2>
             <p class="section-desc">
-                One hub in Türkiye. Deployments across Europe, Central Asia, the Middle East and Africa. Hover the markers.
+                Hover a marker. Every point is a project delivered.
             </p>
 
             <!-- Harita Üstü Seçilebilir 2 Sekme -->
@@ -224,20 +224,43 @@
                 <button class="map-back-btn" id="mapResetBtn" style="display: none;">← DÜNYA GÖRÜNÜMÜNE DÖN</button>
             </div>
 
-            <!-- Gerçek 2D Sürüklenebilir Harita ve Üst Bilgi Barları -->
-            <div class="network-box">
-                <!-- Sol Üst (İşaretlediğin 2. Resimdeki Mavi Alan): Tesis Türü (Ofis mi, Fabrika mı, Depo mu) -->
+            <!-- Noktalı (Dot-Matrix) Koyu Bordo Harita Kutusu -->
+            <div class="network-box" id="dotMapWrapper">
+                <!-- Sol Üst: Tesis Türü (Ofis / Fabrika / Depo / Teknik Servis) -->
                 <div class="network-header" id="map-left-status">
                     LIVE DELIVERY NETWORK · HUB: TÜRKİYE <span class="hq-inline-dot"></span> HQ
                 </div>
 
-                <!-- Sağ Üst (İşaretlediğin 1. Resimdeki Mavi Alan): İl, m² Hacmi, Şube Detayı -->
+                <!-- Sağ Üst: İl, m² Hacmi, Şube Detayı -->
                 <div class="network-tooltip" id="map-tooltip">TÜRKİYE HQ — ACTIVE HUB</div>
 
-                <!-- Sürüklenebilir 2D Gerçek Harita Konteyneri -->
-                <div id="realDeliveryMap"></div>
-                <!-- Harita Üzerinde Kırmızı Hafif Grid Dokusu -->
-                <div class="map-grid-overlay"></div>
+                <!-- Noktalı Dünya Haritası + Etkileşimli Kırmızı Pin Katmanı -->
+                <div class="dot-map-viewport" id="dotMapViewport">
+                    <div class="dot-map-stage" id="dotMapStage">
+                        <canvas id="dottedWorldCanvas" width="1100" height="520"></canvas>
+                        <div class="dot-pins-layer" id="dotPinsLayer"></div>
+                    </div>
+                </div>
+
+                <!-- Sağ Alt Zoom (+ / -) Butonları -->
+                <div class="dot-map-controls">
+                    <button type="button" id="dotZoomIn">+</button>
+                    <button type="button" id="dotZoomOut">−</button>
+                </div>
+
+                <!-- Görseldeki Alt Ülke Listesi Barı -->
+                <div class="dot-map-footer">
+                    <span>• TÜRKİYE HQ</span>
+                    <span>• NETHERLANDS</span>
+                    <span>• BELGIUM</span>
+                    <span>• GERMANY</span>
+                    <span>• FRANCE</span>
+                    <span>• SYRIA</span>
+                    <span>• UZBEKISTAN</span>
+                    <span>• AFGHANISTAN</span>
+                    <span>• CENTRAL ASIA</span>
+                    <span>• SOUTH AFRICA</span>
+                </div>
             </div>
         </div>
     </section>
