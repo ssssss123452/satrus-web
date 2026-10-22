@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Leaflet.js (Gerçek 2D Sürüklenebilir Harita Motoru) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Ana Stil Dosyamız -->
     <link rel="stylesheet" href="style.css">
     <!-- Three.js & Globe.gl (3D Noktalı Dünya Motoru) -->
@@ -203,7 +206,7 @@
     <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
     <div class="angled-divider"></div>
 
-    <!-- 4. BÖLÜM: GLOBAL REACH (WHERE WE DELIVER - CANLI AĞ HARİTASI) -->
+    <!-- 4. BÖLÜM: GLOBAL REACH (WHERE WE DELIVER - GERÇEK 2D SÜRÜKLENEBİLİR HARİTA) -->
     <section class="section" id="about">
         <div class="container">
             <div class="eyebrow">GLOBAL REACH</div>
@@ -214,64 +217,27 @@
                 One hub in Türkiye. Deployments across Europe, Central Asia, the Middle East and Africa. Hover the markers.
             </p>
 
-            <!-- Videodaki (00:11) Kırmızı Gridli Canlı Teslimat Ağı Kutusu -->
+            <!-- Harita Üstü Seçilebilir 2 Sekme -->
+            <div class="delivery-tabs">
+                <button class="delivery-tab active" data-tab="distributors">DISTRIBUTORS</button>
+                <button class="delivery-tab" data-tab="operations">OPERATIONS & SERVICE NETWORK</button>
+                <button class="map-back-btn" id="mapResetBtn" style="display: none;">← DÜNYA GÖRÜNÜMÜNE DÖN</button>
+            </div>
+
+            <!-- Gerçek 2D Sürüklenebilir Harita ve Üst Bilgi Barları -->
             <div class="network-box">
-                <div class="network-header">
+                <!-- Sol Üst (İşaretlediğin 2. Resimdeki Mavi Alan): Tesis Türü (Ofis mi, Fabrika mı, Depo mu) -->
+                <div class="network-header" id="map-left-status">
                     LIVE DELIVERY NETWORK · HUB: TÜRKİYE <span class="hq-inline-dot"></span> HQ
                 </div>
+
+                <!-- Sağ Üst (İşaretlediğin 1. Resimdeki Mavi Alan): İl, m² Hacmi, Şube Detayı -->
                 <div class="network-tooltip" id="map-tooltip">TÜRKİYE HQ — ACTIVE HUB</div>
-                
-                <svg class="network-svg" viewBox="0 0 1000 460">
-                    <!-- Türkiye HQ (555, 165) Merkezinden Çıkan Birebir Videodaki Kavisli Kesik Çizgiler -->
-                    <path class="net-line" d="M 555 165 Q 515 110 495 140" />
-                    <path class="net-line" d="M 555 165 Q 530 130 518 152" />
-                    <path class="net-line" d="M 555 165 Q 542 135 536 148" />
-                    <path class="net-line" d="M 555 165 Q 585 130 618 155" />
-                    <path class="net-line" d="M 555 165 Q 615 135 648 165" />
-                    <path class="net-line" d="M 555 165 Q 585 185 592 212" />
-                    <path class="net-line" d="M 555 165 Q 525 205 510 235" />
-                    <path class="net-line" d="M 555 165 Q 548 260 538 355" />
 
-                    <!-- Avrupa Kümesi (Sol Üst) -->
-                    <g class="map-node" data-region="CENTRAL EUROPE · BESS & SOLAR">
-                        <circle cx="495" cy="140" r="4.5" class="node-dot" />
-                    </g>
-                    <g class="map-node" data-region="BALKANS · EV CHARGING CORRIDOR">
-                        <circle cx="518" cy="152" r="4.5" class="node-dot" />
-                    </g>
-                    <g class="map-node" data-region="EASTERN EUROPE · SMART GRID">
-                        <circle cx="536" cy="148" r="4.5" class="node-dot" />
-                    </g>
-
-                    <!-- Kafkaslar & Orta Asya Kümesi (Sağ Üst) -->
-                    <g class="map-node" data-region="CAUCASUS · HIGH-POWER CHARGERS">
-                        <circle cx="618" cy="155" r="4.5" class="node-dot" />
-                    </g>
-                    <g class="map-node" data-region="CENTRAL ASIA · TURNKEY SOLAR">
-                        <circle cx="648" cy="165" r="4.5" class="node-dot" />
-                    </g>
-
-                    <!-- Orta Doğu & Kuzey Afrika (Orta Alt) -->
-                    <g class="map-node" data-region="MIDDLE EAST · GRID INFRASTRUCTURE">
-                        <circle cx="592" cy="212" r="4.5" class="node-dot" />
-                    </g>
-                    <g class="map-node" data-region="NORTH AFRICA · SOLAR & STORAGE">
-                        <circle cx="510" cy="235" r="4.5" class="node-dot" />
-                    </g>
-
-                    <!-- Sahra Altı Afrika (En Alttaki Nokta) -->
-                    <g class="map-node" data-region="AFRICA · TURNKEY EV CHARGER FACTORY">
-                        <circle cx="538" cy="355" r="5" class="node-dot" />
-                        <circle cx="538" cy="355" r="13" class="node-pulse" />
-                    </g>
-
-                    <!-- Merkez: TÜRKİYE HQ (Beyaz İçli Kırmızı Hale) -->
-                    <g class="map-node hq-node" data-region="TÜRKİYE HQ — CENTRAL ENGINEERING HUB">
-                        <circle cx="555" cy="165" r="18" class="hq-glow" />
-                        <circle cx="555" cy="165" r="7" class="hq-ring" />
-                        <circle cx="555" cy="165" r="4" class="hq-dot" />
-                    </g>
-                </svg>
+                <!-- Sürüklenebilir 2D Gerçek Harita Konteyneri -->
+                <div id="realDeliveryMap"></div>
+                <!-- Harita Üzerinde Kırmızı Hafif Grid Dokusu -->
+                <div class="map-grid-overlay"></div>
             </div>
         </div>
     </section>

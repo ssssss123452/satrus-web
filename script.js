@@ -100,14 +100,224 @@ world.controls().autoRotate = true;
 world.controls().autoRotateSpeed = 0.9;
 world.controls().enableZoom = false;
 
-// 3. WHERE WE DELIVER HARİTA NOKTALARI ÜZERİNE GELİNCE BİLGİ GÖSTERME
-const mapTooltip = document.getElementById('map-tooltip');
-document.querySelectorAll('.map-node').forEach(node => {
-    node.addEventListener('mouseenter', () => {
-        const regionName = node.getAttribute('data-region');
-        mapTooltip.textContent = regionName;
+// 3. GERÇEK 2D SÜRÜKLENEBİLİR HARİTA (DISTRIBUTORS & TÜRKİYE İÇİ DETAY SİSTEMİ)
+const mapLeftStatus = document.getElementById('map-left-status');
+const mapRightTooltip = document.getElementById('map-tooltip');
+const mapResetBtn = document.getElementById('mapResetBtn');
+
+if (document.getElementById('realDeliveryMap')) {
+    const deliveryMap = L.map('realDeliveryMap', {
+        center: [43.0, 22.0], // Avrupa ve Türkiye'yi ortalayan başlangıç açısı
+        zoom: 4,
+        zoomControl: false
     });
-});
+
+    // Sağ alt köşeye + / - zoom tuşları
+    L.control.zoom({ position: 'bottomright' }).addTo(deliveryMap);
+
+    // Koyu Tema Harita Katmanı
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 18
+    }).addTo(deliveryMap);
+
+    const markersLayer = L.layerGroup().addTo(deliveryMap);
+
+    // 1. ÜLKE NOKTALARI (DISTRIBUTORS SEKMESİ - Fransa, Almanya, Türkiye)
+    const distributorCountries = [
+        {
+            id: 'TR',
+            name: 'TÜRKİYE',
+            lat: 39.2,
+            lng: 35.2,
+            zoom: 6,
+            isHQ: true,
+            leftType: 'DISTRIBUTOR & GLOBAL HQ · TÜRKİYE',
+            rightDetail: 'TÜRKİYE — MERKEZ ÜS (DETAY İÇİN TIKLAYIN)'
+        },
+        {
+            id: 'DE',
+            name: 'ALMANYA',
+            lat: 51.1657,
+            lng: 10.4515,
+            zoom: 6,
+            isHQ: false,
+            leftType: 'DISTRIBUTOR · AVRUPA BÖLGE',
+            rightDetail: 'ALMANYA — YETKİLİ DİSTRİBÜTÖR'
+        },
+        {
+            id: 'FR',
+            name: 'FRANSA',
+            lat: 46.6034,
+            lng: 2.2137,
+            zoom: 6,
+            isHQ: false,
+            leftType: 'DISTRIBUTOR · BATI AVRUPA',
+            rightDetail: 'FRANSA — YETKİLİ DİSTRİBÜTÖR'
+        }
+    ];
+
+    // 2. TÜRKİYE İÇİ NOKTALAR (Sadece Türkiye'ye Tıklanınca Çıkan Ofis, Fabrika, Depo ve Teknik Servisler)
+    const turkeyLocations = [
+        // OFİSLER (Sol üstte Ofis Türü, Sağ üstte Şehir ve Türü yazar)
+        {
+            lat: 41.0082,
+            lng: 28.9784,
+            leftType: 'OFİS · GENEL MERKEZ & GLOBAL SATIŞ OFİSİ',
+            rightDetail: 'İSTANBUL — GLOBAL SATIŞ VE YÖNETİM OFİSİ'
+        },
+        {
+            lat: 39.9334,
+            lng: 32.8597,
+            leftType: 'OFİS · AR-GE VE MÜHENDİSLİK OFİSİ',
+            rightDetail: 'ANKARA — SAVUNMA & YAZILIM AR-GE OFİSİ'
+        },
+        {
+            lat: 38.4237,
+            lng: 27.1428,
+            leftType: 'OFİS · BÖLGE SATIŞ OFİSİ',
+            rightDetail: 'İZMİR — EGE BÖLGE SATIŞ OFİSİ'
+        },
+
+        // FABRİKALAR (Sol üstte Fabrika ve Türü, Sağ üstte Konum + m² Hacim + Fabrika İsmi yazar)
+        {
+            lat: 40.7654,
+            lng: 29.9408,
+            leftType: 'FABRİKA · EV ŞARJ ALETİ FABRİKASI',
+            rightDetail: 'KOCAELİ (GEBZE) · 45.000 m² · SATRUS EV CHARGER FACTORY'
+        },
+        {
+            lat: 40.1885,
+            lng: 29.0610,
+            leftType: 'FABRİKA · BATARYA & BESS ÜRETİM FABRİKASI',
+            rightDetail: 'BURSA · 32.000 m² · SATRUS BESS GIGA TESİSİ'
+        },
+
+        // DEPOLAR (Sol üstte Depo olduğu, Sağ üstte SADECE İL BİLGİSİ yazar)
+        {
+            lat: 36.8000,
+            lng: 34.6333,
+            leftType: 'DEPO · LOJİSTİK MERKEZ DEPO',
+            rightDetail: 'MERSİN'
+        },
+        {
+            lat: 37.8714,
+            lng: 32.4846,
+            leftType: 'DEPO · İÇ ANADOLU DAĞITIM DEPOSU',
+            rightDetail: 'KONYA'
+        },
+
+        // TEKNİK SERVİSLER (Sol üstte Teknik Servis Şubesi olduğu, Sağ üstte KONUMU yazar)
+        {
+            lat: 36.8969,
+            lng: 30.7133,
+            leftType: 'TEKNİK SERVİS ŞUBESİ',
+            rightDetail: 'ANTALYA / KEPEZ — AKDENİZ BÖLGE KONUMU'
+        },
+        {
+            lat: 37.0662,
+            lng: 37.3833,
+            leftType: 'TEKNİK SERVİS ŞUBESİ',
+            rightDetail: 'GAZİANTEP / ŞEHİTKAMİL — GÜNEYDOĞU KONUMU'
+        },
+        {
+            lat: 41.2867,
+            lng: 36.3300,
+            leftType: 'TEKNİK SERVİS ŞUBESİ',
+            rightDetail: 'SAMSUN / İLKADIM — KARADENİZ KONUMU'
+        }
+    ];
+
+    function createPinIcon(isHQ = false) {
+        return L.divIcon({
+            className: 'satrus-custom-pin',
+            html: `<div class="satrus-marker-wrap">
+                      <div class="satrus-pin-pulse"></div>
+                      <div class="satrus-pin-core ${isHQ ? 'hq-country' : ''}"></div>
+                   </div>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+        });
+    }
+
+    // Dünya / Distribütör Ülkeleri Gösterme Fonksiyonu
+    function showDistributorCountries() {
+        markersLayer.clearLayers();
+        mapResetBtn.style.display = 'none';
+        deliveryMap.flyTo([43.0, 22.0], 4, { duration: 1.2 });
+
+        mapLeftStatus.innerHTML = 'LIVE DELIVERY NETWORK · SEÇİLİ SEKME: <span class="hq-inline-dot"></span> DISTRIBUTORS';
+        mapRightTooltip.textContent = 'ÜLKE SEÇİN (TÜRKİYE, ALMANYA, FRANSA)';
+
+        distributorCountries.forEach(country => {
+            const marker = L.marker([country.lat, country.lng], { icon: createPinIcon(country.isHQ) }).addTo(markersLayer);
+
+            // Mouse ile üzerine gelince
+            marker.on('mouseover', () => {
+                mapLeftStatus.innerHTML = `${country.leftType} <span class="hq-inline-dot"></span>`;
+                mapRightTooltip.textContent = country.rightDetail;
+            });
+
+            // Ülkeye tıklanınca içine yaklaş
+            marker.on('click', () => {
+                if (country.id === 'TR') {
+                    showTurkeyDetails();
+                } else {
+                    // Fransa veya Almanya'ya tıklanırsa içine yaklaşır ama içi boş kalır
+                    markersLayer.clearLayers();
+                    mapResetBtn.style.display = 'inline-block';
+                    deliveryMap.flyTo([country.lat, country.lng], country.zoom, { duration: 1.2 });
+                    mapLeftStatus.innerHTML = `${country.name} BÖLGE GÖRÜNÜMÜ <span class="hq-inline-dot"></span>`;
+                    mapRightTooltip.textContent = `${country.name} — İÇ NOKTA KAYDI BULUNMUYOR`;
+                }
+            });
+        });
+    }
+
+    // Türkiye'ye Tıklanınca İçindeki Ofis, Fabrika, Depo ve Teknik Servisleri Gösterme Fonksiyonu
+    function showTurkeyDetails() {
+        markersLayer.clearLayers();
+        mapResetBtn.style.display = 'inline-block';
+        deliveryMap.flyTo([39.0, 35.0], 6, { duration: 1.2 });
+
+        mapLeftStatus.innerHTML = 'TÜRKİYE İÇİ AĞ · OFİS / FABRİKA / DEPO / TEKNİK SERVİS <span class="hq-inline-dot"></span>';
+        mapRightTooltip.textContent = 'NOKTALARIN ÜZERİNE GELİN';
+
+        turkeyLocations.forEach(loc => {
+            const marker = L.marker([loc.lat, loc.lng], { icon: createPinIcon(false) }).addTo(markersLayer);
+
+            marker.on('mouseover', () => {
+                // Sol üstte (2. resimde işaretlediğin yerde) Türü yazar
+                mapLeftStatus.innerHTML = `${loc.leftType} <span class="hq-inline-dot"></span>`;
+                // Sağ üstte (1. resimde işaretlediğin yerde) İl / m² / İsim detayı yazar
+                mapRightTooltip.textContent = loc.rightDetail;
+            });
+        });
+    }
+
+    // Sekme Değiştirme (1. Sekme: DISTRIBUTORS, 2. Sekme: OPERATIONS & SERVICE NETWORK)
+    document.querySelectorAll('.delivery-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.delivery-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            if (tab.getAttribute('data-tab') === 'distributors') {
+                showDistributorCountries();
+            } else {
+                showTurkeyDetails();
+            }
+        });
+    });
+
+    // "← DÜNYA GÖRÜNÜMÜNE DÖN" Butonu
+    mapResetBtn.addEventListener('click', () => {
+        document.querySelectorAll('.delivery-tab').forEach((t, i) => t.classList.toggle('active', i === 0));
+        showDistributorCountries();
+    });
+
+    // İlk Açılışta Distributors Görünümünü Başlat
+    showDistributorCountries();
+}
 
 // 4. FAQ (SIKÇA SORULAN SORULAR) AKORDİYON AÇILIP KAPANMA MANTIĞI
 document.querySelectorAll('.faq-question').forEach(btn => {

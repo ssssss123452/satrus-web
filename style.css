@@ -673,28 +673,107 @@ body {
     transform: skewY(1.8deg);
 }
 
-/* 4. WHERE WE DELIVER (CANLI TESLİMAT AĞI HARİTASI) */
+/* 4. WHERE WE DELIVER (GERÇEK 2D SÜRÜKLENEBİLİR HARİTA & SEKMELER) */
+.delivery-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.delivery-tab {
+    background: rgba(14, 6, 8, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 11px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delivery-tab:hover {
+    color: #ffffff;
+    border-color: rgba(220, 20, 40, 0.5);
+}
+
+.delivery-tab.active {
+    background: var(--red-primary);
+    border-color: var(--red-bright);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(220, 20, 40, 0.4);
+}
+
+.map-back-btn {
+    margin-left: auto;
+    background: rgba(220, 20, 40, 0.16);
+    border: 1px solid var(--red-bright);
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.map-back-btn:hover {
+    background: var(--red-primary);
+}
+
 .network-box {
     position: relative;
     width: 100%;
-    height: 460px;
+    height: 500px;
     background-color: #090405;
-    background-image: 
-        linear-gradient(to right, rgba(220, 20, 40, 0.07) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(220, 20, 40, 0.07) 1px, transparent 1px);
-    background-size: 48px 48px;
-    border: 1px solid rgba(220, 20, 40, 0.3);
+    border: 1px solid rgba(220, 20, 40, 0.35);
     overflow: hidden;
 }
 
+#realDeliveryMap {
+    width: 100%;
+    height: 100%;
+    background: #070304;
+    z-index: 1;
+}
+
+/* Gerçek Haritayı Sitenin Bordo-Siyah Temasına Uyarlayan Filtre */
+#realDeliveryMap .leaflet-tile-pane {
+    filter: brightness(0.88) contrast(1.25) sepia(0.35) hue-rotate(315deg) saturate(2.2);
+}
+
+/* Harita Üzerindeki İnce Kırmızı Grid Katmanı */
+.map-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(to right, rgba(220, 20, 40, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(220, 20, 40, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Sol Üst Bilgi Alanı (Tesis Türü Yazacak Yer) */
 .network-header {
     position: absolute;
     top: 18px;
     left: 24px;
+    z-index: 10;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 2px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(8, 3, 4, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 7px 14px;
+    letter-spacing: 1.8px;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
 }
 
 .hq-inline-dot {
@@ -703,74 +782,76 @@ body {
     height: 7px;
     background: var(--red-bright);
     border-radius: 50%;
-    margin: 0 4px;
+    margin: 0 5px;
+    box-shadow: 0 0 8px var(--red-bright);
 }
 
+/* Sağ Üst Bilgi Kutusu (İl, m² Hacmi, Detay Yazacak Yer) */
 .network-tooltip {
     position: absolute;
     top: 18px;
     right: 24px;
+    z-index: 10;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
+    font-weight: 600;
     color: var(--red-bright);
-    background: rgba(220, 20, 40, 0.12);
-    border: 1px solid rgba(220, 20, 40, 0.4);
-    padding: 6px 12px;
+    background: rgba(14, 5, 7, 0.92);
+    border: 1px solid rgba(220, 20, 40, 0.55);
+    padding: 7px 14px;
+    letter-spacing: 1.2px;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
-.network-svg {
-    width: 100%;
-    height: 100%;
+/* Harita Üzerindeki Özel Kırmızı Nokta Pinleri */
+.satrus-marker-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.net-line {
-    fill: none;
-    stroke: var(--red-primary);
-    stroke-width: 1.6;
-    stroke-dasharray: 5 5;
-    animation: dashFlow 12s linear infinite;
+.satrus-pin-core {
+    width: 12px;
+    height: 12px;
+    background: #ff1e32;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ff1e32;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
-@keyframes dashFlow {
-    to { stroke-dashoffset: -120; }
+.satrus-pin-core.hq-country {
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border: 3px solid #ff1e32;
 }
 
-.node-dot {
-    fill: var(--red-bright);
-    cursor: pointer;
-    transition: r 0.2s;
+.satrus-pin-pulse {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid #ff1e32;
+    border-radius: 50%;
+    animation: mapPinPulse 2s infinite ease-out;
+    pointer-events: none;
 }
 
-.map-node:hover .node-dot {
-    r: 8;
-    fill: #fff;
+.satrus-marker-wrap:hover .satrus-pin-core {
+    transform: scale(1.4);
+    background: #ffffff;
 }
 
-.node-pulse {
-    fill: none;
-    stroke: var(--red-bright);
-    stroke-width: 1.2;
-    opacity: 0.5;
-    animation: pulseRing 2.2s infinite ease-out;
+@keyframes mapPinPulse {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.9); opacity: 0; }
 }
 
-@keyframes pulseRing {
-    0% { transform: scale(0.6); opacity: 0.9; transform-origin: center; transform-box: fill-box; }
-    100% { transform: scale(1.8); opacity: 0; transform-origin: center; transform-box: fill-box; }
-}
-
-.hq-dot {
-    fill: #ffffff;
-    cursor: pointer;
-}
-
-.hq-ring {
-    fill: var(--red-bright);
-}
-
-.hq-glow {
-    fill: rgba(220, 20, 40, 0.28);
-    animation: pulseRing 2s infinite alternate;
+#realDeliveryMap .leaflet-control-attribution {
+    display: none !important;
 }
 
 /* 5. HOW WE WORK (01, 02, 03) */
