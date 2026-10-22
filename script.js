@@ -19,7 +19,7 @@ document.querySelectorAll('a, button, .map-node, .service-card').forEach(el => {
     });
 });
 
-// 2. HERO BÖLÜMÜNDEKİ 3D NOKTALI DÖNEN DÜNYA (ADMİN PANELİ & OTOMATİK LAZER BAĞLANTILI)
+// 2. HERO BÖLÜMÜNDEKİ 3D NOKTALI DÖNEN DÜNYA (ÇAKIŞMASIZ & CANLI ADMİN SENKRONİZASYONLU)
 const globeContainer = document.getElementById('globe-container');
 
 const defaultStations = [
@@ -31,9 +31,6 @@ const defaultStations = [
     { id: 6, name: 'SOUTH AFRICA', lat: -26.2041, lng: 28.0473, type: 'image', icon: 'media/satrus.png', info: 'Turnkey EV Charger Factory Line', isHQ: false }
 ];
 
-// Admin Panelinden Kaydedilen Verileri Otomatik Oku (Koda Dokunmadan Yansır)
-const CLOUD_SYNC_URL = 'https://api.keyvalue.xyz/11e9b5f0/satrus_globe_nodes';
-
 function getActiveStations() {
     try {
         const saved = localStorage.getItem('satrus_globe_stations');
@@ -42,55 +39,14 @@ function getActiveStations() {
             if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         }
     } catch (e) {}
-    return defaultStations;
+    return [...defaultStations];
 }
 
-// Sayfa açıldığında Bulut / Admin kaydını kontrol et ve dünyayı otomatik güncelle
-async function syncGlobeFromAdmin() {
-    try {
-        const res = await fetch(CLOUD_SYNC_URL, { cache: 'no-store' });
-        if (res.ok) {
-            const cloudData = await res.json();
-            if (Array.isArray(cloudData) && cloudData.length > 0) {
-                localStorage.setItem('satrus_globe_stations', JSON.stringify(cloudData));
-                refreshMainGlobe(cloudData);
-            }
-        }
-    } catch (e) {
-        // İnternet/bulut erişimi yoksa localStorage üzerinden anında devam eder
-    }
-}
-
-function refreshMainGlobe(stationList) {
-    if (typeof world !== 'undefined') {
-        world.ringsData(stationList);
-        world.labelsData(stationList);
-        world.htmlElementsData(stationList);
-        world.arcsData(buildAutoArcs(stationList));
-    }
-}
-
-// Admin panelinde kaydettiğin anda (sayfayı bile yenilemeden) ana sayfaya yansıt
-const globeChannel = new BroadcastChannel('satrus_globe_live_channel');
-globeChannel.onmessage = (event) => {
-    if (event.data && Array.isArray(event.data)) {
-        localStorage.setItem('satrus_globe_stations', JSON.stringify(event.data));
-        refreshMainGlobe(event.data);
-    }
-};
-
-window.addEventListener('focus', () => {
-    refreshMainGlobe(getActiveStations());
-});
-
-syncGlobeFromAdmin();
-
-// Merkez (HQ) Noktasından Diğer Tüm Noktalara Otomatik Lazer Çizgileri Oluştur
 function buildAutoArcs(stationList) {
     if (!stationList || stationList.length < 2) return [];
     const hq = stationList.find(s => s.isHQ) || stationList[0];
     return stationList
-        .filter(s => s !== hq)
+        .filter(s => s.id !== hq.id)
         .map(target => ({
             startLat: Number(hq.lat),
             startLng: Number(hq.lng),
@@ -99,88 +55,106 @@ function buildAutoArcs(stationList) {
         }));
 }
 
-const stations = getActiveStations();
-const arcsData = buildAutoArcs(stations);
+let world;
 
-const world = Globe()(globeContainer)
-    .width(650)
-    .height(650)
-    .backgroundColor('rgba(0,0,0,0)')
-    .showGlobe(true)
-    .showAtmosphere(true)
-    .atmosphereColor('#dc1428')
-    .atmosphereAltitude(0.2)
-    .hexPolygonsData([])
-    .hexPolygonResolution(3)
-    .hexPolygonMargin(0.62)
-    .hexPolygonColor(() => '#e62e19')
-    .arcsData(arcsData)
-    .arcColor(() => ['#ff1e32', '#ff6a00'])
-    .arcDashLength(0.45)
-    .arcDashGap(0.3)
-    .arcDashInitialGap(() => Math.random())
-    .arcDashAnimateTime(2000)
-    .arcStroke(0.75)
-    .ringsData(stations)
-    .ringColor(() => '#ff3b1a')
-    .ringMaxRadius(4.5)
-    .ringPropagationSpeed(2)
-    .ringRepeatPeriod(900)
-    .labelsData(stations)
-    .labelLat(d => Number(d.lat))
-    .labelLng(d => Number(d.lng))
-    .labelText(d => d.name)
-    .labelSize(1.1)
-    .labelDotRadius(0.4)
-    .labelColor(() => '#ffffff')
-    .labelResolution(2)
-    .htmlElementsData(stations)
-    .htmlLat(d => Number(d.lat))
-    .htmlLng(d => Number(d.lng))
-    .htmlAltitude(0.04)
-    .htmlElement(d => {
-        const el = document.createElement('div');
-        el.className = 'globe-pin';
-        if (d.type === 'image' && d.icon) {
-            el.innerHTML = `<img src="${d.icon}" alt="${d.name}" style="width:20px;height:20px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
-        } else {
-            el.innerHTML = d.icon || '⚡';
-        }
-        // Üzerine gelince sol alttaki (hud-1) kutuda bilgiyi göster
-        el.addEventListener('mouseenter', () => {
-            const titleEl = document.querySelector('#hud-1 .hud-title');
-            const textEl = document.querySelector('#hud-1 .hud-text');
-            if (titleEl) titleEl.textContent = d.name;
-            if (textEl) textEl.textContent = d.info;
+function refreshMainGlobe(stationList) {
+    if (!world) return;
+    const freshList = stationList.map(item => ({ ...item }));
+    world.ringsData(freshList);
+    world.labelsData(freshList);
+    world.htmlElementsData(freshList);
+    world.arcsData(buildAutoArcs(freshList));
+}
+
+if (globeContainer) {
+    const initialStations = getActiveStations();
+
+    world = Globe()(globeContainer)
+        .width(650)
+        .height(650)
+        .backgroundColor('rgba(0,0,0,0)')
+        .showGlobe(true)
+        .showAtmosphere(true)
+        .atmosphereColor('#dc1428')
+        .atmosphereAltitude(0.2)
+        .hexPolygonsData([])
+        .hexPolygonResolution(3)
+        .hexPolygonMargin(0.62)
+        .hexPolygonColor(() => '#e62e19')
+        .arcColor(() => ['#ff1e32', '#ff6a00'])
+        .arcDashLength(0.45)
+        .arcDashGap(0.3)
+        .arcDashInitialGap(() => Math.random())
+        .arcDashAnimateTime(2000)
+        .arcStroke(0.75)
+        .ringColor(() => '#ff3b1a')
+        .ringMaxRadius(4.5)
+        .ringPropagationSpeed(2)
+        .ringRepeatPeriod(900)
+        .labelLat(d => Number(d.lat))
+        .labelLng(d => Number(d.lng))
+        .labelText(d => d.name)
+        .labelSize(1.1)
+        .labelDotRadius(0.4)
+        .labelColor(() => '#ffffff')
+        .labelResolution(2)
+        .htmlLat(d => Number(d.lat))
+        .htmlLng(d => Number(d.lng))
+        .htmlAltitude(0.04)
+        .htmlElement(d => {
+            const el = document.createElement('div');
+            el.className = 'globe-pin';
+            if (d.type === 'image' && d.icon) {
+                el.innerHTML = `<img src="${d.icon}" alt="${d.name}" style="width:20px;height:20px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
+            } else {
+                el.innerHTML = d.icon || '⚡';
+            }
+            el.addEventListener('mouseenter', () => {
+                const titleEl = document.querySelector('#hud-1 .hud-title');
+                const textEl = document.querySelector('#hud-1 .hud-text');
+                if (titleEl) titleEl.textContent = d.name;
+                if (textEl) textEl.textContent = d.info;
+            });
+            return el;
         });
-        return el;
-    });
 
-const globeMaterial = world.globeMaterial();
-globeMaterial.color = new THREE.Color('#070304');
-globeMaterial.emissive = new THREE.Color('#1a0303');
-globeMaterial.emissiveIntensity = 0.4;
+    // new THREE.Color() hatasını önleyen güvenli renk ayarı
+    const globeMat = world.globeMaterial();
+    if (globeMat && globeMat.color) globeMat.color.set('#070304');
+    if (globeMat && globeMat.emissive) globeMat.emissive.set('#1a0303');
+    if (globeMat) globeMat.emissiveIntensity = 0.4;
 
-fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
-    .then(res => res.json())
-    .then(countries => {
-        world.hexPolygonsData(countries.features);
-    });
+    fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+        .then(res => res.json())
+        .then(countries => {
+            world.hexPolygonsData(countries.features);
+        });
 
-world.pointOfView({ lat: 34, lng: 30, altitude: 2.15 });
-world.controls().autoRotate = true;
-world.controls().autoRotateSpeed = 0.9;
-world.controls().enableZoom = false;
+    world.pointOfView({ lat: 34, lng: 30, altitude: 2.15 });
+    world.controls().autoRotate = true;
+    world.controls().autoRotateSpeed = 0.9;
+    world.controls().enableZoom = false;
 
-// Admin panelinde başka sekmede değişiklik yapılırsa ana sayfayı anında canlı güncelle
+    refreshMainGlobe(initialStations);
+}
+
+// Admin panelinden gelen değişiklikleri F5 atmadan anında yakala
+const globeChannel = new BroadcastChannel('satrus_globe_live_channel');
+globeChannel.onmessage = (event) => {
+    if (event.data && Array.isArray(event.data)) {
+        localStorage.setItem('satrus_globe_stations', JSON.stringify(event.data));
+        refreshMainGlobe(event.data);
+    }
+};
+
 window.addEventListener('storage', (e) => {
     if (e.key === 'satrus_globe_stations') {
-        const updated = getActiveStations();
-        world.ringsData(updated);
-        world.labelsData(updated);
-        world.htmlElementsData(updated);
-        world.arcsData(buildAutoArcs(updated));
+        refreshMainGlobe(getActiveStations());
     }
+});
+
+window.addEventListener('focus', () => {
+    refreshMainGlobe(getActiveStations());
 });
 
 // 3. GERÇEK GEOJSON NOKTALI (DOT-MATRIX) HARİTA & HD TÜRKİYE GEÇİŞ SİSTEMİ

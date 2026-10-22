@@ -8,8 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
-    <!-- Three.js, Globe.gl & OTPAuth (Gerçek Google Authenticator TOTP 2FA Kütüphanesi) -->
-    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+    <!-- Sadece Globe.gl (Kendi Three.js motorunu içerir, çakışma yapmaz) & OTPAuth 2FA -->
     <script src="https://unpkg.com/globe.gl@2.30.0/dist/globe.gl.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/otpauth/9.2.2/otpauth.umd.min.js"></script>
     <style>
@@ -87,9 +86,7 @@
             line-height: 1.5;
             margin-bottom: 24px;
         }
-        .field-group {
-            margin-bottom: 18px;
-        }
+        .field-group { margin-bottom: 16px; }
         .field-group label {
             display: block;
             font-family: 'JetBrains Mono', monospace;
@@ -98,18 +95,18 @@
             letter-spacing: 1.5px;
             margin-bottom: 7px;
         }
-        .field-group input, .field-group select, .field-group textarea {
+        .field-group input, .field-group select {
             width: 100%;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.16);
             color: #fff;
-            padding: 12px 14px;
+            padding: 11px 14px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             outline: none;
             transition: border-color 0.2s;
         }
-        .field-group input:focus, .field-group select:focus, .field-group textarea:focus {
+        .field-group input:focus, .field-group select:focus {
             border-color: var(--red-bright);
         }
         .totp-qr-box {
@@ -120,8 +117,8 @@
             text-align: center;
         }
         .totp-qr-box img {
-            width: 140px;
-            height: 140px;
+            width: 136px;
+            height: 136px;
             background: #fff;
             padding: 6px;
             border-radius: 4px;
@@ -130,7 +127,7 @@
         }
         .totp-live-hint {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--green-neon);
             margin-top: 6px;
         }
@@ -141,9 +138,9 @@
             border: none;
             padding: 13px 20px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.76rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.4px;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -191,10 +188,7 @@
             color: var(--green-neon);
             border-radius: 99px;
         }
-        .admin-nav-tabs {
-            display: flex;
-            gap: 10px;
-        }
+        .admin-nav-tabs { display: flex; gap: 10px; }
         .admin-tab-btn {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-subtle);
@@ -210,11 +204,7 @@
             border-color: var(--red-bright);
             color: #fff;
         }
-        .top-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
+        .top-actions { display: flex; gap: 12px; align-items: center; }
         .btn-outline-sm {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -231,7 +221,7 @@
             color: var(--red-bright);
         }
 
-        /* 3. ANA PANEL DÜZENİ (SOL: KONTROLLER & LİSTE, SAĞ: CANLI 3D DÜNYA) */
+        /* 3. ANA ÇALIŞMA ALANI */
         .admin-workspace {
             max-width: 1440px;
             margin: 0 auto;
@@ -263,17 +253,8 @@
             margin-bottom: 18px;
             line-height: 1.45;
         }
-        .row-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .emoji-presets {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
+        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .emoji-presets { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
         .emoji-chip {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.14);
@@ -297,11 +278,7 @@
             color: #e5e7eb;
             cursor: pointer;
         }
-        .checkbox-row input {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--red-bright);
-        }
+        .checkbox-row input { width: 16px; height: 16px; accent-color: var(--red-bright); }
 
         /* NOKTA LİSTESİ */
         .station-list {
@@ -320,16 +297,9 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            transition: border-color 0.2s;
         }
-        .station-item:hover {
-            border-color: rgba(220, 20, 40, 0.5);
-        }
-        .st-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .station-item:hover { border-color: rgba(220, 20, 40, 0.5); }
+        .st-left { display: flex; align-items: center; gap: 12px; }
         .st-icon {
             width: 34px;
             height: 34px;
@@ -342,12 +312,7 @@
             font-size: 14px;
             flex-shrink: 0;
         }
-        .st-icon img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-            border-radius: 50%;
-        }
+        .st-icon img { width: 22px; height: 22px; object-fit: contain; border-radius: 50%; }
         .st-name {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.85rem;
@@ -370,10 +335,7 @@
             color: var(--text-muted);
             margin-top: 2px;
         }
-        .st-actions {
-            display: flex;
-            gap: 6px;
-        }
+        .st-actions { display: flex; gap: 6px; }
         .st-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -383,16 +345,10 @@
             padding: 6px 9px;
             cursor: pointer;
         }
-        .st-btn.del:hover {
-            background: var(--red-primary);
-            border-color: var(--red-bright);
-        }
-        .st-btn.hq-set:hover {
-            border-color: var(--green-neon);
-            color: var(--green-neon);
-        }
+        .st-btn.del:hover { background: var(--red-primary); border-color: var(--red-bright); }
+        .st-btn.hq-set:hover { border-color: var(--green-neon); color: var(--green-neon); }
 
-        /* SAĞ TARAF: CANLI 3D DÜNYA ÖNİZLEME VE TIKLAYARAK KONUM SEÇME */
+        /* SAĞ PANEL: 3D DÜNYA ÖNİZLEME */
         .globe-preview-box {
             position: relative;
             background: radial-gradient(circle at center, rgba(220, 20, 40, 0.14) 0%, rgba(10, 4, 5, 0.9) 70%);
@@ -481,7 +437,7 @@
 </head>
 <body>
 
-    <!-- 1. GÜVENLİ 2FA (GOOGLE AUTHENTICATOR + MASTER KEY) GİRİŞ EKRANI -->
+    <!-- 1. 2FA GÜVENLİ GİRİŞ EKRANI -->
     <div id="authOverlay">
         <div class="auth-box">
             <div class="auth-badge"><span></span> ENCRYPTED GATEWAY // 2FA REQUIRED</div>
@@ -493,10 +449,9 @@
             <form id="adminLoginForm">
                 <div class="field-group">
                     <label>ADMIN MASTER PASSWORD</label>
-                    <input type="password" id="adminPassInput" placeholder="••••••••••••" value="Satrus2026!" required>
+                    <input type="password" id="adminPassInput" value="Satrus2026!" required>
                 </div>
 
-                <!-- Google Authenticator QR & Kurulum Kutusu -->
                 <div class="totp-qr-box">
                     <div style="font-family:'JetBrains Mono',monospace;font-size:0.66rem;color:#9ca3af;">
                         GOOGLE AUTHENTICATOR İLE OKUTUN (SECRET: <strong style="color:#fff;">JBSWY3DPEHPK3PXP</strong>)
@@ -524,20 +479,20 @@
         </div>
 
         <div class="admin-nav-tabs">
-            <button class="admin-tab-btn active" onclick="switchAdminSection('globe')">🌍 3D DÜNYA & LAZER AĞI YÖNETİMİ</button>
-            <button class="admin-tab-btn" onclick="switchAdminSection('products')">📦 PRODUCTS YÖNETİMİ (YAKINDA)</button>
+            <button type="button" class="admin-tab-btn active" onclick="switchAdminSection('globe')">🌍 3D DÜNYA & LAZER AĞI YÖNETİMİ</button>
+            <button type="button" class="admin-tab-btn" onclick="switchAdminSection('products')">📦 PRODUCTS YÖNETİMİ (YAKINDA)</button>
         </div>
 
         <div class="top-actions">
             <a href="index.html" target="_blank" class="btn-outline-sm">ANA SAYFAYI GÖR ↗</a>
-            <button class="btn-outline-sm" onclick="logoutAdmin()">ÇIKIŞ YAP</button>
+            <button type="button" class="btn-outline-sm" onclick="logoutAdmin()">ÇIKIŞ YAP</button>
         </div>
     </header>
 
-    <!-- 3. ANA ÇALIŞMA ALANI: 3D DÜNYA NOKTA / EMOJİ / GÖRSEL / LAZER YÖNETİMİ -->
+    <!-- 3. ANA ÇALIŞMA ALANI -->
     <main class="admin-workspace" id="globeSection">
 
-        <!-- SOL PANEL: NOKTA EKLEME VE MEVCUT NOKTALAR -->
+        <!-- SOL PANEL -->
         <div>
             <div class="panel-card">
                 <div class="panel-title">
@@ -579,8 +534,7 @@
                         </div>
                     </div>
 
-                    <!-- Hızlı Emoji Seçici -->
-                    <div class="emoji-presets" id="emojiPresetsBox">
+                    <div class="emoji-presets">
                         <span class="emoji-chip" onclick="setQuickIcon('emoji','⚡')">⚡</span>
                         <span class="emoji-chip" onclick="setQuickIcon('emoji','🔋')">🔋</span>
                         <span class="emoji-chip" onclick="setQuickIcon('emoji','🏭')">🏭</span>
@@ -601,18 +555,18 @@
                         <span>Bu noktayı <strong>ANA MERKEZ (HQ)</strong> yap (Tüm lazer çizgileri buradan dağılır)</span>
                     </label>
 
-                    <button type="submit" class="btn-red">+ NOKTAYI DÜNYAYA EKLE & KAYDET</button>
+                    <button type="submit" class="btn-red">+ NOKTAYI DÜNYAYA EKLE & ANINDA KAYDET</button>
                 </form>
             </div>
 
-            <!-- MEVCUT NOKTALAR LİSTESİ -->
+            <!-- AKTİF NOKTALAR LİSTESİ -->
             <div class="panel-card">
                 <div class="panel-title">
                     <span>AKTİF NOKTALAR & LAZER AĞI</span>
                     <span id="nodeCountBadge" style="font-family:'JetBrains Mono';font-size:0.72rem;color:var(--green-neon);">0 NOKTA</span>
                 </div>
                 <p class="panel-sub">
-                    Sildiğin veya eklediğin her nokta anında kaydedilir ve ana sayfadaki (`index.html`) 3D dünyada gözükür.
+                    Sildiğin veya eklediğin her nokta F5 atmadan salisesinde hem burada hem de Ana Sayfada (`index.html`) güncellenir.
                 </p>
 
                 <div class="station-list" id="stationListContainer"></div>
@@ -624,7 +578,7 @@
             </div>
         </div>
 
-        <!-- SAĞ PANEL: CANLI 3D DÜNYA (ÜZERİNE TIKLAYARAK NOKTA SEÇME + SOL ALT BİLGİ TESTİ) -->
+        <!-- SAĞ PANEL: CANLI 3D DÜNYA -->
         <div class="globe-preview-box">
             <div class="preview-banner">
                 <div class="preview-tag">🎯 İPUCU: Koordinat almak için <strong>Dünya üzerinde istediğin ülkeye tıkla!</strong></div>
@@ -633,7 +587,6 @@
 
             <div id="admin-globe-container"></div>
 
-            <!-- Ana Sayfadaki Sol Alt Bilgi Kutusunun Birebir Canlı Testi -->
             <div class="preview-hud">
                 <div class="preview-hud-title" id="previewHudTitle">4.5x faster</div>
                 <div class="preview-hud-text" id="previewHudText">Faster deployment & smart grid synchronization across global charging stations.</div>
@@ -642,23 +595,23 @@
 
     </main>
 
-    <!-- GELECEKTEKİ PRODUCTS BÖLÜMÜ (HAZIR ŞABLON) -->
+    <!-- PRODUCTS BÖLÜMÜ -->
     <section class="admin-workspace" id="productsSection" style="display:none;grid-template-columns:1fr;">
         <div class="panel-card" style="text-align:center;padding:60px 20px;">
             <h2 class="auth-title">📦 PRODUCTS & KATALOG YÖNETİM MODÜLÜ</h2>
             <p class="auth-desc" style="max-width:520px;margin:10px auto 0 auto;">
-                Bu alan ileride <code>products.html</code> içindeki AC, DC, Cables, Components ve Energy Hardware kartlarını doğrudan buradan ekleyip düzenlemen için hazırlandı.
+                İleride <code>products.html</code> içindeki ürün kartlarını kodsuz ekleyip silmek için hazır şablon.
             </p>
         </div>
     </section>
 
-    <div class="toast-msg" id="toastMsg">✅ Değişiklikler kaydedildi ve Ana Sayfaya uygulandı!</div>
+    <div class="toast-msg" id="toastMsg">✅ Değişiklikler kaydedildi!</div>
 
     <script>
         // ==========================================
-        // 1. 2FA (GOOGLE AUTHENTICATOR TOTP) SİSTEMİ
+        // 1. 2FA SİSTEMİ
         // ==========================================
-        const TOTP_SECRET = 'JBSWY3DPEHPK3PXP'; // Sabit Base32 2FA Anahtarı
+        const TOTP_SECRET = 'JBSWY3DPEHPK3PXP';
         const MASTER_PASS = 'Satrus2026!';
 
         const totp = new OTPAuth.TOTP({
@@ -670,11 +623,8 @@
             secret: OTPAuth.Secret.fromBase32(TOTP_SECRET)
         });
 
-        // QR Kodu Oluştur
-        const otpauthUri = totp.toString();
-        document.getElementById('totpQrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(otpauthUri)}`;
+        document.getElementById('totpQrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(totp.toString())}`;
 
-        // Kolay Test İçin Canlı 6 Haneli Kodu Göster (Telefonla okuttuğunda telefondakiyle birebir aynıdır)
         function updateLiveTotpHint() {
             const token = totp.generate();
             const remaining = 30 - (Math.floor(Date.now() / 1000) % 30);
@@ -691,9 +641,7 @@
             e.preventDefault();
             const pass = document.getElementById('adminPassInput').value.trim();
             const code = document.getElementById('adminTotpInput').value.trim();
-            const validToken = totp.generate();
-
-            if (pass === MASTER_PASS && code === validToken) {
+            if (pass === MASTER_PASS && code === totp.generate()) {
                 sessionStorage.setItem('satrus_admin_unlocked', 'true');
                 document.getElementById('authOverlay').style.display = 'none';
             } else {
@@ -715,8 +663,10 @@
         }
 
         // ==========================================
-        // 2. 3D DÜNYA NOKTA & OTOMATİK LAZER YÖNETİMİ
+        // 2. F5 GEREKTİRMEYEN CANLI 3D DÜNYA YÖNETİMİ
         // ==========================================
+        const globeChannel = new BroadcastChannel('satrus_globe_live_channel');
+
         const defaultStations = [
             { id: 1, name: 'ANKARA HQ', lat: 39.9334, lng: 32.8597, type: 'emoji', icon: '⚡', info: 'Central R&D & Grid Hub — Active', isHQ: true },
             { id: 2, name: 'ISTANBUL', lat: 41.0082, lng: 28.9784, type: 'emoji', icon: '🔋', info: '4.5x faster charging telemetry', isHQ: false },
@@ -734,7 +684,7 @@
                     if (Array.isArray(parsed) && parsed.length > 0) return parsed;
                 }
             } catch (e) {}
-            return [...defaultStations];
+            return JSON.parse(JSON.stringify(defaultStations));
         }
 
         let adminStations = loadStations();
@@ -742,7 +692,7 @@
         function buildArcs(list) {
             if (!list || list.length < 2) return [];
             const hq = list.find(s => s.isHQ) || list[0];
-            return list.filter(s => s !== hq).map(target => ({
+            return list.filter(s => s.id !== hq.id).map(target => ({
                 startLat: Number(hq.lat),
                 startLng: Number(hq.lng),
                 endLat: Number(target.lat),
@@ -750,7 +700,6 @@
             }));
         }
 
-        // Sağdaki Canlı 3D Dünyayı Başlat
         const adminGlobeEl = document.getElementById('admin-globe-container');
         const adminGlobe = Globe()(adminGlobeEl)
             .width(740)
@@ -798,7 +747,6 @@
                 });
                 return el;
             })
-            // DÜNYA ÜZERİNDE HERHANGİ BİR YERE TIKLANINCA KOORDİNATI FORMA OTOMATİK DOLDUR!
             .onGlobeClick(({ lat, lng }) => {
                 document.getElementById('nodeLat').value = lat.toFixed(4);
                 document.getElementById('nodeLng').value = lng.toFixed(4);
@@ -813,10 +761,11 @@
                 showToast(`📍 ${poly?.properties?.NAME || 'Konum'} seçildi: ${lat.toFixed(2)}, ${lng.toFixed(2)}`);
             });
 
+        // THREE.Color çakışması olmadan dahili materyal ayarı
         const gMat = adminGlobe.globeMaterial();
-        gMat.color = new THREE.Color('#070304');
-        gMat.emissive = new THREE.Color('#1a0303');
-        gMat.emissiveIntensity = 0.4;
+        if (gMat && gMat.color) gMat.color.set('#070304');
+        if (gMat && gMat.emissive) gMat.emissive.set('#1a0303');
+        if (gMat) gMat.emissiveIntensity = 0.4;
 
         fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
             .then(r => r.json())
@@ -828,32 +777,24 @@
         adminGlobe.controls().autoRotate = true;
         adminGlobe.controls().autoRotateSpeed = 0.5;
 
-        const CLOUD_SYNC_URL = 'https://api.keyvalue.xyz/11e9b5f0/satrus_globe_nodes';
-        const globeChannel = new BroadcastChannel('satrus_globe_live_channel');
-
-        // Listeyi ve 3D Dünyayı Senkronize Yenile + Ana Sayfaya Anında Yansıt
+        // F5 GEREKTİRMEDEN HEM LİSTEYİ HEM 3D DÜNYAYI HEM ANA SAYFAYI ANINDA GÜNCELLE
         function saveAndRefresh() {
-            // 1. Tarayıcı hafızasına kaydet
-            localStorage.setItem('satrus_globe_stations', JSON.stringify(adminStations));
-            // 2. Açık olan index.html sekmesine anında canlı gönder
-            globeChannel.postMessage(adminStations);
-            // 3. Buluta gönder (Vercel'deki diğer cihazlara da yansıması için)
-            fetch(CLOUD_SYNC_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(adminStations)
-            }).catch(() => {});
+            // Yeni referanslı dizi oluştur ki Globe.gl anında algılasın
+            const freshStations = adminStations.map(item => ({ ...item }));
 
-            adminGlobe.ringsData(adminStations);
-            adminGlobe.labelsData(adminStations);
-            adminGlobe.htmlElementsData(adminStations);
-            adminGlobe.arcsData(buildArcs(adminStations));
+            localStorage.setItem('satrus_globe_stations', JSON.stringify(freshStations));
+            globeChannel.postMessage(freshStations);
+
+            adminGlobe.ringsData(freshStations);
+            adminGlobe.labelsData(freshStations);
+            adminGlobe.htmlElementsData(freshStations);
+            adminGlobe.arcsData(buildArcs(freshStations));
 
             const listEl = document.getElementById('stationListContainer');
-            document.getElementById('nodeCountBadge').textContent = `${adminStations.length} NOKTA`;
+            document.getElementById('nodeCountBadge').textContent = `${freshStations.length} NOKTA`;
             listEl.innerHTML = '';
 
-            adminStations.forEach((st, idx) => {
+            freshStations.forEach((st, idx) => {
                 const item = document.createElement('div');
                 item.className = 'station-item';
                 const iconHtml = (st.type === 'image')
@@ -872,15 +813,14 @@
                         </div>
                     </div>
                     <div class="st-actions">
-                        ${!st.isHQ ? `<button class="st-btn hq-set" onclick="makeHQ(${idx})" title="Lazer Merkez Üssü Yap">HQ YAP</button>` : ''}
-                        <button class="st-btn del" onclick="deleteStation(${idx})">SİL ✕</button>
+                        ${!st.isHQ ? `<button type="button" class="st-btn hq-set" onclick="makeHQ(${idx})">HQ YAP</button>` : ''}
+                        <button type="button" class="st-btn del" onclick="deleteStation(${idx})">SİL ✕</button>
                     </div>
                 `;
                 listEl.appendChild(item);
             });
         }
 
-        // Yeni Nokta Ekleme
         document.getElementById('addNodeForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('nodeName').value.trim().toUpperCase();
@@ -907,10 +847,10 @@
             });
 
             saveAndRefresh();
-            adminGlobe.pointOfView({ lat, lng, altitude: 1.9 }, 1000);
+            adminGlobe.pointOfView({ lat, lng, altitude: 1.9 }, 900);
             e.target.reset();
             document.getElementById('nodeIcon').value = '⚡';
-            showToast(`✅ "${name}" eklendi ve lazer ağı otomatik bağlandı!`);
+            showToast(`✅ "${name}" F5 atmadan eklendi ve Ana Sayfaya yansıdı!`);
         });
 
         window.deleteStation = function(index) {
@@ -919,19 +859,24 @@
                 adminStations[0].isHQ = true;
             }
             saveAndRefresh();
-            showToast(`🗑️ "${removed.name}" silindi!`);
+            showToast(`🗑️ "${removed.name}" anında silindi ve Ana Sayfadan kaldırıldı!`);
         };
 
         window.makeHQ = function(index) {
             adminStations.forEach((s, i) => s.isHQ = (i === index));
             saveAndRefresh();
-            showToast(`⚡ Lazer merkez üssü "${adminStations[index].name}" olarak güncellendi!`);
+            showToast(`⚡ Lazer merkez üssü "${adminStations[index].name}" yapıldı!`);
         };
 
         window.resetToDefaults = function() {
             adminStations = JSON.parse(JSON.stringify(defaultStations));
             saveAndRefresh();
             showToast('🔄 Varsayılan noktalara dönüldü!');
+        };
+
+        window.publishLiveToSite = function() {
+            saveAndRefresh();
+            showToast('🚀 Kaydedildi ve Ana Sayfadaki (index.html) 3D Dünyaya anında yansıdı!');
         };
 
         window.setQuickIcon = function(type, val) {
@@ -953,11 +898,6 @@
                 inp.placeholder = '⚡';
                 if (inp.value.includes('/')) inp.value = '⚡';
             }
-        };
-
-        window.publishLiveToSite = function() {
-            saveAndRefresh();
-            showToast('🚀 Kaydedildi! Kodla oynamadan Ana Sayfadaki (index.html) 3D Dünyaya anında yansıdı!');
         };
 
         function showToast(msg) {
