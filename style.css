@@ -126,9 +126,9 @@ body {
 }
 
 .logo-img {
-    height: 44px;
+    height: 36px;
     width: auto;
-    max-width: 260px;
+    max-width: 200px;
     object-fit: contain;
     display: block;
     /* Barı kalınlaştırmadan logoyu büyük göstermek için büyüteç etkisi */
