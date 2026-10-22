@@ -619,7 +619,7 @@
 
                 <div style="display:flex;gap:10px;margin-top:16px;">
                     <button type="button" class="btn-outline-sm" style="flex:1;" onclick="resetToDefaults()">VARSAYILANLARA DÖN</button>
-                    <button type="button" class="btn-outline-sm" style="flex:1;border-color:var(--green-neon);color:var(--green-neon);" onclick="exportStationsCode()">KOD OLARAK KOPYALA</button>
+                    <button type="button" class="btn-red" style="flex:1.4;background:#10b981;color:#040102;" onclick="publishLiveToSite()">💾 KAYDET VE ANA SAYFAYA YANSIT</button>
                 </div>
             </div>
         </div>
@@ -828,9 +828,21 @@
         adminGlobe.controls().autoRotate = true;
         adminGlobe.controls().autoRotateSpeed = 0.5;
 
-        // Listeyi ve 3D Dünyayı Senkronize Yenile + Kaydet
+        const CLOUD_SYNC_URL = 'https://api.keyvalue.xyz/11e9b5f0/satrus_globe_nodes';
+        const globeChannel = new BroadcastChannel('satrus_globe_live_channel');
+
+        // Listeyi ve 3D Dünyayı Senkronize Yenile + Ana Sayfaya Anında Yansıt
         function saveAndRefresh() {
+            // 1. Tarayıcı hafızasına kaydet
             localStorage.setItem('satrus_globe_stations', JSON.stringify(adminStations));
+            // 2. Açık olan index.html sekmesine anında canlı gönder
+            globeChannel.postMessage(adminStations);
+            // 3. Buluta gönder (Vercel'deki diğer cihazlara da yansıması için)
+            fetch(CLOUD_SYNC_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(adminStations)
+            }).catch(() => {});
 
             adminGlobe.ringsData(adminStations);
             adminGlobe.labelsData(adminStations);
@@ -943,10 +955,9 @@
             }
         };
 
-        window.exportStationsCode = function() {
-            const code = `const defaultStations = ${JSON.stringify(adminStations, null, 4)};`;
-            navigator.clipboard.writeText(code);
-            showToast('📋 Güncel nokta kodu panoya kopyalandı! (script.js içine yapıştırabilirsin)');
+        window.publishLiveToSite = function() {
+            saveAndRefresh();
+            showToast('🚀 Kaydedildi! Kodla oynamadan Ana Sayfadaki (index.html) 3D Dünyaya anında yansıdı!');
         };
 
         function showToast(msg) {

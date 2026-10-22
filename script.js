@@ -31,7 +31,9 @@ const defaultStations = [
     { id: 6, name: 'SOUTH AFRICA', lat: -26.2041, lng: 28.0473, type: 'image', icon: 'media/satrus.png', info: 'Turnkey EV Charger Factory Line', isHQ: false }
 ];
 
-// Admin Panelinden Kaydedilen Verileri Oku (Yoksa Varsayılanları Kullan)
+// Admin Panelinden Kaydedilen Verileri Otomatik Oku (Koda Dokunmadan Yansır)
+const CLOUD_SYNC_URL = 'https://api.keyvalue.xyz/11e9b5f0/satrus_globe_nodes';
+
 function getActiveStations() {
     try {
         const saved = localStorage.getItem('satrus_globe_stations');
@@ -42,6 +44,46 @@ function getActiveStations() {
     } catch (e) {}
     return defaultStations;
 }
+
+// Sayfa açıldığında Bulut / Admin kaydını kontrol et ve dünyayı otomatik güncelle
+async function syncGlobeFromAdmin() {
+    try {
+        const res = await fetch(CLOUD_SYNC_URL, { cache: 'no-store' });
+        if (res.ok) {
+            const cloudData = await res.json();
+            if (Array.isArray(cloudData) && cloudData.length > 0) {
+                localStorage.setItem('satrus_globe_stations', JSON.stringify(cloudData));
+                refreshMainGlobe(cloudData);
+            }
+        }
+    } catch (e) {
+        // İnternet/bulut erişimi yoksa localStorage üzerinden anında devam eder
+    }
+}
+
+function refreshMainGlobe(stationList) {
+    if (typeof world !== 'undefined') {
+        world.ringsData(stationList);
+        world.labelsData(stationList);
+        world.htmlElementsData(stationList);
+        world.arcsData(buildAutoArcs(stationList));
+    }
+}
+
+// Admin panelinde kaydettiğin anda (sayfayı bile yenilemeden) ana sayfaya yansıt
+const globeChannel = new BroadcastChannel('satrus_globe_live_channel');
+globeChannel.onmessage = (event) => {
+    if (event.data && Array.isArray(event.data)) {
+        localStorage.setItem('satrus_globe_stations', JSON.stringify(event.data));
+        refreshMainGlobe(event.data);
+    }
+};
+
+window.addEventListener('focus', () => {
+    refreshMainGlobe(getActiveStations());
+});
+
+syncGlobeFromAdmin();
 
 // Merkez (HQ) Noktasından Diğer Tüm Noktalara Otomatik Lazer Çizgileri Oluştur
 function buildAutoArcs(stationList) {
