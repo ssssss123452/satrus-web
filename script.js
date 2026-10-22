@@ -115,10 +115,9 @@ if (document.getElementById('realDeliveryMap')) {
     // Sağ alt köşeye + / - zoom tuşları
     L.control.zoom({ position: 'bottomright' }).addTo(deliveryMap);
 
-    // Koyu Tema Harita Katmanı
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd',
-        maxZoom: 18
+    // API Anahtarı İstemeyen Ücretsiz Koyu Tema Harita Katmanı
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19
     }).addTo(deliveryMap);
 
     const markersLayer = L.layerGroup().addTo(deliveryMap);
