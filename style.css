@@ -536,7 +536,7 @@ body {
 .stats-bar {
     border-top: 1px solid var(--border-red);
     border-bottom: 1px solid var(--border-red);
-    background: linear-gradient(90deg, rgba(20,4,5,0.6) 0%, rgba(45,6,8,0.4) 50%, rgba(20,4,5,0.6) 100%);
+    background: linear-gradient(90deg, #111213 0%, #111213 50%, #111213 100%);
     padding: 42px 10%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
