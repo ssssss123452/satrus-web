@@ -308,7 +308,8 @@ body {
 
 .text-outline-red {
     color: rgba(210, 20, 35, 0.28);
-    -webkit-text-stroke: 0.1px #ff1e32;
+    -webkit-text-stroke: 1.5px #ff1e32;
+    text-shadow: 0 0 28px rgba(230, 25, 25, 0.22);
 }
 
 .text-red {
