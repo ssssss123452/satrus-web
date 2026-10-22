@@ -7,8 +7,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
-    <!-- Ortak Ana Stil + Sadece About Sayfası Stili -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Ortak Ana Stil + Yeni About Sayfası Stili -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="about.css">
 </head>
@@ -20,21 +20,21 @@
     </div>
 
     <!-- Sağ Altta Sabit Duran "REQUEST A PROPOSAL" Butonu -->
-    <a href="index.html#proposal" class="floating-cta">
+    <a href="contact.html" class="floating-cta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
         REQUEST A PROPOSAL
     </a>
 
-    <!-- ÜST MENÜ (NAVBAR) -->
+    <!-- ÜST MENÜ (LIQUID GLASS NAVBAR) -->
     <header class="navbar">
         <a href="index.html" class="logo">
             <img src="media/satrus.png" alt="SATRUS" class="logo-img">
         </a>
 
         <nav class="nav-links">
-            <a href="about.html">ABOUT</a>
+            <a href="about.html" class="active">ABOUT</a>
             <a href="products.html">PRODUCTS</a>
             <a href="services.html">SERVICES</a>
             <a href="stories.html">SUCCESS STORIES</a>
@@ -56,220 +56,421 @@
         </div>
     </header>
 
-    <!-- 1. BÖLÜM: ABOUT HERO & 3 KUTU (WHO WE ARE / FIELD-TESTED / OUR CORE PROMISE) -->
+    <!-- 1. BÖLÜM: ABOUT HERO + 3'LÜ META BARI + SİNEMATİK GÖRSEL + 01/02/03 SÜTUNLARI -->
     <section class="about-hero">
         <div class="bg-grid"></div>
         <div class="container">
-            <div class="eyebrow">ABOUT SATRUS</div>
-            <h1 class="hero-title">
+            <div class="eyebrow">— ABOUT SATRUS</div>
+            <h1 class="hero-title about-main-title">
                 BUILT BY ENGINEERS.<br>
                 <span class="text-outline-red">PROVEN IN THE FIELD.</span>
             </h1>
             <p class="about-hero-desc">
-                From aerospace precision to high-voltage infrastructure — we build energy systems that survive the real world.
+                SATRUS exists because energy projects deserve engineering, not marketing. We design the system, build the hardware, write the software and stay on site until it runs.
             </p>
 
-            <!-- 3'lü Üst Bilgi Kutuları (00:00) -->
+            <!-- Videodaki (00:00) 3'lü Üst Meta Şeridi -->
+            <div class="about-meta-strip">
+                <div class="meta-col">
+                    <span class="meta-label">FOUNDED BY</span>
+                    <span class="meta-value">EX-AEROSPACE & ENERGY EXECUTIVES</span>
+                </div>
+                <div class="meta-col">
+                    <span class="meta-label">COMBINED EXPERIENCE</span>
+                    <span class="meta-value">30+ YEARS</span>
+                </div>
+                <div class="meta-col">
+                    <span class="meta-label">DELIVERED IN</span>
+                    <span class="meta-value">90+ COUNTRIES</span>
+                </div>
+            </div>
+
+            <!-- Videodaki (00:00 - 00:01) Geniş Sinematik Fotoğraf Kutusu (media/about-hero.jpg) -->
+            <div class="about-banner-box">
+                <img src="media/about-hero.jpg" alt="SATRUS Field Engineering" class="about-banner-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80'">
+                <div class="about-banner-overlay"></div>
+                <div class="about-banner-caption">
+                    PHOTOGRAPHY PLACEHOLDER — REPLACE WITH YOUR OWN ON-SITE IMAGERY (media/about-hero.jpg)
+                </div>
+            </div>
+
+            <!-- Videodaki (00:01 - 00:02) 01 / 02 / 03 Numaralı 3 Sütun -->
             <div class="pillars-grid">
+                <!-- 01: WHO WE ARE -->
                 <div class="pillar-card">
-                    <div class="pillar-label">WHO WE ARE</div>
+                    <div class="pillar-top">
+                        <div class="pillar-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="pillar-num">01</div>
+                    </div>
+                    <h3 class="pillar-title">WHO WE ARE</h3>
                     <p>
-                        SATRUS is a Turkish energy technology company. We design, build and deliver renewable energy hardware, custom software and turnkey engineering projects. Founded by people who built aircraft systems and ran energy companies.
+                        SATRUS is a renewable energy hardware, software and engineering company founded by ex-aerospace engineers and energy executives with 30+ years of combined experience. We design, manufacture, install and commission — and we keep the same engineers on your project from the first drawing to handover.
                     </p>
                 </div>
 
+                <!-- 02: FIELD-TESTED RELIABILITY -->
                 <div class="pillar-card">
-                    <div class="pillar-label">FIELD-TESTED RELIABILITY</div>
+                    <div class="pillar-top">
+                        <div class="pillar-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="pillar-num">02</div>
+                    </div>
+                    <h3 class="pillar-title">FIELD-TESTED RELIABILITY</h3>
                     <p>
-                        Our equipment operates where failure is not an option — high-risk regions, extreme climates, unstable grids. If it works there, it works everywhere.
+                        Our equipment runs in Afghanistan, Syria and Central Asia, in heat, dust and unstable grids. Systems specified for those conditions do not fail in comfortable ones. Reliability is an engineering input, not a marketing line.
                     </p>
                 </div>
 
+                <!-- 03: OUR CORE PROMISE -->
                 <div class="pillar-card">
-                    <div class="pillar-label">OUR CORE PROMISE</div>
+                    <div class="pillar-top">
+                        <div class="pillar-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff1e32" stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                        </div>
+                        <div class="pillar-num">03</div>
+                    </div>
+                    <h3 class="pillar-title">OUR CORE PROMISE</h3>
                     <p>
-                        Engineered for the best. Delivered at speed. No marketing fluff, no inflated timelines. We sign what we can ship.
+                        We say what we will do, then we do exactly that — and we answer the phone while we do it. Proposals in days, commitments we hold, documentation you can build on. No weeks of waiting.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
-    <div class="angled-divider"></div>
-
-    <!-- 2. BÖLÜM: BRAND STORY (THREE SYMBOLS. ONE CODE.) -->
-    <section class="section">
+    <!-- 2. BÖLÜM: THE BRAND (THREE SYMBOLS. ONE SYSTEM.) -->
+    <section class="section brand-system-section">
         <div class="container">
-            <div class="eyebrow">BRAND STORY</div>
+            <div class="eyebrow">— THE BRAND</div>
             <h2 class="section-title">
-                THREE SYMBOLS. <span class="text-outline-red">ONE CODE.</span>
+                <span class="text-outline-red">THREE SYMBOLS.</span> ONE SYSTEM
             </h2>
+            <p class="section-desc">
+                Everything we build carries the star, the red and the bolt. Here is what they mean.
+            </p>
 
-            <!-- Zikzaklı 3 Sembol Kartı (00:02) -->
-            <div class="symbols-list">
-                <!-- Sembol 1: THE SATRUS STAR (İkon Solda) -->
-                <div class="symbol-row">
-                    <div class="symbol-icon-box">
-                        <svg viewBox="0 0 24 24" width="32" height="32">
-                            <rect x="4" y="4" width="16" height="16" fill="none" stroke="#ff1e32" stroke-width="1.6" />
-                            <rect x="4" y="4" width="16" height="16" fill="none" stroke="#ff1e32" stroke-width="1.6" transform="rotate(45 12 12)" />
-                            <circle cx="12" cy="12" r="3" fill="none" stroke="#ff1e32" stroke-width="1.6" />
+            <div class="brand-rows">
+
+                <!-- 1. SATIR: THE SATRUS STAR (Kareli Grid Kutu İçinde media/symbol-star.png) -->
+                <div class="brand-row">
+                    <div class="symbol-grid-canvas">
+                        <!-- media/symbol-star.png attığında otomatik senin görselin görünür, yoksa yedek SVG çizim görünür -->
+                        <img src="media/symbol-star.png" alt="THE SATRUS STAR" class="custom-symbol-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <svg class="fallback-symbol-svg" viewBox="0 0 260 260">
+                            <line x1="130" y1="10" x2="130" y2="250" stroke="rgba(220,20,40,0.45)" stroke-width="1"/>
+                            <line x1="10" y1="130" x2="250" y2="130" stroke="rgba(220,20,40,0.45)" stroke-width="1"/>
+                            <circle cx="130" cy="130" r="95" fill="none" stroke="rgba(220,20,40,0.45)" stroke-width="1"/>
+                            <circle cx="130" cy="130" r="65" fill="none" stroke="rgba(220,20,40,0.65)" stroke-width="1.2"/>
+                            <rect x="63" y="63" width="134" height="134" fill="none" stroke="#ff1e32" stroke-width="1.4"/>
+                            <rect x="63" y="63" width="134" height="134" fill="none" stroke="#ff1e32" stroke-width="1.4" transform="rotate(45 130 130)"/>
                         </svg>
                     </div>
-                    <div class="symbol-text">
-                        <h3>THE SATRUS STAR</h3>
-                        <p>An Ottoman symbol of precision and ambition. Eight points. Zero compromise. It is the standard we engineer to.</p>
+
+                    <div class="brand-text-col">
+                        <div class="eyebrow">THE SATRUS STAR</div>
+                        <h3 class="brand-sub-title">PRECISION AND AMBITION</h3>
+                        <p>
+                            An Ottoman-inspired eight-point geometry. Two squares and one centre: structure from every angle. Every system we design is aimed at a single point — the result the project actually needs.
+                        </p>
+                        <div class="brand-red-line"></div>
                     </div>
                 </div>
 
-                <!-- Sembol 2: THE SATRUS RED (İkon Sağda - Videodaki Gibi) -->
-                <div class="symbol-row reverse-row">
-                    <div class="symbol-text">
-                        <h3>THE SATRUS RED</h3>
-                        <p>Deep maroon, forged darker. Passion, power and resilience — the color of work that survives the field.</p>
+                <!-- 2. SATIR: THE SATRUS RED (Sol Yazı, Sağ Renk Paleti Kutusu) -->
+                <div class="brand-row reverse">
+                    <div class="brand-text-col">
+                        <div class="eyebrow">THE SATRUS RED</div>
+                        <h3 class="brand-sub-title">PASSION, POWER, RESILIENCE</h3>
+                        <p>
+                            Deep maroon is where we come from — heavy, serious, engineered. The bright red is where we are going: energy that moves. It marks every active state, every commitment, every result.
+                        </p>
+                        <div class="brand-red-line"></div>
                     </div>
-                    <div class="symbol-icon-box">
-                        <div class="red-orb"></div>
+
+                    <div class="symbol-color-canvas">
+                        <div class="swatch-list">
+                            <div class="swatch-item">
+                                <span class="swatch-box" style="background:#590D16;"></span>
+                                <div>
+                                    <div class="swatch-hex">#590D16</div>
+                                    <div class="swatch-name">BRAND BASE</div>
+                                </div>
+                            </div>
+                            <div class="swatch-item">
+                                <span class="swatch-box" style="background:#800020;"></span>
+                                <div>
+                                    <div class="swatch-hex">#800020</div>
+                                    <div class="swatch-name">CORE ACCENT</div>
+                                </div>
+                            </div>
+                            <div class="swatch-item">
+                                <span class="swatch-box" style="background:#E61919;box-shadow:0 0 14px rgba(230,25,25,0.6);"></span>
+                                <div>
+                                    <div class="swatch-hex">#E61919</div>
+                                    <div class="swatch-name">GLOW RED</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Sembol 3: THE YILDIRIM (İkon Solda) -->
-                <div class="symbol-row">
-                    <div class="symbol-icon-box">
-                        <svg viewBox="0 0 24 24" width="30" height="30" fill="#ff1e32">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                <!-- 3. SATIR: THE YILDIRIM (Kareli Grid Kutu İçinde media/symbol-bolt.png) -->
+                <div class="brand-row">
+                    <div class="symbol-grid-canvas bolt-canvas">
+                        <div class="diagonal-laser-line"></div>
+                        <!-- media/symbol-bolt.png attığında otomatik senin görselin görünür, yoksa yedek Şimşek SVG görünür -->
+                        <img src="media/symbol-bolt.png" alt="THE YILDIRIM" class="custom-symbol-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <svg class="fallback-symbol-svg bolt-svg" viewBox="0 0 120 200">
+                            <polygon points="72,10 24,108 62,108 48,190 98,90 60,90" fill="none" stroke="#ff1e32" stroke-width="2.4"/>
                         </svg>
                     </div>
-                    <div class="symbol-text">
-                        <h3>THE YILDIRIM</h3>
-                        <p>The lightning bolt. Speed is not a feature here. It is the operating system.</p>
+
+                    <div class="brand-text-col">
+                        <div class="eyebrow">THE YILDIRIM</div>
+                        <h3 class="brand-sub-title">SPEED AS A DISCIPLINE</h3>
+                        <p>
+                            The lightning bolt is not decoration. Diagonal, direct, no detours — it is how we plan projects, cut lead times and answer the phone. Delivered at speed is a delivery commitment, not a slogan.
+                        </p>
+                        <div class="brand-red-line"></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 3. BÖLÜM: MILESTONES (THE RECORD SO FAR. - DİKEY TIMELINE) -->
+    <!-- 3. BÖLÜM: MILESTONES (THE ROAD SO FAR) -->
     <section class="section">
         <div class="container">
-            <div class="eyebrow">MILESTONES</div>
+            <div class="eyebrow">— MILESTONES</div>
             <h2 class="section-title">
-                THE RECORD <span class="text-outline-red">SO FAR.</span>
+                THE ROAD <span class="text-outline-red">SO FAR</span>
             </h2>
-            <p class="timeline-sub">Placeholder dates — replace with the real timeline.</p>
+            <p class="section-desc">
+                Replace each entry with the real date and detail — the structure is ready.
+            </p>
 
-            <!-- Videodaki (00:03) Sol Çizgili ve Kırmızı Kare Noktalı Timeline -->
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="timeline-dot"></span>
-                    <div class="timeline-year">2019</div>
-                    <p class="timeline-desc">SATRUS founded in Türkiye by ex-aerospace engineers and energy executives.</p>
+            <!-- Videodaki (00:08 - 00:10) Köşeli Parantezli Dikey Timeline -->
+            <div class="road-timeline">
+                <div class="road-item">
+                    <span class="road-diamond"></span>
+                    <div class="road-year">[Year]</div>
+                    <h4 class="road-heading">[COMPANY FOUNDED]</h4>
+                    <p class="road-desc">[One or two lines on how SATRUS started — replace with the real detail.]</p>
                 </div>
 
-                <div class="timeline-item">
-                    <span class="timeline-dot"></span>
-                    <div class="timeline-year">2021</div>
-                    <p class="timeline-desc">First export contracts signed across the EU.</p>
+                <div class="road-item">
+                    <span class="road-diamond"></span>
+                    <div class="road-year">[20XX]</div>
+                    <h4 class="road-heading">[FIRST EXPORT PROJECT]</h4>
+                    <p class="road-desc">[Where it was delivered and what it proved. Replace with the real detail.]</p>
                 </div>
 
-                <div class="timeline-item">
-                    <span class="timeline-dot"></span>
-                    <div class="timeline-year">2022</div>
-                    <p class="timeline-desc">Software division launched — monitoring and AI energy systems.</p>
+                <div class="road-item">
+                    <span class="road-diamond"></span>
+                    <div class="road-year">[20XX]</div>
+                    <h4 class="road-heading">[AFRICA'S FIRST EV CHARGER FACTORY]</h4>
+                    <p class="road-desc">Turnkey factory built from scratch, including full technology and engineering transfer.</p>
                 </div>
 
-                <div class="timeline-item">
-                    <span class="timeline-dot"></span>
-                    <div class="timeline-year">2023</div>
-                    <p class="timeline-desc">Africa's first EV charger factory delivered, turnkey.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="timeline-dot"></span>
-                    <div class="timeline-year">2024</div>
-                    <p class="timeline-desc">Defense and government energy deployments executed.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <span class="timeline-dot"></span>
-                    <div class="timeline-year">2025</div>
-                    <p class="timeline-desc">Delivery network reaches 90+ countries on 5 continents.</p>
+                <div class="road-item">
+                    <span class="road-diamond"></span>
+                    <div class="road-year">[20XX]</div>
+                    <h4 class="road-heading">[SOFTWARE & AI DIVISION]</h4>
+                    <p class="road-desc">[What it launched — network management, monitoring, AI energy management.]</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. BÖLÜM: THE TEAM (THE PEOPLE BEHIND THE WORK.) -->
+    <!-- 4. BÖLÜM: THE TEAM (ENGINEERS AND OPERATORS - HOVER FOCUS EFEKTLİ KARTLAR) -->
     <section class="section">
         <div class="container">
-            <div class="eyebrow">THE TEAM</div>
+            <div class="eyebrow">— THE TEAM</div>
             <h2 class="section-title">
-                THE PEOPLE <span class="text-outline-red">BEHIND THE WORK.</span>
+                ENGINEERS AND <span class="text-outline-red">OPERATORS</span>
             </h2>
+            <p class="section-desc">
+                Ex-aerospace engineering, 30+ years of energy execution. Hover a card for what each person owns.
+            </p>
 
-            <!-- Videodaki (00:06) 8 Kişilik 4x2 Grid Ekip Kartları -->
-            <div class="team-grid">
-                <!-- 1. AS -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>AS</span></div>
-                    <div class="member-name">AMR SALO</div>
-                    <div class="member-role">PRESIDENT & FOUNDER</div>
+            <!-- Videodaki (00:11 - 00:15) Üzerine Gelince FOCUS Açıklaması Çıkan 8'li Grid -->
+            <div class="operators-grid">
+
+                <!-- 1. AMR SALO -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-1.jpg" alt="AMR SALO" class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">AS</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>Strategy, exports and turnkey engineering partnerships.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">AMR SALO</div>
+                        <div class="op-role">PRESIDENT & FOUNDER</div>
+                    </div>
                 </div>
 
-                <!-- 2. NK -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>NK</span></div>
-                    <div class="member-name">NURI KARBAŞ</div>
-                    <div class="member-role">GENERAL MANAGER</div>
+                <!-- 2. NURI KARBAŞ -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-2.jpg" alt="NURI KARBAŞ" class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">NK</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>Operations, supply chain execution and multi-country project delivery.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">NURI KARBAŞ</div>
+                        <div class="op-role">GENERAL MANAGER</div>
+                    </div>
                 </div>
 
-                <!-- 3. EK -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>EK</span></div>
-                    <div class="member-name">ENES KARACA</div>
-                    <div class="member-role">HEAD OF DIGITAL MARKETING</div>
+                <!-- 3. ENES KARACA -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-3.jpg" alt="ENES KARACA" class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">EK</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>Global brand positioning, digital growth and international lead generation.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">ENES KARACA</div>
+                        <div class="op-role">HEAD OF DIGITAL MARKETING</div>
+                    </div>
                 </div>
 
-                <!-- 4. ST -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>ST</span></div>
-                    <div class="member-name">SEDANUR TUĞRAY</div>
-                    <div class="member-role">HEAD OF ENGINEERING</div>
+                <!-- 4. SEDANUR TUĞRAY -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-4.jpg" alt="SEDANUR TUĞRAY" class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">ST</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>System design, commissioning and technical documentation.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">SEDANUR TUĞRAY</div>
+                        <div class="op-role">HEAD OF ENGINEERING</div>
+                    </div>
                 </div>
 
-                <!-- 5. HS -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>HS</span></div>
-                    <div class="member-name">H. SALO</div>
-                    <div class="member-role">HEAD OF EXPORTS</div>
+                <!-- 5. H. SALO -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-5.jpg" alt="H. SALO" class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">HS</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>International logistics, customs and tender delivery.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">H. SALO</div>
+                        <div class="op-role">HEAD OF EXPORTS</div>
+                    </div>
                 </div>
 
-                <!-- 6. BB -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>BB</span></div>
-                    <div class="member-name">BARAN BULUT</div>
-                    <div class="member-role">SOFTWARE DEVELOPER</div>
+                <!-- 6. BARAN BULUT -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-6.jpg" alt="BARAN BULUT" class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">BB</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>Charger network software and telemetry pipelines.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">BARAN BULUT</div>
+                        <div class="op-role">SOFTWARE DEVELOPER</div>
+                    </div>
                 </div>
 
-                <!-- 7. GG -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>GG</span></div>
-                    <div class="member-name">GÖKTUĞ G.</div>
-                    <div class="member-role">SOFTWARE DEVELOPER</div>
+                <!-- 7. GÖKTUĞ G. -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-7.jpg" alt="GÖKTUĞ G." class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">GG</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>AI forecasting models and monitoring dashboards.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">GÖKTUĞ G.</div>
+                        <div class="op-role">SOFTWARE DEVELOPER</div>
+                    </div>
                 </div>
 
-                <!-- 8. KY -->
-                <div class="team-card">
-                    <div class="avatar-box"><span>KY</span></div>
-                    <div class="member-name">KAAN Y.</div>
-                    <div class="member-role">FINANCIAL DIRECTOR</div>
+                <!-- 8. KAAN Y. -->
+                <div class="operator-card">
+                    <span class="photo-badge">PHOTO PLACEHOLDER</span>
+                    <img src="media/team-8.jpg" alt="KAAN Y." class="operator-photo" onerror="this.style.display='none'">
+                    <div class="operator-initials">KY</div>
+                    <div class="operator-focus">
+                        <div class="focus-label">FOCUS</div>
+                        <p>Project finance, export credit structuring and commercial compliance.</p>
+                    </div>
+                    <div class="operator-footer">
+                        <div class="op-name">KAAN Y.</div>
+                        <div class="op-role">FINANCIAL DIRECTOR</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="team-bottom-note">
+                PHOTOGRAPHY COMING SOON — REPLACE EACH PLACEHOLDER WITH A TEAM PORTRAIT (media/team-1.jpg ... team-8.jpg)
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BÖLÜM: WORK WITH US (BRING US THE HARD PROJECT.) -->
+    <section class="section hard-project-section">
+        <div class="container">
+            <div class="hard-project-box">
+                <div class="hard-project-left">
+                    <div class="eyebrow">WORK WITH US</div>
+                    <h2 class="section-title">
+                        BRING US THE HARD PROJECT.
+                    </h2>
+                    <p class="hard-project-desc">
+                        High-risk sites, tight deadlines, unusual specifications. That is the work we are built for.
+                    </p>
+                    <div class="hard-project-actions">
+                        <a href="contact.html" class="btn-primary">
+                            REQUEST A PROPOSAL <span class="arrow">→</span>
+                        </a>
+                        <a href="mailto:info@satrus.com" class="hard-mail-link">INFO@SATRUS.COM</a>
+                    </div>
+                    <div class="hard-project-fast">WE ANSWER FAST. NO WEEKS OF WAITING.</div>
+                </div>
+
+                <!-- Sağdaki Geometrik Çizim Halkası -->
+                <div class="hard-project-geo">
+                    <svg viewBox="0 0 260 260">
+                        <line x1="130" y1="0" x2="130" y2="260" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                        <line x1="0" y1="130" x2="260" y2="130" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                        <circle cx="130" cy="130" r="95" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                        <circle cx="130" cy="130" r="60" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                        <rect x="62" y="62" width="136" height="136" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <rect x="62" y="62" width="136" height="136" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" transform="rotate(45 130 130)"/>
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. BÖLÜM: FOOTER (ALT BİLGİ) -->
+    <!-- 6. BÖLÜM: FOOTER -->
     <footer class="footer" id="contact">
         <div class="container footer-grid">
             <div class="footer-brand">
@@ -286,6 +487,7 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="products.html">Products</a>
+                <a href="services.html">Services</a>
                 <a href="stories.html">Success Stories</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -309,14 +511,14 @@
         </div>
     </footer>
 
-    <!-- Mouse İmleci İçin Sadece 15 Satırlık Hafif Script -->
+    <!-- Özel Mouse İmleci Scripti -->
     <script>
         const cursorRing = document.getElementById('cursor-ring');
         window.addEventListener('mousemove', (e) => {
             cursorRing.style.left = `${e.clientX}px`;
             cursorRing.style.top = `${e.clientY}px`;
         });
-        document.querySelectorAll('a, button, .team-card, .symbol-row, .pillar-card').forEach(el => {
+        document.querySelectorAll('a, button, .operator-card, .pillar-card, .symbol-grid-canvas, .symbol-color-canvas').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorRing.style.width = '44px';
                 cursorRing.style.height = '44px';
