@@ -38,5 +38,15 @@
     "icon": "⚡",
     "info": "HQ",
     "isHQ": true
+  },
+  {
+    "id": 1792752827288,
+    "name": "SOUTH AFRICA",
+    "lat": -31.9123,
+    "lng": 22.335,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "FActory",
+    "isHQ": false
   }
 ]
