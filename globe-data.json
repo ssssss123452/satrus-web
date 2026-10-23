@@ -1,15 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "ANKARA HQ",
-    "lat": 39.9334,
-    "lng": 32.8597,
-    "type": "emoji",
-    "icon": "⚡",
-    "info": "Central R&D & Grid Hub — Active",
-    "isHQ": true
-  },
-  {
     "id": 1792744535128,
     "name": "SSS",
     "lat": 14.2579,
@@ -38,5 +28,15 @@
     "icon": "data:image/png;base64,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",
     "info": "ss",
     "isHQ": false
+  },
+  {
+    "id": 1792752762285,
+    "name": "BURSA",
+    "lat": 38.719,
+    "lng": 26.9676,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "HQ",
+    "isHQ": true
   }
 ]
