@@ -80,16 +80,6 @@
     "isHQ": false
   },
   {
-    "id": 1792753108274,
-    "name": "UK",
-    "lat": 49.0576,
-    "lng": 14.3761,
-    "type": "emoji",
-    "icon": "⚡",
-    "info": "uk",
-    "isHQ": false
-  },
-  {
     "id": 1792753116585,
     "name": "UNITED KINGDOM",
     "lat": 50.8995,
@@ -107,6 +97,16 @@
     "type": "emoji",
     "icon": "⚡",
     "info": "sa",
+    "isHQ": false
+  },
+  {
+    "id": 1792753179621,
+    "name": "SAUDI ARABIA",
+    "lat": 28.3197,
+    "lng": 41.368,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "s",
     "isHQ": false
   }
 ]
