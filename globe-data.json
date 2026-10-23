@@ -48,5 +48,15 @@
     "icon": "⚡",
     "info": "FActory",
     "isHQ": false
+  },
+  {
+    "id": 1792752863367,
+    "name": "SRYIA",
+    "lat": 34.4783,
+    "lng": 37.5015,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "PROJE",
+    "isHQ": false
   }
 ]
