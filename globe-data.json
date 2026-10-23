@@ -10,16 +10,6 @@
     "isHQ": true
   },
   {
-    "id": 2,
-    "name": "ISTANBUL",
-    "lat": 41.0082,
-    "lng": 28.9784,
-    "type": "emoji",
-    "icon": "🔋",
-    "info": "4.5x faster charging telemetry",
-    "isHQ": false
-  },
-  {
     "id": 3,
     "name": "BERLIN",
     "lat": 52.52,
@@ -30,23 +20,13 @@
     "isHQ": false
   },
   {
-    "id": 4,
-    "name": "LONDON",
-    "lat": 51.5074,
-    "lng": -0.1278,
-    "type": "emoji",
-    "icon": "👤",
-    "info": "UK Smart Grid Partner Network",
-    "isHQ": false
-  },
-  {
-    "id": 5,
-    "name": "DUBAI",
-    "lat": 25.2048,
-    "lng": 55.2708,
-    "type": "emoji",
-    "icon": "⚡",
-    "info": "MENA High-Temp Battery Testing",
+    "id": 1792744535128,
+    "name": "SSS",
+    "lat": 14.2579,
+    "lng": 12.4943,
+    "type": "image",
+    "icon": "media/satrus.png",
+    "info": "asasasa",
     "isHQ": false
   }
 ]
