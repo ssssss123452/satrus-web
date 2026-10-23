@@ -62,7 +62,7 @@
 
         <!-- 2. Görselde Sağ Üstte İşaretlediğin Yıldız / Kendi PNG Logonuz (media/about-top-star.png) -->
         <div class="about-top-right-star">
-            <img src="media/about-top-star.png" alt="SATRUS Symbol" class="top-star-png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img data-slot="about_top_star" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="SATRUS Symbol" class="top-star-png">
             <svg class="top-star-fallback" viewBox="0 0 360 360">
                 <line x1="180" y1="0" x2="180" y2="360" stroke="rgba(220,20,40,0.22)" stroke-width="1"/>
                 <line x1="0" y1="180" x2="360" y2="180" stroke="rgba(220,20,40,0.22)" stroke-width="1"/>
@@ -100,7 +100,7 @@
 
             <!-- Videodaki (00:00 - 00:01) Geniş Sinematik Fotoğraf Kutusu (media/about-hero.jpg) -->
             <div class="about-banner-box">
-                <img src="media/about-hero.jpg" alt="SATRUS Field Engineering" class="about-banner-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80'">
+                <img data-slot="about_hero" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="SATRUS Field Engineering" class="about-banner-img">
                 <div class="about-banner-overlay"></div>
                 <div class="about-banner-caption">
                     PHOTOGRAPHY PLACEHOLDER — REPLACE WITH YOUR OWN ON-SITE IMAGERY (media/about-hero.jpg)
@@ -176,8 +176,7 @@
                 <!-- 1. SATIR: THE SATRUS STAR (Kareli Grid Kutu İçinde media/symbol-star.png) -->
                 <div class="brand-row">
                     <div class="symbol-grid-canvas">
-                        <!-- media/symbol-star.png attığında otomatik senin görselin görünür, yoksa yedek SVG çizim görünür -->
-                        <img src="media/symbol-star.png" alt="THE SATRUS STAR" class="custom-symbol-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img data-slot="about_symbol_star" src="media/symbol-star.png" alt="THE SATRUS STAR" class="custom-symbol-img" onerror="this.style.display='none';">
                         <svg class="fallback-symbol-svg" viewBox="0 0 260 260">
                             <line x1="130" y1="10" x2="130" y2="250" stroke="rgba(220,20,40,0.45)" stroke-width="1"/>
                             <line x1="10" y1="130" x2="250" y2="130" stroke="rgba(220,20,40,0.45)" stroke-width="1"/>
@@ -240,8 +239,7 @@
                 <div class="brand-row">
                     <div class="symbol-grid-canvas bolt-canvas">
                         <div class="diagonal-laser-line"></div>
-                        <!-- media/symbol-bolt.png attığında otomatik senin görselin görünür, yoksa yedek Şimşek SVG görünür -->
-                        <img src="media/symbol-bolt.png" alt="THE YILDIRIM" class="custom-symbol-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img data-slot="about_symbol_bolt" src="media/symbol-bolt.png" alt="THE YILDIRIM" class="custom-symbol-img" onerror="this.style.display='none';">
                         <svg class="fallback-symbol-svg bolt-svg" viewBox="0 0 120 200">
                             <polygon points="72,10 24,108 62,108 48,190 98,90 60,90" fill="none" stroke="#ff1e32" stroke-width="2.4"/>
                         </svg>

@@ -1284,3 +1284,31 @@ body {
     border: 2px solid #ffffff;
     box-shadow: 0 0 12px #ff1e32;
 }
+
+/* ESKİ GÖRSELİN SALİSELİK PARLAMASINI (FLASH) VE ARKADAKİ YEDEK SVG'Yİ ENGELLEME */
+html:not(.media-ready) [data-slot],
+html:not(.media-ready) .about-banner-img,
+html:not(.media-ready) .custom-symbol-img,
+html:not(.media-ready) .top-star-png,
+html:not(.media-ready) .operator-photo,
+html:not(.media-ready) .story-img {
+    opacity: 0 !important;
+}
+
+html.media-ready [data-slot],
+html.media-ready .about-banner-img,
+html.media-ready .custom-symbol-img,
+html.media-ready .top-star-png,
+html.media-ready .operator-photo,
+html.media-ready .story-img {
+    opacity: 1;
+    transition: opacity 0.18s ease-in-out;
+}
+
+/* Admin panelinden özel görsel yüklendiğinde arkadaki yedek SVG çizimleri kesin olarak gizle */
+.has-custom-media .fallback-symbol-svg,
+.has-custom-media .top-star-fallback,
+.has-custom-media .operator-initials,
+.has-custom-media .photo-badge {
+    display: none !important;
+}
