@@ -58,5 +58,85 @@
     "icon": "⚡",
     "info": "PROJE",
     "isHQ": false
+  },
+  {
+    "id": 1792752914009,
+    "name": "ITALY",
+    "lat": 41.1253,
+    "lng": 14.6049,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "Atalay",
+    "isHQ": false
+  },
+  {
+    "id": 1792752974820,
+    "name": "SPAIN",
+    "lat": 38.4074,
+    "lng": -0.3382,
+    "type": "emoji",
+    "icon": ".",
+    "info": "spain",
+    "isHQ": false
+  },
+  {
+    "id": 1792753011439,
+    "name": "AZERBEIJAN",
+    "lat": 40.3029,
+    "lng": 47.0143,
+    "type": "emoji",
+    "icon": "",
+    "info": "sda",
+    "isHQ": false
+  },
+  {
+    "id": 1792753084551,
+    "name": "AFGANISTAN",
+    "lat": 33.5634,
+    "lng": 66.3004,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "sa",
+    "isHQ": false
+  },
+  {
+    "id": 1792753095823,
+    "name": "ROMANIA",
+    "lat": 45.8804,
+    "lng": 23.6644,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "sss",
+    "isHQ": false
+  },
+  {
+    "id": 1792753108274,
+    "name": "UK",
+    "lat": 49.0576,
+    "lng": 14.3761,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "uk",
+    "isHQ": false
+  },
+  {
+    "id": 1792753116585,
+    "name": "UNITED KINGDOM",
+    "lat": 50.8995,
+    "lng": -3.0353,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "z",
+    "isHQ": false
+  },
+  {
+    "id": 1792753133639,
+    "name": "UNITED ARAB EMIRATES",
+    "lat": 23.0192,
+    "lng": 50.6877,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "sa",
+    "isHQ": false
   }
 ]
