@@ -108,5 +108,75 @@
     "icon": "⚡",
     "info": "s",
     "isHQ": false
+  },
+  {
+    "id": 1792753495672,
+    "name": "EGYPT",
+    "lat": 27.1834,
+    "lng": 27.2201,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "eg",
+    "isHQ": false
+  },
+  {
+    "id": 1792753508904,
+    "name": "MOROC",
+    "lat": 32.4321,
+    "lng": -6.5583,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "s",
+    "isHQ": false
+  },
+  {
+    "id": 1792753517022,
+    "name": "TUNISIA",
+    "lat": 31.2061,
+    "lng": 10.9939,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "s",
+    "isHQ": false
+  },
+  {
+    "id": 1792753535651,
+    "name": "DENMARK",
+    "lat": 55.9206,
+    "lng": 7.9749,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "s",
+    "isHQ": false
+  },
+  {
+    "id": 1792753548517,
+    "name": "FRANCE",
+    "lat": 46.7497,
+    "lng": 2.8622,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "s",
+    "isHQ": false
+  },
+  {
+    "id": 1792753558507,
+    "name": "PORTUGAL",
+    "lat": 41.0547,
+    "lng": -9.2084,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "s",
+    "isHQ": false
+  },
+  {
+    "id": 1792753585667,
+    "name": "GERMANY",
+    "lat": 51.2976,
+    "lng": 9.7764,
+    "type": "emoji",
+    "icon": "⚡",
+    "info": "ge",
+    "isHQ": false
   }
 ]
