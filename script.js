@@ -58,12 +58,19 @@ function buildAutoArcs(stationList) {
 let world;
 
 function refreshMainGlobe(stationList) {
-    if (!world) return;
+    if (!world || !globeContainer) return;
     const freshList = stationList.map(item => ({ ...item }));
-    world.ringsData(freshList);
-    world.labelsData(freshList);
-    world.htmlElementsData(freshList);
-    world.arcsData(buildAutoArcs(freshList));
+
+    // Eski pinleri temizle
+    world.htmlElementsData([]);
+    globeContainer.querySelectorAll('.globe-pin-wrap').forEach(el => el.remove());
+
+    setTimeout(() => {
+        world.ringsData(freshList);
+        world.labelsData([]); // Altta kalan bulanık yazıları kapattık!
+        world.htmlElementsData(freshList);
+        world.arcsData(buildAutoArcs(freshList));
+    }, 20);
 }
 
 if (globeContainer) {
@@ -91,34 +98,41 @@ if (globeContainer) {
         .ringMaxRadius(4.5)
         .ringPropagationSpeed(2)
         .ringRepeatPeriod(900)
-        .labelLat(d => Number(d.lat))
-        .labelLng(d => Number(d.lng))
-        .labelText(d => d.name)
-        .labelSize(1.1)
-        .labelDotRadius(0.4)
-        .labelColor(() => '#ffffff')
-        .labelResolution(2)
         .htmlLat(d => Number(d.lat))
         .htmlLng(d => Number(d.lng))
         .htmlAltitude(0.04)
         .htmlElement(d => {
+            const wrap = document.createElement('div');
+            wrap.className = 'globe-pin-wrap';
+
+            const lbl = document.createElement('div');
+            lbl.className = 'globe-pin-label';
+            lbl.textContent = d.name;
+            wrap.appendChild(lbl);
+
             const el = document.createElement('div');
-            el.className = 'globe-pin';
-            if (d.type === 'image' && d.icon) {
+            if (d.type === 'none' || !d.icon) {
+                el.className = 'globe-pin empty-pin';
+            } else if (d.type === 'image') {
+                el.className = 'globe-pin';
                 el.innerHTML = `<img src="${d.icon}" alt="${d.name}" style="width:20px;height:20px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
             } else {
-                el.innerHTML = d.icon || '⚡';
+                el.className = 'globe-pin';
+                el.innerHTML = d.icon;
             }
-            el.addEventListener('mouseenter', () => {
+            wrap.appendChild(el);
+
+            wrap.addEventListener('mouseenter', () => {
+                const hudCard = document.getElementById('hud-1');
                 const titleEl = document.querySelector('#hud-1 .hud-title');
                 const textEl = document.querySelector('#hud-1 .hud-text');
+                if (hudCard) hudCard.style.opacity = '1';
                 if (titleEl) titleEl.textContent = d.name;
-                if (textEl) textEl.textContent = d.info;
+                if (textEl) textEl.textContent = d.info || '';
             });
-            return el;
+            return wrap;
         });
 
-    // new THREE.Color() hatasını önleyen güvenli renk ayarı
     const globeMat = world.globeMaterial();
     if (globeMat && globeMat.color) globeMat.color.set('#070304');
     if (globeMat && globeMat.emissive) globeMat.emissive.set('#1a0303');

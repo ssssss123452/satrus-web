@@ -475,3 +475,79 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target) observer.observe(target, { childList: true });
     });
 });
+
+// ADMIN PANELİNDEN YÜKLENEN TÜM SİTE GÖRSELLERİNİ (site-media.json) OTOMATİK YERLEŞTİR
+let globalSiteMediaCache = {};
+
+async function syncSiteMediaFromAdmin() {
+    try {
+        const res = await fetch(`site-media.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (!res.ok) return;
+        globalSiteMediaCache = await res.json();
+        applySiteMediaToDOM();
+    } catch (e) {}
+}
+
+function applySiteMediaToDOM() {
+    if (!globalSiteMediaCache) return;
+
+    // 1. About Sayfası Görsel Yuvaları
+    const aboutMap = {
+        'about_hero': '.about-banner-img',
+        'about_top_star': '.top-star-png',
+        'about_symbol_star': '.brand-row:nth-of-type(1) .custom-symbol-img',
+        'about_symbol_bolt': '.bolt-canvas .custom-symbol-img'
+    };
+    Object.entries(aboutMap).forEach(([key, selector]) => {
+        if (globalSiteMediaCache[key]) {
+            const img = document.querySelector(selector);
+            if (img) {
+                img.src = globalSiteMediaCache[key];
+                img.style.display = 'block';
+                if (img.nextElementSibling && img.nextElementSibling.tagName === 'svg') {
+                    img.nextElementSibling.style.display = 'none';
+                }
+            }
+        }
+    });
+
+    // About 8'li Ekip Kartları (team_1 ... team_8)
+    document.querySelectorAll('.operator-card').forEach((card, idx) => {
+        const key = `team_${idx + 1}`;
+        if (globalSiteMediaCache[key]) {
+            const img = card.querySelector('.operator-photo');
+            if (img) {
+                img.src = globalSiteMediaCache[key];
+                img.style.display = 'block';
+            }
+        }
+    });
+
+    // 2. data-slot Etiketli Görseller
+    document.querySelectorAll('[data-slot]').forEach(img => {
+        const slot = img.getAttribute('data-slot');
+        if (globalSiteMediaCache[slot]) img.src = globalSiteMediaCache[slot];
+    });
+
+    // 3. Success Stories Sekmelerindeki 5'li Kartlar
+    if (typeof activeSubKey !== 'undefined') {
+        const prefixMap = {
+            'ALL': 'story', 'TR_ALL': 'tr', 'BURSA': 'bursa', 'IZMIR': 'izmir',
+            'ANTALYA': 'antalya', 'ANKARA': 'ankara', 'AF_ALL': 'africa',
+            'SOUTH_AFRICA': 'sa', 'EGYPT': 'misir', 'MOROCCO': 'fas'
+        };
+        const pref = prefixMap[activeSubKey] || 'story';
+        document.querySelectorAll('#storiesGridContainer .story-img').forEach((img, idx) => {
+            const key = `stories_${pref}_${idx + 1}`;
+            if (globalSiteMediaCache[key]) img.src = globalSiteMediaCache[key];
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    syncSiteMediaFromAdmin();
+    const stGrid = document.getElementById('storiesGridContainer');
+    if (stGrid) {
+        new MutationObserver(() => applySiteMediaToDOM()).observe(stGrid, { childList: true });
+    }
+});
