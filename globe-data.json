@@ -10,16 +10,6 @@
     "isHQ": true
   },
   {
-    "id": 3,
-    "name": "BERLIN",
-    "lat": 52.52,
-    "lng": 13.405,
-    "type": "emoji",
-    "icon": "🛡️",
-    "info": "EU Distribution Node — 99.9% Load",
-    "isHQ": false
-  },
-  {
     "id": 1792744535128,
     "name": "SSS",
     "lat": 14.2579,
