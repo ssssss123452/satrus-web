@@ -157,6 +157,23 @@ window.addEventListener('focus', () => {
     refreshMainGlobe(getActiveStations());
 });
 
+// TÜM ZİYARETÇİLER İÇİN CANLI VERİYİ (globe-data.json) ÇEK VE DÜNYAYA YANSIT
+async function loadGlobalStationsForEveryone() {
+    try {
+        const res = await fetch(`globe-data.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (res.ok) {
+            const liveStations = await res.json();
+            if (Array.isArray(liveStations) && liveStations.length > 0) {
+                localStorage.setItem('satrus_globe_stations', JSON.stringify(liveStations));
+                refreshMainGlobe(liveStations);
+            }
+        }
+    } catch (err) {
+        console.warn('Yerel veri kullanılıyor.');
+    }
+}
+loadGlobalStationsForEveryone();
+
 // 3. GERÇEK GEOJSON NOKTALI (DOT-MATRIX) HARİTA & HD TÜRKİYE GEÇİŞ SİSTEMİ
 const mapLeftStatus = document.getElementById('map-left-status');
 const mapRightTooltip = document.getElementById('map-tooltip');
