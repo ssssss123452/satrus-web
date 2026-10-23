@@ -56,14 +56,27 @@
         </div>
     </header>
 
-    <!-- 1. BÖLÜM: ABOUT HERO + 3'LÜ META BARI + SİNEMATİK GÖRSEL + 01/02/03 SÜTUNLARI -->
+    <!-- 1. BÖLÜM: ABOUT HERO + SAĞ ÜST ÖZEL PNG/YILDIZ ALANI -->
     <section class="about-hero">
         <div class="bg-grid"></div>
+
+        <!-- 2. Görselde Sağ Üstte İşaretlediğin Yıldız / Kendi PNG Logonuz (media/about-top-star.png) -->
+        <div class="about-top-right-star">
+            <img src="media/about-top-star.png" alt="SATRUS Symbol" class="top-star-png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <svg class="top-star-fallback" viewBox="0 0 360 360">
+                <line x1="180" y1="0" x2="180" y2="360" stroke="rgba(220,20,40,0.22)" stroke-width="1"/>
+                <line x1="0" y1="180" x2="360" y2="180" stroke="rgba(220,20,40,0.22)" stroke-width="1"/>
+                <circle cx="180" cy="180" r="130" fill="none" stroke="rgba(220,20,40,0.22)" stroke-width="1"/>
+                <circle cx="180" cy="180" r="85" fill="none" stroke="rgba(220,20,40,0.28)" stroke-width="1"/>
+                <rect x="88" y="88" width="184" height="184" fill="none" stroke="rgba(220,20,40,0.28)" stroke-width="1.2"/>
+                <rect x="88" y="88" width="184" height="184" fill="none" stroke="rgba(220,20,40,0.28)" stroke-width="1.2" transform="rotate(45 180 180)"/>
+            </svg>
+        </div>
+
         <div class="container">
-            <div class="eyebrow">— ABOUT SATRUS</div>
+            <div class="eyebrow">— ABOUT US</div>
             <h1 class="hero-title about-main-title">
-                BUILT BY ENGINEERS.<br>
-                <span class="text-outline-red">PROVEN IN THE FIELD.</span>
+                ENGINEERS FIRST, <span class="text-outline-red">SELLERS SECOND</span>
             </h1>
             <p class="about-hero-desc">
                 SATRUS exists because energy projects deserve engineering, not marketing. We design the system, build the hardware, write the software and stay on site until it runs.

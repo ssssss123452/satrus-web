@@ -4,22 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUCCESS STORIES | SATRUS Energy Technologies</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
-    <!-- Ortak Ana Stil + Sadece Success Stories Sayfası Stili -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="stories.css">
 </head>
 <body>
 
-    <!-- Kırmızı Halkalı & Noktalı Özel Mouse İmleci -->
+    <!-- Özel Mouse İmleci -->
     <div id="cursor-ring">
         <div id="cursor-dot"></div>
     </div>
 
-    <!-- Sağ Altta Sabit Duran "REQUEST A PROPOSAL" Butonu -->
+    <!-- Sağ Alt Sabit CTA -->
     <a href="contact.html" class="floating-cta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -27,7 +25,7 @@
         REQUEST A PROPOSAL
     </a>
 
-    <!-- ÜST MENÜ (NAVBAR) -->
+    <!-- ÜST MENÜ -->
     <header class="navbar">
         <a href="index.html" class="logo">
             <img src="media/satrus.png" alt="SATRUS" class="logo-img">
@@ -37,7 +35,7 @@
             <a href="about.html">ABOUT</a>
             <a href="products.html">PRODUCTS</a>
             <a href="services.html">SERVICES</a>
-            <a href="stories.html">SUCCESS STORIES</a>
+            <a href="stories.html" class="active">SUCCESS STORIES</a>
         </nav>
 
         <div class="nav-actions">
@@ -56,126 +54,37 @@
         </div>
     </header>
 
-    <!-- 1. BÖLÜM: BAŞLIK ALANI (PROOF, NOT PROMISES.) -->
+    <!-- 1. BÖLÜM: BAŞLIK VE VİDEODAKİ AKILLI SEKMELER (TÜRKİYE & AFRİKA) -->
     <section class="stories-hero">
         <div class="bg-grid"></div>
         <div class="container">
-            <div class="eyebrow">SUCCESS STORIES</div>
-            <h1 class="hero-title stories-title">
-                PROOF, <span class="text-outline-red">NOT PROMISES.</span>
+            <div class="eyebrow">— SUCCESS STORIES</div>
+            <h1 class="hero-title">
+                PROVEN WHERE IT <span class="text-outline-red">MATTERS.</span>
             </h1>
-            <p class="stories-hero-desc">
-                Placeholder case studies — swap in full project details whenever you're ready. Every story here maps to real delivered work.
+            <p class="stories-desc">
+                From high-risk conflict zones to turnkey EV charger factories. Select a region and city below to inspect field deployments.
             </p>
-        </div>
-    </section>
 
-    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
-    <div class="angled-divider"></div>
-
-    <!-- 2. BÖLÜM: VAKA ANALİZİ KARTLARI (ÜSTTE 2 BÜYÜK, ALTTA 3 KART) -->
-    <section class="stories-section">
-        <div class="bg-grid"></div>
-        <div class="container">
-
-            <!-- ÜST SATIR: 2 BÜYÜK KART (00:00 - 00:01) -->
-            <div class="stories-grid-top">
-                <!-- Kart 1: High-Risk Environment Deployments -->
-                <article class="story-card">
-                    <div class="story-img-box">
-                        <span class="story-badge">CONFLICT & REMOTE ZONES</span>
-                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80" alt="High-Risk Environment Deployments" class="story-img">
-                        <div class="story-img-vignette"></div>
-                    </div>
-                    <div class="story-body">
-                        <h3>HIGH-RISK ENVIRONMENT DEPLOYMENTS</h3>
-                        <p>Energy systems delivered where logistics, security and climate all say no. Full case file on request.</p>
-                        <a href="contact.html" class="story-meta">DETAILS ON REQUEST</a>
-                    </div>
-                </article>
-
-                <!-- Kart 2: Government Tenders -->
-                <article class="story-card">
-                    <div class="story-img-box">
-                        <span class="story-badge">PUBLIC SECTOR</span>
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=900&q=80" alt="Government Tenders" class="story-img">
-                        <div class="story-img-vignette"></div>
-                    </div>
-                    <div class="story-body">
-                        <h3>GOVERNMENT TENDERS</h3>
-                        <p>Public-sector energy infrastructure, won on spec and delivered on schedule.</p>
-                        <a href="contact.html" class="story-meta">DETAILS ON REQUEST</a>
-                    </div>
-                </article>
+            <!-- VİDEODAKİ GİBİ AÇILIR/KAPANIR (✕) AKILLI BÖLGE VE ŞEHİR SEKMELERİ -->
+            <div class="stories-filter-bar" id="storiesFilterBar">
+                <!-- JavaScript ile Dinamik Olarak Oluşturulur -->
             </div>
 
-            <!-- ALT SATIR: 3 KART (00:01 - 00:02) -->
-            <div class="stories-grid-bottom">
-                <!-- Kart 3: Residential Installations -->
-                <article class="story-card">
-                    <div class="story-img-box">
-                        <span class="story-badge">LARGE-SCALE HOUSING</span>
-                        <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=700&q=80" alt="Residential Installations" class="story-img">
-                        <div class="story-img-vignette"></div>
-                    </div>
-                    <div class="story-body">
-                        <h3>RESIDENTIAL INSTALLATIONS</h3>
-                        <p>Solar thermal and PV systems for large-scale housing developments.</p>
-                        <a href="contact.html" class="story-meta">DETAILS ON REQUEST</a>
-                    </div>
-                </article>
-
-                <!-- Kart 4: Defense Facility Energy Systems -->
-                <article class="story-card">
-                    <div class="story-img-box">
-                        <span class="story-badge">CRITICAL INFRASTRUCTURE</span>
-                        <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=700&q=80" alt="Defense Facility Energy Systems" class="story-img">
-                        <div class="story-img-vignette"></div>
-                    </div>
-                    <div class="story-body">
-                        <h3>DEFENSE FACILITY ENERGY SYSTEMS</h3>
-                        <p>Autonomous power for critical facilities. Details restricted by design.</p>
-                        <a href="contact.html" class="story-meta">DETAILS ON REQUEST</a>
-                    </div>
-                </article>
-
-                <!-- Kart 5: Africa's First EV Charger Factory -->
-                <article class="story-card">
-                    <div class="story-img-box">
-                        <span class="story-badge">TURNKEY MANUFACTURING</span>
-                        <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=700&q=80" alt="Africa's First EV Charger Factory" class="story-img">
-                        <div class="story-img-vignette"></div>
-                    </div>
-                    <div class="story-body">
-                        <h3>AFRICA'S FIRST EV CHARGER FACTORY</h3>
-                        <p>Full turnkey technology and engineering transfer. From empty ground to a running production line.</p>
-                        <a href="contact.html" class="story-meta">DETAILS ON REQUEST</a>
-                    </div>
-                </article>
+            <!-- Aktif Bölge Başlığı -->
+            <div class="active-region-indicator">
+                <span class="sq-dot"></span>
+                <span id="activeRegionTitle">ALL GLOBAL DEPLOYMENTS</span>
             </div>
 
-        </div>
-    </section>
-
-    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
-    <div class="angled-divider reverse"></div>
-
-    <!-- 3. BÖLÜM: CTA (YOUR PROJECT COULD BE NEXT.) -->
-    <section class="cta-section stories-cta">
-        <div class="bg-grid"></div>
-        <div class="cta-content">
-            <h2 class="section-title stories-cta-title">
-                YOUR PROJECT <span class="text-outline-red">COULD BE NEXT.</span>
-            </h2>
-            <div class="stories-cta-btn-wrap">
-                <a href="contact.html" class="btn-primary">
-                    START THE CONVERSATION <span class="arrow">↗</span>
-                </a>
+            <!-- 3. GÖRSELDEKİ GİBİ HER SEKMEDE AYNI HİZADA DURAN 5 KART (ÜSTTE 2 BÜYÜK, ALTTA 3 ORTA) -->
+            <div class="stories-five-grid" id="storiesGridContainer">
+                <!-- JavaScript ile Seçili Sekmeye Göre 5 Kart Buraya Basılır -->
             </div>
         </div>
     </section>
 
-    <!-- 4. BÖLÜM: FOOTER (ALT BİLGİ) -->
+    <!-- FOOTER -->
     <footer class="footer" id="contact">
         <div class="container footer-grid">
             <div class="footer-brand">
@@ -192,6 +101,7 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="products.html">Products</a>
+                <a href="services.html">Services</a>
                 <a href="stories.html">Success Stories</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -215,24 +125,282 @@
         </div>
     </footer>
 
-    <!-- Özel Mouse İmleci Scripti -->
+    <!-- AKILLI SEKMELER VE 5'Lİ KART SİSTEMİ SCRİPTİ -->
     <script>
+        /*
+         * KENDİ PNG RESİMLERİNİ EKLEMEK İÇİN DOSYA İSİMLERİ:
+         * media/story-1.png  -> 1. Kart (Sol Üst Büyük)
+         * media/story-2.png  -> 2. Kart (Sağ Üst Büyük)
+         * media/story-3.png  -> 3. Kart (Sol Alt)
+         * media/story-4.png  -> 4. Kart (Orta Alt)
+         * media/story-5.png  -> 5. Kart (Sağ Alt)
+         * (İstersen şehre özel media/bursa-1.png vb. de atabilirsin, bulamazsa otomatik örnek görseli gösterir!)
+         */
+        const fallbackImgs = [
+            'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80'
+        ];
+
+        function createFiveCards(prefix, locationLabel, customTitles) {
+            return [
+                {
+                    badge: `${locationLabel} · HIGH-POWER SOLAR`,
+                    title: customTitles[0],
+                    desc: 'Energy systems delivered where logistics, grid load and climate demand maximum resilience. Full case file on request.',
+                    img: `media/${prefix}-1.png`,
+                    fallback: fallbackImgs[0]
+                },
+                {
+                    badge: `${locationLabel} · PUBLIC SECTOR`,
+                    title: customTitles[1],
+                    desc: 'Public-sector energy infrastructure and smart grid synchronization, won on spec and delivered on schedule.',
+                    img: `media/${prefix}-2.png`,
+                    fallback: fallbackImgs[1]
+                },
+                {
+                    badge: `${locationLabel} · LARGE-SCALE HOUSING`,
+                    title: customTitles[2],
+                    desc: 'Solar thermal, PV and EV charging systems for large-scale residential and commercial developments.',
+                    img: `media/${prefix}-3.png`,
+                    fallback: fallbackImgs[2]
+                },
+                {
+                    badge: `${locationLabel} · CRITICAL INFRASTRUCTURE`,
+                    title: customTitles[3],
+                    desc: 'Autonomous BESS storage and hybrid backup power for critical industrial facilities.',
+                    img: `media/${prefix}-4.png`,
+                    fallback: fallbackImgs[3]
+                },
+                {
+                    badge: `${locationLabel} · TURNKEY MANUFACTURING`,
+                    title: customTitles[4],
+                    desc: 'Full turnkey technology and engineering transfer. From empty ground to a running production line.',
+                    img: `media/${prefix}-5.png`,
+                    fallback: fallbackImgs[4]
+                }
+            ];
+        }
+
+        const storiesDatabase = {
+            'ALL': createFiveCards('story', 'GLOBAL', [
+                'HIGH-RISK ENVIRONMENT DEPLOYMENTS',
+                'GOVERNMENT TENDERS',
+                'RESIDENTIAL INSTALLATIONS',
+                'DEFENSE FACILITY ENERGY SYSTEMS',
+                "AFRICA'S FIRST EV CHARGER FACTORY"
+            ]),
+            // TÜRKİYE VE ALT ŞEHİR SEKMELERİ
+            'TR_ALL': createFiveCards('tr', 'TÜRKİYE', [
+                'TÜRKİYE NATIONAL GRID & BESS HUB',
+                'PUBLIC SECTOR FAST-CHARGING CORRIDOR',
+                'SMART HOUSING SOLAR INTEGRATIONS',
+                'AEROSPACE & DEFENSE POWER SYSTEMS',
+                'GEBZE & ANATOLIA TURNKEY PRODUCTION'
+            ]),
+            'BURSA': createFiveCards('bursa', 'BURSA', [
+                'BURSA ORGANIZED INDUSTRIAL ZONE SOLAR',
+                'BURSA MUNICIPAL EV BUS CHARGING FLEET',
+                'NILÜFER RESIDENTIAL PV NETWORK',
+                'BURSA AUTOMOTIVE BESS MICROGRID',
+                'BURSA GIGA BATTERY ASSEMBLY LINE'
+            ]),
+            'IZMIR': createFiveCards('izmir', 'İZMİR', [
+                'İZMİR AEGEAN WIND & SOLAR HYBRID PARK',
+                'ALIAĞA PORT HIGH-POWER GRID TENDER',
+                'ÇEŞME & URLA ECO-RESIDENCE SOLAR',
+                'İZMİR CRITICAL TELEMETRY SUBSTATION',
+                'AEGEAN EV CHARGER LOGISTICS HUB'
+            ]),
+            'ANTALYA': createFiveCards('antalya', 'ANTALYA', [
+                'ANTALYA HIGH-TEMP SOLAR PLANT',
+                'MEDITERRANEAN TOURISM EV CORRIDOR',
+                'ANTALYA SMART VILLA & RESORT PV',
+                'KEPEZ AUTONOMOUS GRID STORAGE',
+                'ANTALYA TECHNICAL SERVICE & TEST BAY'
+            ]),
+            'ANKARA': createFiveCards('ankara', 'ANKARA', [
+                'ANKARA CENTRAL R&D & SOLAR ARRAY',
+                'MINISTRY & PUBLIC INFRASTRUCTURE TENDERS',
+                'ANKARA MEGA HOUSING ENERGY BLOCKS',
+                'DEFENSE INDUSTRY UNINTERRUPTIBLE BESS',
+                'ANKARA FIRMWARE & ENGINEERING LAB'
+            ]),
+            // AFRİKA VE ALT ÜLKE SEKMELERİ
+            'AF_ALL': createFiveCards('africa', 'AFRICA', [
+                'OFF-GRID DESERT & REMOTE DEPLOYMENTS',
+                'AFRICAN NATIONAL UTILITY TENDERS',
+                'REGIONAL SOLAR HOUSING MICROGRIDS',
+                'MINING & CRITICAL TELECOM POWER',
+                "AFRICA'S FIRST EV CHARGER FACTORY"
+            ]),
+            'SOUTH_AFRICA': createFiveCards('sa', 'SOUTH AFRICA', [
+                'JOHANNESBURG LOAD-SHEDDING BESS SHIELD',
+                'SOUTH AFRICA NATIONAL EV GRID TENDER',
+                'CAPE TOWN RESIDENTIAL SOLAR CLUSTERS',
+                'INDUSTRIAL MINING AUTONOMOUS POWER',
+                "SOUTH AFRICA TURNKEY EV CHARGER FACTORY"
+            ]),
+            'EGYPT': createFiveCards('misir', 'MISIR (EGYPT)', [
+                'CAIRO & SINAI DESERT SOLAR FIELDS',
+                'NEW ADMINISTRATIVE CAPITAL GRID TENDER',
+                'NILE DELTA HOUSING PV INSTALLATIONS',
+                'SUEZ CORRIDOR CRITICAL POWER BACKUP',
+                'EGYPT REGIONAL ASSEMBLY & SERVICE HUB'
+            ]),
+            'MOROCCO': createFiveCards('fas', 'FAS (MOROCCO)', [
+                'CASABLANCA RENEWABLE SOLAR & WIND',
+                'MOROCCO GREEN MOBILITY PUBLIC TENDER',
+                'MARRAKECH RESIDENTIAL SOLAR ROOFS',
+                'TANGIER PORT INDUSTRIAL MICROGRID',
+                'NORTH AFRICA EV CHARGER DISTRIBUTION'
+            ])
+        };
+
+        const regionStructure = {
+            'TR': {
+                label: 'TÜRKİYE',
+                allKey: 'TR_ALL',
+                allLabel: 'ALL TÜRKİYE',
+                children: [
+                    { key: 'BURSA', label: 'BURSA' },
+                    { key: 'IZMIR', label: 'İZMİR' },
+                    { key: 'ANTALYA', label: 'ANTALYA' },
+                    { key: 'ANKARA', label: 'ANKARA' }
+                ]
+            },
+            'AF': {
+                label: 'AFRICA',
+                allKey: 'AF_ALL',
+                allLabel: 'ALL AFRICA',
+                children: [
+                    { key: 'SOUTH_AFRICA', label: 'SOUTH AFRICA' },
+                    { key: 'EGYPT', label: 'MISIR' },
+                    { key: 'MOROCCO', label: 'FAS' }
+                ]
+            }
+        };
+
+        let activeParentRegion = null; // null | 'TR' | 'AF'
+        let activeSubKey = 'ALL';
+
+        const filterBar = document.getElementById('storiesFilterBar');
+        const gridContainer = document.getElementById('storiesGridContainer');
+        const activeRegionTitle = document.getElementById('activeRegionTitle');
+
+        function renderFilterTabs() {
+            filterBar.innerHTML = '';
+
+            if (!activeParentRegion) {
+                // Başlangıç Görünümü: [ALL] [TÜRKİYE] [AFRICA]
+                const allBtn = document.createElement('button');
+                allBtn.className = 'story-tab active';
+                allBtn.textContent = 'ALL';
+                allBtn.onclick = () => { activeSubKey = 'ALL'; renderFilterTabs(); renderCards(); };
+                filterBar.appendChild(allBtn);
+
+                Object.keys(regionStructure).forEach(regKey => {
+                    const btn = document.createElement('button');
+                    btn.className = 'story-tab';
+                    btn.textContent = regionStructure[regKey].label;
+                    btn.onclick = () => {
+                        activeParentRegion = regKey;
+                        activeSubKey = regionStructure[regKey].allKey;
+                        renderFilterTabs();
+                        renderCards();
+                    };
+                    filterBar.appendChild(btn);
+                });
+            } else {
+                // Videodaki Gibi Açılmış Görünüm: [✕] [TÜRKİYE] | [ALL TÜRKİYE] [BURSA] [İZMİR] [ANTALYA] [ANKARA]
+                const reg = regionStructure[activeParentRegion];
+
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'story-tab close-x-btn';
+                closeBtn.innerHTML = '✕';
+                closeBtn.title = 'Bölge Seçimini Kapat';
+                closeBtn.onclick = () => {
+                    activeParentRegion = null;
+                    activeSubKey = 'ALL';
+                    renderFilterTabs();
+                    renderCards();
+                };
+                filterBar.appendChild(closeBtn);
+
+                const parentBadge = document.createElement('button');
+                parentBadge.className = 'story-tab active-parent';
+                parentBadge.textContent = reg.label;
+                filterBar.appendChild(parentBadge);
+
+                const allSubBtn = document.createElement('button');
+                allSubBtn.className = `story-tab sub-tab ${activeSubKey === reg.allKey ? 'active-sub' : ''}`;
+                allSubBtn.textContent = reg.allLabel;
+                allSubBtn.onclick = () => {
+                    activeSubKey = reg.allKey;
+                    renderFilterTabs();
+                    renderCards();
+                };
+                filterBar.appendChild(allSubBtn);
+
+                reg.children.forEach(child => {
+                    const subBtn = document.createElement('button');
+                    subBtn.className = `story-tab sub-tab ${activeSubKey === child.key ? 'active-sub' : ''}`;
+                    subBtn.textContent = child.label;
+                    subBtn.onclick = () => {
+                        activeSubKey = child.key;
+                        renderFilterTabs();
+                        renderCards();
+                    };
+                    filterBar.appendChild(subBtn);
+                });
+            }
+        }
+
+        function renderCards() {
+            const cards = storiesDatabase[activeSubKey] || storiesDatabase['ALL'];
+
+            // Başlığı Güncelle
+            if (activeSubKey === 'ALL') {
+                activeRegionTitle.textContent = 'ALL GLOBAL DEPLOYMENTS';
+            } else if (activeParentRegion) {
+                const reg = regionStructure[activeParentRegion];
+                const foundChild = reg.children.find(c => c.key === activeSubKey);
+                activeRegionTitle.textContent = foundChild ? `${reg.label} // ${foundChild.label}` : reg.label;
+            }
+
+            gridContainer.style.opacity = '0';
+            setTimeout(() => {
+                gridContainer.innerHTML = '';
+                cards.forEach((card, index) => {
+                    const article = document.createElement('article');
+                    article.className = `story-card ${index < 2 ? 'story-card-large' : 'story-card-medium'}`;
+                    article.innerHTML = `
+                        <div class="story-img-box">
+                            <span class="story-badge">${card.badge}</span>
+                            <img src="${card.img}" alt="${card.title}" class="story-img" onerror="this.onerror=null; this.src='${card.fallback}';">
+                        </div>
+                        <div class="story-body">
+                            <h3>${card.title}</h3>
+                            <p>${card.desc}</p>
+                            <a href="contact.html" class="story-link">DETAILS ON REQUEST</a>
+                        </div>
+                    `;
+                    gridContainer.appendChild(article);
+                });
+                gridContainer.style.opacity = '1';
+            }, 140);
+        }
+
+        renderFilterTabs();
+        renderCards();
+
+        // Özel Mouse İmleci
         const cursorRing = document.getElementById('cursor-ring');
         window.addEventListener('mousemove', (e) => {
             cursorRing.style.left = `${e.clientX}px`;
             cursorRing.style.top = `${e.clientY}px`;
-        });
-        document.querySelectorAll('a, button, .story-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorRing.style.width = '44px';
-                cursorRing.style.height = '44px';
-                cursorRing.style.borderColor = '#ff1e32';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorRing.style.width = '28px';
-                cursorRing.style.height = '28px';
-                cursorRing.style.borderColor = 'rgba(220, 20, 40, 0.75)';
-            });
         });
     </script>
     <script src="lang.js"></script>

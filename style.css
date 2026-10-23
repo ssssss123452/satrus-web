@@ -307,9 +307,29 @@ body {
 }
 
 .text-outline-red {
-    color: rgba(210, 20, 35, 0.28);
-    -webkit-text-stroke: 1.5px #ff1e32;
-    text-shadow: 0 0 28px rgba(230, 25, 25, 0.22);
+    color: transparent;
+    -webkit-text-stroke: 1.25px rgba(255, 255, 255, 0.42);
+    text-shadow: none;
+    letter-spacing: 1px;
+}
+
+/* Kırmızı çerçeveli başlık istenen yerler için minimal glowsuz stil */
+.hero-title .text-outline-red,
+.section-title .text-outline-red {
+    color: transparent;
+    -webkit-text-stroke: 1.3px rgba(255, 255, 255, 0.45);
+    text-shadow: 0 0 6px rgba(220, 20, 40, 0.08);
+}
+
+.eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--red-bright);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    text-shadow: none;
 }
 
 .text-red {
