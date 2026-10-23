@@ -1,22 +1,12 @@
 [
   {
-    "id": 1792752762285,
-    "name": "BURSA",
-    "lat": 38.719,
-    "lng": 26.9676,
+    "id": 1792794418156,
+    "name": "TÜRKIYE",
+    "lat": 38.3741,
+    "lng": 34.6541,
     "type": "emoji",
     "icon": "⚡",
-    "info": "HQ",
+    "info": "s",
     "isHQ": true
-  },
-  {
-    "id": 1792792391782,
-    "name": "SD",
-    "lat": 40.0979,
-    "lng": 54.0774,
-    "type": "none",
-    "icon": "",
-    "info": "sd",
-    "isHQ": false
   }
 ]
