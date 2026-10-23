@@ -8,5 +8,15 @@
     "icon": "⚡",
     "info": "HQ",
     "isHQ": true
+  },
+  {
+    "id": 1792792391782,
+    "name": "SD",
+    "lat": 40.0979,
+    "lng": 54.0774,
+    "type": "none",
+    "icon": "",
+    "info": "sd",
+    "isHQ": false
   }
 ]
