@@ -81,41 +81,45 @@ if (globeContainer) {
         .height(650)
         .backgroundColor('rgba(0,0,0,0)')
         .showGlobe(true)
+        .showGraticules(true) // Videodaki ince enlem-boylam küre ızgaraları
         .showAtmosphere(true)
-        .atmosphereColor('#dc1428')
-        .atmosphereAltitude(0.2)
+        .atmosphereColor('#d93814')
+        .atmosphereAltitude(0.12)
         .hexPolygonsData([])
         .hexPolygonResolution(3)
-        .hexPolygonMargin(0.62)
-        .hexPolygonColor(() => '#e62e19')
-        .arcColor(() => ['#ff1e32', '#ff6a00'])
-        .arcDashLength(0.45)
-        .arcDashGap(0.3)
+        .hexPolygonMargin(0.52) // Daha sık ve net kıta noktaları
+        .hexPolygonColor(() => '#e04819') // Cloudflare sıcak turuncu-bakır nokta rengi
+        .arcColor(() => ['rgba(255, 90, 35, 0.95)', 'rgba(255, 140, 60, 0.85)'])
+        .arcDashLength(0.5)
+        .arcDashGap(0.22)
         .arcDashInitialGap(() => Math.random())
-        .arcDashAnimateTime(2000)
-        .arcStroke(0.75)
-        .ringColor(() => '#ff3b1a')
-        .ringMaxRadius(4.5)
-        .ringPropagationSpeed(2)
-        .ringRepeatPeriod(900)
+        .arcDashAnimateTime(2200)
+        .arcStroke(0.55) // Videodaki gibi zarif ve keskin bağlantı yayları
+        .ringColor(() => t => `rgba(255, 85, 32, ${1 - t})`)
+        .ringMaxRadius(3.8)
+        .ringPropagationSpeed(1.6)
+        .ringRepeatPeriod(1100)
         .htmlLat(d => Number(d.lat))
         .htmlLng(d => Number(d.lng))
-        .htmlAltitude(0.04)
+        .htmlAltitude(0.025)
         .htmlElement(d => {
             const wrap = document.createElement('div');
             wrap.className = 'globe-pin-wrap';
 
-            const lbl = document.createElement('div');
-            lbl.className = 'globe-pin-label';
-            lbl.textContent = d.name;
-            wrap.appendChild(lbl);
+            // Sadece başlık (name) yazılmışsa üst etiketi göster, boşsa hiç gösterme!
+            if (d.name && d.name.trim() !== '') {
+                const lbl = document.createElement('div');
+                lbl.className = 'globe-pin-label';
+                lbl.textContent = d.name;
+                wrap.appendChild(lbl);
+            }
 
             const el = document.createElement('div');
             if (d.type === 'none' || !d.icon) {
                 el.className = 'globe-pin empty-pin';
             } else if (d.type === 'image') {
                 el.className = 'globe-pin';
-                el.innerHTML = `<img src="${d.icon}" alt="${d.name}" style="width:20px;height:20px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
+                el.innerHTML = `<img src="${d.icon}" alt="${d.name || ''}" style="width:20px;height:20px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
             } else {
                 el.className = 'globe-pin';
                 el.innerHTML = d.icon;
@@ -126,17 +130,53 @@ if (globeContainer) {
                 const hudCard = document.getElementById('hud-1');
                 const titleEl = document.querySelector('#hud-1 .hud-title');
                 const textEl = document.querySelector('#hud-1 .hud-text');
+                const hasName = d.name && d.name.trim() !== '';
+                const hasInfo = d.info && d.info.trim() !== '';
+
+                // Başlık da açıklama da boşsa kutuyu hiç açma
+                if (!hasName && !hasInfo) {
+                    if (hudCard) hudCard.style.opacity = '0';
+                    return;
+                }
                 if (hudCard) hudCard.style.opacity = '1';
-                if (titleEl) titleEl.textContent = d.name;
-                if (textEl) textEl.textContent = d.info || '';
+                if (titleEl) {
+                    titleEl.textContent = hasName ? d.name : '';
+                    titleEl.style.display = hasName ? 'block' : 'none';
+                }
+                if (textEl) {
+                    textEl.textContent = hasInfo ? d.info : '';
+                    textEl.style.display = hasInfo ? 'block' : 'none';
+                }
             });
+
+            wrap.addEventListener('mouseleave', () => {
+                const hudCard = document.getElementById('hud-1');
+                if (hudCard) hudCard.style.opacity = '0';
+            });
+
             return wrap;
         });
 
+    // Kürenin içini videodaki gibi yarı şeffaf koyu cam yapma
     const globeMat = world.globeMaterial();
-    if (globeMat && globeMat.color) globeMat.color.set('#070304');
-    if (globeMat && globeMat.emissive) globeMat.emissive.set('#1a0303');
-    if (globeMat) globeMat.emissiveIntensity = 0.4;
+    if (globeMat) {
+        if (globeMat.color) globeMat.color.set('#080403');
+        if (globeMat.emissive) globeMat.emissive.set('#1f0803');
+        globeMat.emissiveIntensity = 0.35;
+        globeMat.transparent = true;
+        globeMat.opacity = 0.86;
+    }
+
+    // Izgara (Graticules) çizgilerini çok ince bakır rengine çekme
+    setTimeout(() => {
+        world.scene().traverse(obj => {
+            if (obj.type === 'LineSegments' && obj.material) {
+                obj.material.color.set('#3a150b');
+                obj.material.opacity = 0.32;
+                obj.material.transparent = true;
+            }
+        });
+    }, 300);
 
     fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
         .then(res => res.json())
@@ -146,7 +186,7 @@ if (globeContainer) {
 
     world.pointOfView({ lat: 34, lng: 30, altitude: 2.15 });
     world.controls().autoRotate = true;
-    world.controls().autoRotateSpeed = 0.9;
+    world.controls().autoRotateSpeed = 0.65;
     world.controls().enableZoom = false;
 
     refreshMainGlobe(initialStations);
