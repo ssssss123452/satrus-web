@@ -168,5 +168,45 @@
     "icon": "",
     "info": "",
     "isHQ": false
+  },
+  {
+    "id": 1792807002902,
+    "name": "",
+    "lat": 40.1314,
+    "lng": -101.4488,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792807027520,
+    "name": "",
+    "lat": 60.9532,
+    "lng": 14.5316,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792807032521,
+    "name": "",
+    "lat": 60.8641,
+    "lng": 7.7727,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792807043502,
+    "name": "",
+    "lat": 62.3676,
+    "lng": 24.6675,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
   }
 ]
