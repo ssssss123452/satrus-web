@@ -238,5 +238,35 @@
     "icon": "",
     "info": "",
     "isHQ": false
+  },
+  {
+    "id": 1792807258462,
+    "name": "",
+    "lat": 35.4181,
+    "lng": 38.4262,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792807266520,
+    "name": "",
+    "lat": 31.9377,
+    "lng": 37.5037,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792807275719,
+    "name": "",
+    "lat": 33.9995,
+    "lng": 35.7418,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
   }
 ]
