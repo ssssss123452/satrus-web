@@ -306,14 +306,27 @@ body {
     text-transform: uppercase;
 }
 
-/* KESKİN PARLAK KIRMIZI KONTUR (AŞIRI BULANIK GLOW OLMADAN NET KIRMIZI) */
+/* 1. GÖRSELDEKİ GİBİ İÇİ SİYAH / ŞEFFAF, DIŞ ÇERÇEVESİ KESKİN KIRMIZI (MAC & WINDOWS BİREBİR AYNI) */
 .text-outline-red,
 .hero-title .text-outline-red,
-.section-title .text-outline-red {
-    color: rgba(220, 20, 40, 0.22);
-    -webkit-text-stroke: 1.5px #ff1e32;
-    text-shadow: 0 0 12px rgba(255, 30, 50, 0.16);
+.section-title .text-outline-red,
+.fast-title .text-outline-red {
+    color: #070304 !important;
+    -webkit-text-fill-color: rgba(8, 3, 4, 0.92) !important;
+    -webkit-text-stroke: 1.5px #c81e28 !important;
+    text-shadow: none !important;
+    filter: none !important;
     letter-spacing: 1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* About sayfasındaki gümüş-gri başlık için (istersen bu da kırmızı olsun dersen bu bloğu silebilirsin) */
+.about-main-title .text-outline-red {
+    color: #070304 !important;
+    -webkit-text-fill-color: transparent !important;
+    -webkit-text-stroke: 1.4px rgba(255, 255, 255, 0.55) !important;
+    text-shadow: none !important;
 }
 
 /* Sadece About sayfasındaki ENGINEERS FIRST, SELLERS SECOND başlığı görseldeki gibi gümüş-gri kalsın istersen: */
