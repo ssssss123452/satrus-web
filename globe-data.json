@@ -300,16 +300,6 @@
     "isHQ": false
   },
   {
-    "id": 1792807525434,
-    "name": "",
-    "lat": 52.0357,
-    "lng": 10.2073,
-    "type": "emoji",
-    "icon": "",
-    "info": "",
-    "isHQ": false
-  },
-  {
     "id": 1792807548057,
     "name": "",
     "lat": 50.8688,
@@ -324,6 +314,16 @@
     "name": "",
     "lat": 52.348,
     "lng": 5.7709,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792807679369,
+    "name": "",
+    "lat": 49.7854,
+    "lng": 9.4511,
     "type": "emoji",
     "icon": "",
     "info": "",
