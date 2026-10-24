@@ -438,5 +438,25 @@
     "icon": "",
     "info": "",
     "isHQ": false
+  },
+  {
+    "id": 1792808538776,
+    "name": "",
+    "lat": 45.8609,
+    "lng": 64.0336,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792808555574,
+    "name": "",
+    "lat": 42.3616,
+    "lng": 60.7358,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
   }
 ]
