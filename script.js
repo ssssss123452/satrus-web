@@ -81,32 +81,32 @@ if (globeContainer) {
         .height(650)
         .backgroundColor('rgba(0,0,0,0)')
         .showGlobe(true)
-        .showGraticules(true) // Videodaki ince enlem-boylam küre ızgaraları
+        .showGraticules(true)
         .showAtmosphere(true)
-        .atmosphereColor('#d93814')
-        .atmosphereAltitude(0.12)
+        .atmosphereColor('#c83214')
+        .atmosphereAltitude(0.1)
         .hexPolygonsData([])
-        .hexPolygonResolution(3)
-        .hexPolygonMargin(0.52) // Daha sık ve net kıta noktaları
-        .hexPolygonColor(() => '#e04819') // Cloudflare sıcak turuncu-bakır nokta rengi
+        .hexPolygonResolution(4) // 4. Seviye Yüksek Çözünürlük: Eksik kıyılar ve adalar tam görünür!
+        .hexPolygonMargin(0.45)  // Daha sık ve gerçekçi nokta dokusu
+        .hexPolygonAltitude(0.002) // Döndürürken titreme ve bozulmayı (Z-fighting) önler
+        .hexPolygonColor(() => '#e04819')
         .arcColor(() => ['rgba(255, 90, 35, 0.95)', 'rgba(255, 140, 60, 0.85)'])
         .arcDashLength(0.5)
         .arcDashGap(0.22)
         .arcDashInitialGap(() => Math.random())
         .arcDashAnimateTime(2200)
-        .arcStroke(0.55) // Videodaki gibi zarif ve keskin bağlantı yayları
+        .arcStroke(0.55)
         .ringColor(() => t => `rgba(255, 85, 32, ${1 - t})`)
         .ringMaxRadius(3.8)
         .ringPropagationSpeed(1.6)
         .ringRepeatPeriod(1100)
         .htmlLat(d => Number(d.lat))
         .htmlLng(d => Number(d.lng))
-        .htmlAltitude(0.025)
+        .htmlAltitude(0.02)
         .htmlElement(d => {
             const wrap = document.createElement('div');
             wrap.className = 'globe-pin-wrap';
 
-            // Sadece başlık (name) yazılmışsa üst etiketi göster, boşsa hiç gösterme!
             if (d.name && d.name.trim() !== '') {
                 const lbl = document.createElement('div');
                 lbl.className = 'globe-pin-label';
@@ -133,7 +133,6 @@ if (globeContainer) {
                 const hasName = d.name && d.name.trim() !== '';
                 const hasInfo = d.info && d.info.trim() !== '';
 
-                // Başlık da açıklama da boşsa kutuyu hiç açma
                 if (!hasName && !hasInfo) {
                     if (hudCard) hudCard.style.opacity = '0';
                     return;
@@ -157,31 +156,38 @@ if (globeContainer) {
             return wrap;
         });
 
-    // Kürenin içini videodaki gibi yarı şeffaf koyu cam yapma
+    // 1. YUKARIDAN VURAN BEYAZ YANSIMAYI VE DÖNDÜRÜRKEN BOZULMAYI KÖKTEN KALDIRMA
     const globeMat = world.globeMaterial();
     if (globeMat) {
-        if (globeMat.color) globeMat.color.set('#080403');
-        if (globeMat.emissive) globeMat.emissive.set('#1f0803');
-        globeMat.emissiveIntensity = 0.35;
-        globeMat.transparent = true;
-        globeMat.opacity = 0.86;
+        if (globeMat.color) globeMat.color.set('#070303');
+        if (globeMat.emissive) globeMat.emissive.set('#140402');
+        globeMat.emissiveIntensity = 0.25;
+        if (globeMat.specular) globeMat.specular.set('#000000'); // Beyaz parlama sıfırlandı!
+        globeMat.shininess = 0; // Plastik parlaklık kapatıldı!
+        globeMat.transparent = false; // Döndürürken iç içe geçme hatası kapatıldı!
     }
 
-    // Izgara (Graticules) çizgilerini çok ince bakır rengine çekme
+    // 2. Sahnedeki Tepeden Vuran Beyaz Işığı Kapat ve Izgarayı Çok İnce Yap
     setTimeout(() => {
         world.scene().traverse(obj => {
+            if (obj.isDirectionalLight) {
+                obj.intensity = 0.05; // Tepeden vuran beyaz ışığı söndürdük
+            }
             if (obj.type === 'LineSegments' && obj.material) {
-                obj.material.color.set('#3a150b');
-                obj.material.opacity = 0.32;
+                obj.material.color.set('#2a0d06');
+                obj.material.opacity = 0.28;
                 obj.material.transparent = true;
+                obj.material.depthWrite = false;
             }
         });
-    }, 300);
+    }, 250);
 
+    // 3. Kutuplarda İçi Boş Simit Oluşturan Antarktika Hatasını Temizle
     fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
         .then(res => res.json())
         .then(countries => {
-            world.hexPolygonsData(countries.features);
+            const cleanFeatures = countries.features.filter(f => f.properties?.ISO_A2 !== 'AQ');
+            world.hexPolygonsData(cleanFeatures);
         });
 
     world.pointOfView({ lat: 34, lng: 30, altitude: 2.15 });
