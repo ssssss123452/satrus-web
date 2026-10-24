@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "id": 1792804011609,
+    "name": "",
+    "lat": 39.2031,
+    "lng": 33.7791,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": true
+  },
+  {
+    "id": 1792804035921,
+    "name": "",
+    "lat": 39.5852,
+    "lng": -3.8021,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792804049397,
+    "name": "",
+    "lat": 40.2424,
+    "lng": -7.692,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792804090554,
+    "name": "",
+    "lat": 30.7718,
+    "lng": -7.7802,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792804113747,
+    "name": "",
+    "lat": -31.3406,
+    "lng": -57.6933,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792804130355,
+    "name": "",
+    "lat": 21.7052,
+    "lng": -101.5153,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792804174590,
+    "name": "",
+    "lat": 28.2094,
+    "lng": -82.5724,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792804185637,
+    "name": "",
+    "lat": 24.5093,
+    "lng": 44.8196,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  },
+  {
+    "id": 1792804209476,
+    "name": "",
+    "lat": 25.2996,
+    "lng": 50.8,
+    "type": "emoji",
+    "icon": "",
+    "info": "",
+    "isHQ": false
+  }
+]
