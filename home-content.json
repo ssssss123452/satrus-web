@@ -1,1 +1,169 @@
-{}
+{
+  "stats": [
+    {
+      "number": 95,
+      "suffix": "+",
+      "label": "Countries Served"
+    },
+    {
+      "number": 45,
+      "suffix": "+",
+      "label": "Years of Experience"
+    },
+    {
+      "number": 500,
+      "suffix": "+",
+      "label": "MW in total projects"
+    }
+  ],
+  "logos": [
+    {
+      "name": "SOLIMPEKS",
+      "img": ""
+    },
+    {
+      "name": "KAWJN",
+      "img": ""
+    },
+    {
+      "name": "MERCEDES-EQ",
+      "img": ""
+    },
+    {
+      "name": "SHELL RECHARGE",
+      "img": ""
+    },
+    {
+      "name": "OIPSUM GRID",
+      "img": ""
+    }
+  ],
+  "whyTitle": "But, why would you\nwant to work with us?",
+  "whySub": "From Google ads, to Meta ads, to TikTok ads, and even content creation, we've got you covered on everything front.",
+  "whyItems": [
+    {
+      "title": "Funnel Audit",
+      "desc": "We'll start by analyzing your sales funnel and seeing what's holding you back.",
+      "icon": "🔍"
+    },
+    {
+      "title": "Campaign Setup",
+      "desc": "Then, with your business goals in mind, we will set up the advertising campaigns.",
+      "icon": "⚙️"
+    },
+    {
+      "title": "Maximize Profit",
+      "desc": "We'll then work towards driving the cost per action down to maximize profit.",
+      "icon": "💰"
+    }
+  ],
+  "testimonials": [
+    {
+      "brand": "SAVANNAH",
+      "quote": "\"Conversion absolutely blew the previous agency we were working with out of the water.\"",
+      "author": "Naomi Campbell",
+      "role": "CEO of Wednesday",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "thumb": ""
+    },
+    {
+      "brand": "Amsterdam",
+      "quote": "\"These guy don't mess around. we saw results from month one.\"",
+      "author": "Tony Gomez",
+      "role": "Founder of Thursday",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "thumb": ""
+    },
+    {
+      "brand": "Aura",
+      "quote": "\"From where we were before Conversion to where we are now; it's absolutely apart.\"",
+      "author": "Charlotte Johansen",
+      "role": "Founder of Tuesday",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "thumb": ""
+    }
+  ],
+  "productsShowcase": [
+    {
+      "slot": "prod_card_1",
+      "title": "Avanos (AC) Chargers",
+      "desc": "AC chargers from 3.3 kW socket units to dual-display commercial stations."
+    },
+    {
+      "slot": "prod_card_2",
+      "title": "Milas (DC) Chargers",
+      "desc": "DC chargers from compact cabinets to megawatt systems, engineered in Türkiye."
+    },
+    {
+      "slot": "prod_card_3",
+      "title": "Dispenser Systems",
+      "desc": "DC dispensers for branded hubs, agriculture, heavy machinery, and MCS trucks."
+    },
+    {
+      "slot": "prod_card_4",
+      "title": "Off-Grid Chargers",
+      "desc": "Solar + BESS integrated autonomous charging stations for remote sites."
+    },
+    {
+      "slot": "prod_card_5",
+      "title": "Mobile EV Chargers",
+      "desc": "We turn vans, trucks, and pickups into rescue chargers, built-in or roll-out."
+    },
+    {
+      "slot": "prod_card_6",
+      "title": "Charging Cables",
+      "desc": "Liquid-cooled and standard TPU high-current charging cables."
+    }
+  ],
+  "processTabs": [
+    {
+      "tabName": "EV Charging Rollout",
+      "steps": [
+        {
+          "title": "Consultation",
+          "desc": "We listen, understand your goals, and assess your project needs."
+        },
+        {
+          "title": "Planning & Estimate",
+          "desc": "We create a detailed plan and transparent estimate with no surprises."
+        },
+        {
+          "title": "Build & Manage",
+          "desc": "Our team builds with care while we manage every detail and keep you updated."
+        },
+        {
+          "title": "Final Walkthrough",
+          "desc": "We review every detail together to ensure your complete satisfaction."
+        }
+      ]
+    },
+    {
+      "tabName": "Turnkey Factory Setup",
+      "steps": [
+        {
+          "title": "Feasibility & Line Design",
+          "desc": "Complete plant layout and capacity planning."
+        },
+        {
+          "title": "Machinery & Tooling",
+          "desc": "Assembly lines and testing rigs installation."
+        }
+      ]
+    }
+  ],
+  "faqTabs": [
+    {
+      "tabName": "General & Hardware",
+      "items": [
+        {
+          "q": "How can SATRUS energy systems help my business?",
+          "a": "Our hardware and AI energy management platforms reduce grid dependency and provide turnkey EV charging revenue."
+        },
+        {
+          "q": "Is the CSMS / OCPP system difficult to integrate?",
+          "a": "No! Our solutions are designed for seamless integration."
+        }
+      ]
+    }
+  ]
+}
