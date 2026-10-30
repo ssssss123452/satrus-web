@@ -61,45 +61,47 @@ function refreshMainGlobe(stationList) {
     if (!world || !globeContainer) return;
     const freshList = stationList.map(item => ({ ...item }));
 
-    // Eski pinleri temizle
     world.htmlElementsData([]);
     globeContainer.querySelectorAll('.globe-pin-wrap').forEach(el => el.remove());
 
-    setTimeout(() => {
-        world.ringsData(freshList);
-        world.labelsData([]); // Altta kalan bulanık yazıları kapattık!
+    // Kasmayı önlemek için halka dalgasını (rings) sadece HQ veya ilk 5 noktada çalıştır
+    const hqOnlyRings = freshList.filter(s => s.isHQ).slice(0, 3);
+
+    requestAnimationFrame(() => {
+        world.ringsData(hqOnlyRings);
+        world.labelsData([]);
         world.htmlElementsData(freshList);
         world.arcsData(buildAutoArcs(freshList));
-    }, 20);
+    });
 }
 
 if (globeContainer) {
     const initialStations = getActiveStations();
 
-    world = Globe()(globeContainer)
-        .width(650)
-        .height(650)
+    world = Globe({ animateIn: false })(globeContainer)
+        .width(580)
+        .height(580)
         .backgroundColor('rgba(0,0,0,0)')
         .showGlobe(true)
         .showGraticules(true)
         .showAtmosphere(true)
-        .atmosphereColor('#c83214')
-        .atmosphereAltitude(0.1)
+        .atmosphereColor('#dc1428')
+        .atmosphereAltitude(0.16)
         .hexPolygonsData([])
-        .hexPolygonResolution(4) // 4. Seviye Yüksek Çözünürlük: Eksik kıyılar ve adalar tam görünür!
-        .hexPolygonMargin(0.45)  // Daha sık ve gerçekçi nokta dokusu
-        .hexPolygonAltitude(0.002) // Döndürürken titreme ve bozulmayı (Z-fighting) önler
+        .hexPolygonResolution(3) // Donmayı engelleyen ideal akıcı çözünürlük!
+        .hexPolygonMargin(0.42)  // Noktalar sık ve net durur, 0sn'de yüklenir
+        .hexPolygonAltitude(0.002)
         .hexPolygonColor(() => '#e04819')
-        .arcColor(() => ['rgba(255, 90, 35, 0.95)', 'rgba(255, 140, 60, 0.85)'])
+        .arcColor(() => ['rgba(255, 90, 35, 0.9)', 'rgba(255, 140, 60, 0.75)'])
         .arcDashLength(0.5)
-        .arcDashGap(0.22)
+        .arcDashGap(0.25)
         .arcDashInitialGap(() => Math.random())
-        .arcDashAnimateTime(2200)
-        .arcStroke(0.55)
+        .arcDashAnimateTime(2400)
+        .arcStroke(0.5)
         .ringColor(() => t => `rgba(255, 85, 32, ${1 - t})`)
-        .ringMaxRadius(3.8)
-        .ringPropagationSpeed(1.6)
-        .ringRepeatPeriod(1100)
+        .ringMaxRadius(4.2)
+        .ringPropagationSpeed(1.5)
+        .ringRepeatPeriod(1200)
         .htmlLat(d => Number(d.lat))
         .htmlLng(d => Number(d.lng))
         .htmlAltitude(0.02)
@@ -119,7 +121,7 @@ if (globeContainer) {
                 el.className = 'globe-pin empty-pin';
             } else if (d.type === 'image') {
                 el.className = 'globe-pin';
-                el.innerHTML = `<img src="${d.icon}" alt="${d.name || ''}" style="width:20px;height:20px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
+                el.innerHTML = `<img src="${d.icon}" alt="" style="width:18px;height:18px;object-fit:contain;border-radius:50%;display:block;" onerror="this.outerHTML='⚡'">`;
             } else {
                 el.className = 'globe-pin';
                 el.innerHTML = d.icon;
@@ -156,23 +158,24 @@ if (globeContainer) {
             return wrap;
         });
 
-    // 1. YUKARIDAN VURAN BEYAZ YANSIMAYI VE DÖNDÜRÜRKEN BOZULMAYI KÖKTEN KALDIRMA
+    // Yüksek DPI ekranlarda (Retina/Windows %125 ölçek) WebGL kasmasını önle
+    if (world.renderer && world.renderer()) {
+        world.renderer().setPixelRatio(Math.min(1.5, window.devicePixelRatio || 1));
+    }
+
     const globeMat = world.globeMaterial();
     if (globeMat) {
         if (globeMat.color) globeMat.color.set('#070303');
         if (globeMat.emissive) globeMat.emissive.set('#140402');
         globeMat.emissiveIntensity = 0.25;
-        if (globeMat.specular) globeMat.specular.set('#000000'); // Beyaz parlama sıfırlandı!
-        globeMat.shininess = 0; // Plastik parlaklık kapatıldı!
-        globeMat.transparent = false; // Döndürürken iç içe geçme hatası kapatıldı!
+        if (globeMat.specular) globeMat.specular.set('#000000');
+        globeMat.shininess = 0;
+        globeMat.transparent = false;
     }
 
-    // 2. Sahnedeki Tepeden Vuran Beyaz Işığı Kapat ve Izgarayı Çok İnce Yap
     setTimeout(() => {
         world.scene().traverse(obj => {
-            if (obj.isDirectionalLight) {
-                obj.intensity = 0.05; // Tepeden vuran beyaz ışığı söndürdük
-            }
+            if (obj.isDirectionalLight) obj.intensity = 0.05;
             if (obj.type === 'LineSegments' && obj.material) {
                 obj.material.color.set('#2a0d06');
                 obj.material.opacity = 0.28;
@@ -180,22 +183,41 @@ if (globeContainer) {
                 obj.material.depthWrite = false;
             }
         });
-    }, 250);
+    }, 200);
 
-    // 3. Kutuplarda İçi Boş Simit Oluşturan Antarktika Hatasını Temizle
-    fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
-        .then(res => res.json())
-        .then(countries => {
-            const cleanFeatures = countries.features.filter(f => f.properties?.ISO_A2 !== 'AQ');
-            world.hexPolygonsData(cleanFeatures);
-        });
+    // Kıtaları tarayıcı önbelleğinden (SessionStorage) anında yükle, donmayı sıfırla!
+    const cachedGeo = sessionStorage.getItem('satrus_geo_v1');
+    if (cachedGeo) {
+        world.hexPolygonsData(JSON.parse(cachedGeo));
+    } else {
+        fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+            .then(res => res.json())
+            .then(countries => {
+                const cleanFeatures = countries.features.filter(f => f.properties?.ISO_A2 !== 'AQ');
+                try { sessionStorage.setItem('satrus_geo_v1', JSON.stringify(cleanFeatures)); } catch (e) {}
+                world.hexPolygonsData(cleanFeatures);
+            });
+    }
 
-    world.pointOfView({ lat: 34, lng: 30, altitude: 2.15 });
+    world.pointOfView({ lat: 34, lng: 30, altitude: 2.05 });
     world.controls().autoRotate = true;
     world.controls().autoRotateSpeed = 0.65;
     world.controls().enableZoom = false;
 
     refreshMainGlobe(initialStations);
+
+    // SAYFAYI AŞAĞI KAYDIRINCA 3D DÜNYAYI UYKUYA AL (SAYFA KAYDIRIRKEN KASMAYI %100 BİTİRİR!)
+    const globeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!world) return;
+            if (entry.isIntersecting) {
+                world.resumeAnimation();
+            } else {
+                world.pauseAnimation();
+            }
+        });
+    }, { threshold: 0.05 });
+    globeObserver.observe(globeContainer);
 }
 
 // Admin panelinden gelen değişiklikleri F5 atmadan anında yakala
