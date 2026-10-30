@@ -3,53 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SATRUS | Energy Technologies</title>
-    <!-- Google Fonts: Anton / Space Grotesk / Inter / JetBrains Mono -->
+    <title>SATRUS — Flawless Engineering. Proven In Extreme Conditions.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
-    <!-- Leaflet.js (Gerçek 2D Sürüklenebilir Harita Motoru) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- Ana Stil Dosyamız -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Globe.gl (3D Noktalı Dünya Motoru - Kendi Three.js Motorunu İçerir) -->
+    <link rel="stylesheet" href="home-v2.css">
     <script src="https://unpkg.com/globe.gl@2.30.0/dist/globe.gl.min.js"></script>
 </head>
-<body>
+<body class="v2-home-body">
 
-    <!-- Videodaki Kırmızı Halkalı & Noktalı Özel Mouse İmleci -->
+    <!-- Kırmızı Halkalı & Noktalı Özel Mouse İmleci -->
     <div id="cursor-ring">
         <div id="cursor-dot"></div>
     </div>
 
-    <!-- Sağ Altta Sabit Duran "REQUEST A PROPOSAL" Butonu (Videodaki Mesaj İkonlu) -->
-    <a href="#proposal" class="floating-cta">
+    <!-- Sağ Altta Sabit Duran "REQUEST A PROPOSAL" Butonu -->
+    <a href="#v2ContactSection" class="floating-cta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
         REQUEST A PROPOSAL
     </a>
 
-    <!-- ÜST MENÜ (NAVBAR) -->
+    <!-- 1. BİZİM ORİJİNAL LIQUID GLASS HEADBARIMIZ (.navbar) + TEK TUŞ EN/TR -->
     <header class="navbar">
         <a href="index.html" class="logo">
             <img src="media/satrus.png" alt="SATRUS" class="logo-img">
         </a>
 
         <nav class="nav-links">
-            <a href="about.html">ABOUT</a>
-            <a href="products.html">PRODUCTS</a>
-            <a href="services.html">SERVICES</a>
-            <a href="stories.html">SUCCESS STORIES</a>
+            <a href="about.html" data-i18n="nav_about">ABOUT</a>
+            <a href="products.html" data-i18n="nav_products">PRODUCTS</a>
+            <a href="services.html" data-i18n="nav_services">SERVICES</a>
+            <a href="stories.html" data-i18n="nav_stories">SUCCESS STORIES</a>
         </nav>
 
         <div class="nav-actions">
-            <div class="lang-switch">
-                <span class="active">EN</span> · <span>TR</span>
-            </div>
+            <!-- Tek Butonlu Dil Seçici: EN ise sadece EN yazar, tıklayınca TR olur -->
+            <button type="button" id="singleLangToggleBtn" class="single-lang-btn" onclick="toggleSingleLanguage()">EN</button>
+
             <a href="contact.html" class="btn-primary btn-sm">
-                <span>CONTACT US</span>
+                <span data-i18n="nav_contact">CONTACT US</span>
                 <span class="arrow">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -60,410 +55,221 @@
         </div>
     </header>
 
-    <!-- 1. BÖLÜM: HERO SECTION + 3D DÖNEN DÜNYA -->
-    <section class="hero" id="home">
-        <div class="bg-grid"></div>
-        <div class="red-ambient-glow"></div>
-
-        <!-- Videodaki Sağ Alt Dönen Geometrik Yıldız Dekoru -->
-        <div class="geo-star hero-geo">
-            <div class="sq sq-1"></div>
-            <div class="sq sq-2"></div>
-            <div class="sq-circle"></div>
-        </div>
-
-        <!-- SOL TARAF: YAZILAR -->
-        <div class="hero-content">
-            <div class="eyebrow">
-                SATRUS — ENERGY TECHNOLOGIES / TÜRKİYE
-            </div>
-
-            <h1 class="hero-title">
-                ENGINEERED FOR<br>
-                THE BEST.<br>
-                <span class="text-outline-red">DELIVERED AT SPEED.</span>
+    <!-- 2. HERO & MERKEZ 3D DÜNYA (VİDEODAKİ DÜZEN: 00:00 - 00:08) -->
+    <section class="v2-hero-section">
+        <div class="v2-container center-text">
+            <h1 class="v2-hero-title">
+                <span id="heroTitleMain">Flawless Engineering.</span><br>
+                <span id="heroTitleSub" class="v2-title-muted">Proven In Extreme Conditions.</span>
             </h1>
-
-            <p class="hero-desc">
-                Renewable hardware. Custom software. Turnkey engineering. Built by ex-aerospace engineers. Proven in the field.
+            <p class="v2-hero-desc" id="heroDescText">
+                Field-tested from volatile zones like Syria to strict, regulated markets like Germany.<br>
+                Renewable Energy hardware. Custom software. Turnkey engineering.
             </p>
-
-            <div class="hero-buttons">
-                <a href="#products" class="btn-primary">
-                    EXPLORE PRODUCTS <span class="arrow">→</span>
-                </a>
-                <a href="#proposal" class="btn-outline">
-                    REQUEST A PROPOSAL <span class="arrow">↗</span>
-                </a>
-            </div>
         </div>
 
-        <!-- SAĞ TARAF: 3D DÖNEN DÜNYA VE HUD KUTULARI -->
-        <div class="hero-visual">
-            <div class="globe-rings">
-                <div class="ring ring-1"></div>
-                <div class="ring ring-2"></div>
-            </div>
-
+        <!-- Merkezlenmiş Kırmızı Haleli 3D Dünya -->
+        <div class="v2-globe-stage">
+            <div class="v2-red-halo"></div>
             <div id="globe-container"></div>
-
             <div class="hud-card hud-left" id="hud-1" style="opacity:0; pointer-events:none; transition:opacity 0.25s ease;">
                 <div class="hud-title"></div>
                 <div class="hud-text"></div>
             </div>
         </div>
-    </section>
 
-    <!-- 2. BÖLÜM: İSTATİSTİK BARI (ANİMASYONLU YÜKSELEN RAKAMLAR) -->
-    <section class="stats-bar" id="statsSection">
-        <div class="stat-item">
-            <div class="stat-num">$<span class="counter" data-target="20">0</span><span class="text-red">M+</span></div>
-            <div class="stat-label">IN EXPORTS</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-num"><span class="counter" data-target="90">0</span><span class="text-red">+</span></div>
-            <div class="stat-label">COUNTRIES SERVED</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-num"><span class="counter" data-target="5">0</span></div>
-            <div class="stat-label">CONTINENTS</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-num"><span class="counter" data-target="30">0</span><span class="text-red">+</span></div>
-            <div class="stat-label">YEARS COMBINED EXPERIENCE</div>
-        </div>
-    </section>
-
-    <!-- 3. BÖLÜM: WHAT WE DO (THREE DISCIPLINES) -->
-    <section class="section" id="products">
-        <!-- Videodaki (00:07) orta üstte duran dev silik watermark -->
-        <div class="bg-watermark">01</div>
-
-        <div class="container">
-            <div class="eyebrow">WHAT WE DO</div>
-            <h2 class="section-title">
-                THREE DISCIPLINES. <span class="text-outline-red">ONE STANDARD.</span>
+        <!-- Dünya Altı CTA Bloğu (00:05 - 00:11) -->
+        <div class="v2-container center-text v2-under-globe-cta">
+            <h2 class="v2-subhero-title" id="subHeroTitle">
+                Not Sure Where to Start?<br>
+                <span>Talk Directly to Our Engineers.</span>
             </h2>
-            <p class="section-desc">
-                Hardware, software and engineering — delivered separately or as one turnkey package.
+            <p class="v2-subhero-desc" id="subHeroDesc">
+                No full specs required. Consult directly with our aerospace engineers to define, design, or scale your custom energy hardware and software.
             </p>
-
-            <div class="cards-grid">
-                <!-- Kart 01 -->
-                <div class="service-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e6192e" stroke-width="1.8">
-                                <rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4"/>
-                            </svg>
-                        </div>
-                        <div class="card-num">01</div>
-                    </div>
-                    <h3>HARDWARE &<br>INFRASTRUCTURE</h3>
-                    <p>Solar, wind, geothermal, BESS and EV charging hardware. Export-ready. Field-proven.</p>
-                    <a href="#explore" class="card-link">EXPLORE <span>→</span></a>
-                </div>
-
-                <!-- Kart 02 -->
-                <div class="service-card active-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e6192e" stroke-width="1.8">
-                                <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                            </svg>
-                        </div>
-                        <div class="card-num">02</div>
-                    </div>
-                    <h3>CUSTOM SOFTWARE & AI<br>ENERGY SYSTEMS</h3>
-                    <p>Monitoring, charger network management and AI energy optimization. Built in-house. Built for your grid.</p>
-                    <a href="#explore" class="card-link">EXPLORE <span>→</span></a>
-                </div>
-
-                <!-- Kart 03 -->
-                <div class="service-card">
-                    <div class="card-top">
-                        <div class="card-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e6192e" stroke-width="1.8">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                            </svg>
-                        </div>
-                        <div class="card-num">03</div>
-                    </div>
-                    <h3>ENGINEERING &<br>CONSULTING</h3>
-                    <p>Feasibility, EPC support, turnkey factory setup and technology transfer. From drawing board to production line.</p>
-                    <a href="#explore" class="card-link">EXPLORE <span>→</span></a>
-                </div>
+            <div class="v2-cta-buttons">
+                <a href="#v2ContactSection" class="v2-pill-btn glow-red" id="ctaBtn1">Get in Touch</a>
+                <a href="stories.html" class="v2-pill-btn" id="ctaBtn2">Explore Case Studies</a>
             </div>
         </div>
     </section>
 
-    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
-    <div class="angled-divider"></div>
+    <!-- 3. ÇİFT ŞERİTLİ KAYAR LOGOLAR (MARQUEE) VE ANİMASYONLU SAYAÇLAR (GÖRSEL 5) -->
+    <section class="v2-stats-marquee-section">
+        <!-- Üst Kayar Logo Şeridi -->
+        <div class="v2-marquee-mask">
+            <div class="v2-marquee-track" id="marqueeTrackTop"></div>
+        </div>
 
-    <!-- 4. BÖLÜM: GLOBAL REACH (ARKADAŞININ ATTIĞI NOKTALI DÜNYA HARİTASI + SİSTEMİMİZ) -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="eyebrow">GLOBAL REACH</div>
-            <h2 class="section-title">
-                WHERE WE <span class="text-outline-red">DELIVER.</span>
-            </h2>
-            <p class="section-desc">
-                Hover a marker. Every point is a project delivered.
-            </p>
+        <!-- Ortadaki Animasyonlu 90+ / 45+ / 500+ Sayaçları -->
+        <div class="v2-container">
+            <div class="v2-stats-grid" id="v2StatsGrid"></div>
+        </div>
 
-            <!-- Harita Üstü Seçilebilir 2 Sekme -->
-            <div class="delivery-tabs">
-                <button class="delivery-tab active" data-tab="distributors">DISTRIBUTORS</button>
-                <button class="delivery-tab" data-tab="operations">OPERATIONS & SERVICE NETWORK</button>
-                <button class="map-back-btn" id="mapResetBtn" style="display: none;">← DÜNYA GÖRÜNÜMÜNE DÖN</button>
-            </div>
+        <!-- Alt Kayar Logo Şeridi (Ters Yöne Akar) -->
+        <div class="v2-marquee-mask">
+            <div class="v2-marquee-track reverse" id="marqueeTrackBottom"></div>
+        </div>
+    </section>
 
-            <!-- Noktalı (Dot-Matrix) Koyu Bordo Harita Kutusu -->
-            <div class="network-box" id="dotMapWrapper">
-                <!-- Sol Üst: Tesis Türü (Ofis / Fabrika / Depo / Teknik Servis) -->
-                <div class="network-header" id="map-left-status">
-                    LIVE DELIVERY NETWORK · HUB: TÜRKİYE <span class="hq-inline-dot"></span> HQ
+    <!-- 4. "BUT, WHY WOULD YOU WANT TO WORK WITH US?" 3'LÜ İKON BLOĞU (GÖRSEL 4) -->
+    <section class="v2-section">
+        <div class="v2-container center-text">
+            <h2 class="v2-sec-heading" id="whyHeading">But, why would you<br>want to work with us?</h2>
+            <p class="v2-sec-sub" id="whySub">From hardware engineering to grid software and turnkey factory setup, we've got you covered on everything front.</p>
+            <div class="v2-why-grid" id="v2WhyGrid"></div>
+        </div>
+    </section>
+
+    <!-- 5. YOUTUBE / VİDEO MÜŞTERİ YORUMLARI KARUSELİ (GÖRSEL 1) -->
+    <section class="v2-section">
+        <div class="v2-container center-text">
+            <h2 class="v2-sec-heading" id="testiHeading">Dont take our word for it<br>Hear it directly from our clients.</h2>
+            <p class="v2-sec-sub" id="testiSub">Hear what our clients have to say. Our testimonials reflect the satisfaction our clients have in our services.</p>
+
+            <div class="v2-carousel-wrapper">
+                <button type="button" class="v2-car-arrow left" onclick="slideTestimonials(-1)" aria-label="Previous">‹</button>
+                <div class="v2-carousel-viewport">
+                    <div class="v2-carousel-track" id="v2TestimonialsTrack"></div>
                 </div>
-
-                <!-- Sağ Üst: İl, m² Hacmi, Şube Detayı -->
-                <div class="network-tooltip" id="map-tooltip">TÜRKİYE HQ — ACTIVE HUB</div>
-
-                <!-- Noktalı Dünya Haritası + Etkileşimli Kırmızı Pin Katmanı -->
-                <div class="dot-map-viewport" id="dotMapViewport">
-                    <div class="dot-map-stage" id="dotMapStage">
-                        <canvas id="dottedWorldCanvas" width="1100" height="520"></canvas>
-                        <div class="dot-pins-layer" id="dotPinsLayer"></div>
-                    </div>
-                </div>
-
-                <!-- Sağ Alt Zoom (+ / -) Butonları -->
-                <div class="dot-map-controls">
-                    <button type="button" id="dotZoomIn">+</button>
-                    <button type="button" id="dotZoomOut">−</button>
-                </div>
-
-                <!-- Görseldeki Alt Ülke Listesi Barı -->
-                <div class="dot-map-footer">
-                    <span>• TÜRKİYE HQ</span>
-                    <span>• NETHERLANDS</span>
-                    <span>• BELGIUM</span>
-                    <span>• GERMANY</span>
-                    <span>• FRANCE</span>
-                    <span>• SYRIA</span>
-                    <span>• UZBEKISTAN</span>
-                    <span>• AFGHANISTAN</span>
-                    <span>• CENTRAL ASIA</span>
-                    <span>• SOUTH AFRICA</span>
-                </div>
+                <button type="button" class="v2-car-arrow right" onclick="slideTestimonials(1)" aria-label="Next">›</button>
             </div>
         </div>
     </section>
 
-    <!-- 5. BÖLÜM: HOW WE WORK (NO FLUFF. JUST EXECUTION.) -->
-    <section class="section">
-        <div class="container">
-            <div class="eyebrow">HOW WE WORK</div>
-            <h2 class="section-title">
-                NO FLUFF. <span class="text-outline-red">JUST EXECUTION.</span>
-            </h2>
+    <!-- 6. "WHAT WE DO?" 3 KATEGORİLİ HİZMET KARTLARI (VİDEO 00:23 - 00:29) -->
+    <section class="v2-section">
+        <div class="v2-container">
+            <div class="center-text">
+                <h2 class="v2-giant-heading" id="whatWeDoTitle">What we do?</h2>
+                <p class="v2-sec-sub" id="whatWeDoSub">One engineering team, guiding you from first prototype to a fully energized site.</p>
+            </div>
+            <div id="v2WhatWeDoContainer"></div>
+        </div>
+    </section>
 
-            <div class="steps-grid">
-                <div class="step-item">
-                    <div class="step-num">01</div>
-                    <h4>ZERO MARKETING BLUFF</h4>
-                    <p>If we can't build it, we don't pitch it. Every claim on this site maps to a delivered project. Numbers talk. Adjectives walk.</p>
+    <!-- 7. "FROM KILOWATTS TO MEGAWATTS" HOVER ÜRÜN VİTRİNİ (GÖRSEL 3) -->
+    <section class="v2-section">
+        <div class="v2-container">
+            <div class="v2-split-header">
+                <div>
+                    <h2 class="v2-sec-heading left" id="prodRangeHeading">From kilowatts to megawatts<br><span class="v2-title-muted">Explore our product range.</span></h2>
+                    <p class="v2-sec-sub left" id="prodRangeSub">From Avanos (AC) to Milas (DC), from MCS charging to mobile and off-grid solutions. Designed in Türkiye. Made for the world.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-num">02</div>
-                    <h4>BATTLE-TESTED EXECUTION</h4>
-                    <p>Our systems run in conflict zones, remote regions and harsh climates. Equipment that survives there works anywhere.</p>
+                <a href="products.html" class="v2-pill-btn">View all products</a>
+            </div>
+
+            <div class="v2-products-showcase-grid" id="v2ProductsGrid"></div>
+        </div>
+    </section>
+
+    <!-- 8. YUVARLAK SEKMELİ & "..." BUTONLU "OUR PROCESS" (GÖRSEL 6) -->
+    <section class="v2-section">
+        <div class="v2-container">
+            <!-- Üstteki Yuvarlak Sekmeli Bar + "..." Daha Fazla Menüsü -->
+            <div class="v2-process-tabs-wrap">
+                <div class="v2-pill-tabbar" id="v2ProcessTabBar"></div>
+            </div>
+
+            <div class="v2-process-layout">
+                <div class="v2-process-left">
+                    <div class="v2-dot-label"><span class="dot"></span> <span id="procEyebrow">How we Works</span></div>
+                    <h2 class="v2-giant-heading left" id="procMainTitle">Our Process</h2>
+                    <p class="v2-sec-sub left" id="procMainDesc">We streamline the adoption journey with a clear, proven process — designed to ensure alignment, speed, and measurable outcomes.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-num">03</div>
-                    <h4>UNCOMPROMISING SPEED</h4>
-                    <p>Yıldırım means lightning. Proposals in days, not months. Delivery schedules we actually hit.</p>
-                </div>
+                <div class="v2-process-right" id="v2ProcessStepsContainer"></div>
             </div>
         </div>
     </section>
 
-    <!-- 6. BÖLÜM: CASE IN POINT (AFRICA'S FIRST EV CHARGER MANUFACTURER) -->
-    <section class="section" id="stories">
-        <div class="container">
-            <div class="case-study-box">
-                <div class="case-img-wrapper">
-                    <img data-slot="home_factory" src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=900&q=80" alt="EV Charger Station" class="case-img">
+    <!-- 9. READY TO START YOUR PROJECT? İLETİŞİM FORMU (VİDEO 00:39 - 00:43) -->
+    <section class="v2-section" id="v2ContactSection">
+        <div class="v2-container">
+            <div class="v2-dot-label"><span class="dot"></span> <span>Contact</span></div>
+            <h2 class="v2-giant-heading left">Ready to Start Your Project?</h2>
+            <p class="v2-sec-sub left">Tell us about your build and receive a free consultation and estimate.</p>
+
+            <form class="v2-contact-form" onsubmit="event.preventDefault(); alert('Thank you! Our engineering team will reach out shortly.');">
+                <div class="v2-form-row">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="tel" placeholder="Enter your phone number" required>
                 </div>
-                <div class="case-info">
-                    <div class="eyebrow">CASE IN POINT</div>
-                    <h2 class="section-title">
-                        AFRICA'S FIRST EV CHARGER<br>
-                        <span class="text-outline-red">MANUFACTURER.</span>
-                    </h2>
-                    <p>
-                        We built the entire factory from scratch. Turnkey technology and engineering transfer — machines, process know-how, training, commissioning. From empty ground to a working production line.
-                    </p>
-                    <a href="#stories" class="card-link">READ SUCCESS STORIES <span>→</span></a>
+                <input type="email" placeholder="Email Address" required>
+                <div class="v2-form-row">
+                    <select required>
+                        <option value="">Service...</option>
+                        <option value="ev">EV Charging Hardware</option>
+                        <option value="bess">BESS & Solar Infrastructure</option>
+                        <option value="factory">Turnkey Factory Setup</option>
+                        <option value="software">OCPP & Grid Software</option>
+                    </select>
+                    <select required>
+                        <option value="">Country</option>
+                        <option value="TR">Türkiye</option>
+                        <option value="DE">Germany</option>
+                        <option value="ZA">South Africa</option>
+                        <option value="OTHER">Other Global Region</option>
+                    </select>
                 </div>
-            </div>
+                <textarea rows="4" placeholder="Type a message"></textarea>
+                <button type="submit" class="v2-white-submit-btn">Contact Us</button>
+            </form>
         </div>
     </section>
 
-    <!-- 7. BÖLÜM: TRUSTED BY PARTNERS (SONSUZ KAYAN LOGOLAR) -->
-    <section class="partners-section">
-        <div class="partners-title">TRUSTED BY PARTNERS ACROSS 5 CONTINENTS</div>
-        <div class="marquee-wrapper">
-            <div class="marquee-track">
-                <span>ANATOLIA ENERGY</span>
-                <span>GRIDFORGE</span>
-                <span>ELECTRA IQ</span>
-                <span>SOLARIS TR</span>
-                <span>AMPERE LABS</span>
-                <span>NOVAWATT</span>
-                <!-- Sonsuz döngü için tekrar -->
-                <span>ANATOLIA ENERGY</span>
-                <span>GRIDFORGE</span>
-                <span>ELECTRA IQ</span>
-                <span>SOLARIS TR</span>
-                <span>AMPERE LABS</span>
-                <span>NOVAWATT</span>
+    <!-- 10. SEKTÖR SEKMELİ VE AKORDİYONLU FAQ BÖLÜMÜ (GÖRSEL 2) -->
+    <section class="v2-section">
+        <div class="v2-container center-text">
+            <h2 class="v2-sec-heading" id="faqMainHeading">We’ve Got the Answers<br>You’re Looking For</h2>
+            <p class="v2-sec-sub" id="faqMainSub">Everything You Need to Know About SATRUS Energy Systems.</p>
+
+            <!-- Sektör / Kategori Kaydırmalı Yuvarlak Bar -->
+            <div class="v2-process-tabs-wrap" style="margin-bottom:28px;">
+                <div class="v2-pill-tabbar" id="v2FaqTabBar"></div>
             </div>
+
+            <div class="v2-faq-list" id="v2FaqAccordionList"></div>
         </div>
     </section>
 
-    <!-- 8. BÖLÜM: FAQ (STRAIGHT ANSWERS - AKORDİYON) -->
-    <section class="section faq-section">
-        <div class="container faq-container">
-            <div class="eyebrow text-center">FAQ</div>
-            <h2 class="section-title text-center">
-                STRAIGHT <span class="text-outline-red">ANSWERS.</span>
-            </h2>
-
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>WHERE DO YOU DELIVER?</span>
-                        <span class="faq-arrow">⌄</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>From our central engineering hub in Türkiye, we deliver and commission systems across Europe, Central Asia, the Middle East, Africa, and the Americas.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>DO YOU ONLY SELL HARDWARE?</span>
-                        <span class="faq-arrow">⌄</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No. We deliver complete ecosystems: renewable and EV hardware, custom OCPP/grid software, and full EPC engineering consulting — separately or turnkey.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>CAN YOU REALLY BUILD A FACTORY FROM ZERO?</span>
-                        <span class="faq-arrow">⌄</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes. We have already done it. We supply machinery, assembly lines, testing bays, firmware transfer, and engineer training from empty land to active production.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>DO YOU WORK IN HIGH-RISK REGIONS?</span>
-                        <span class="faq-arrow">⌄</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes. Our hardware and off-grid energy storage systems are specifically engineered for harsh climates, unstable grids, and remote territories.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>HOW FAST DO YOU RESPOND?</span>
-                        <span class="faq-arrow">⌄</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Initial engineering scoping within 48 hours. Full technical and commercial proposals delivered in days, not months.</p>
-                    </div>
+    <!-- 11. FOOTER (VİDEO 00:48 - 00:50) -->
+    <footer class="v2-footer">
+        <div class="v2-container v2-footer-grid">
+            <div class="v2-footer-brand">
+                <svg viewBox="0 0 36 36" fill="none" class="bolt-svg" style="width:34px;height:34px;margin-bottom:14px;">
+                    <path d="M21 2L7 20H18L15 34L29 16H18L21 2Z" fill="#FFFFFF"/>
+                </svg>
+                <p>Satrus delivers smart, efficient, and sustainable EV charging and energy systems for homes, businesses, and public spaces.</p>
+            </div>
+            <div class="v2-footer-col">
+                <h4>Navigation</h4>
+                <a href="about.html">About Us</a>
+                <a href="products.html">AC Chargers</a>
+                <a href="products.html">DC Fast Chargers</a>
+                <a href="products.html">Cables & BESS</a>
+            </div>
+            <div class="v2-footer-col">
+                <h4>Legal & Policies</h4>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div class="v2-footer-col">
+                <h4>Social</h4>
+                <div class="v2-social-icons">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="LinkedIn">IN</a>
+                    <a href="#" aria-label="X">𝕏</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- EĞİMLİ KIRMIZI LAZER GEÇİŞ ŞERİDİ -->
-    <div class="angled-divider reverse"></div>
-
-    <!-- 9. BÖLÜM: READY WHEN YOU ARE (CTA) -->
-    <section class="cta-section" id="proposal">
-        <div class="bg-grid"></div>
-        <!-- Sol Altta Dönen Geometrik Yıldız Dekoru -->
-        <div class="geo-star cta-geo">
-            <div class="sq sq-1"></div>
-            <div class="sq sq-2"></div>
-            <div class="sq-circle"></div>
-        </div>
-
-        <div class="cta-content">
-            <h2 class="section-title">
-                READY WHEN <span class="text-outline-red">YOU ARE.</span>
-            </h2>
-            <p>Tell us the problem. We'll bring the engineering.</p>
-            <a href="#contact" class="btn-primary">
-                REQUEST A PROPOSAL <span class="arrow">↗</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- 10. BÖLÜM: FOOTER (ALT BİLGİ) -->
-    <footer class="footer" id="contact">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <a href="#home" class="logo">
-                    <svg class="logo-svg" viewBox="0 0 24 24" width="20" height="20">
-                        <rect x="4" y="4" width="16" height="16" fill="#ffffff" />
-                        <rect x="4" y="4" width="16" height="16" fill="#ffffff" transform="rotate(45 12 12)" />
-                        <circle cx="12" cy="12" r="4.2" fill="#040203" />
-                    </svg>
-                    <span class="logo-text">SATRUS</span>
-                </a>
-                <div class="footer-tagline">
-                    ENGINEERED FOR THE BEST.<br>DELIVERED AT SPEED.
-                </div>
-            </div>
-
-            <div class="footer-nav">
-                <div class="footer-heading">NAVIGATE</div>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#products">Products</a>
-                <a href="#stories">Success Stories</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-            <div class="footer-contact">
-                <div class="footer-heading">CONTACT</div>
-                <p>info@satrus.com</p>
-                <p>+90 (___) ___ __ __</p>
-                <p class="muted">İstanbul, Türkiye</p>
-                <div class="social-links">
-                    <a href="#">in</a>
-                    <a href="#">◎</a>
-                    <a href="#">↗</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container footer-bottom">
-            <div>© 2025 SATRUS Energy Technologies. All rights reserved.</div>
-            <div class="mono-tag">ENGINEERED IN TÜRKİYE</div>
+        <div class="v2-container v2-footer-bottom">
+            © 2026 Satrus™ A.S. is a SALO brand.
         </div>
     </footer>
 
-    <!-- Ana JavaScript Dosyamız -->
     <script src="lang.js"></script>
     <script src="script.js"></script>
+    <script src="home-dynamic.js"></script>
 </body>
 </html>

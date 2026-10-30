@@ -1317,7 +1317,7 @@ body {
     background: #ff5520;
     border: 2px solid rgba(255, 255, 255, 0.85);
     box-shadow: 0 0 10px #ff5520;
-}
+}   
 
 /* ESKİ GÖRSELİN SALİSELİK PARLAMASINI (FLASH) VE ARKADAKİ YEDEK SVG'Yİ ENGELLEME */
 html:not(.media-ready) [data-slot],
