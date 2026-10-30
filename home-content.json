@@ -18,15 +18,15 @@
   ],
   "logos": [
     {
-      "name": "SOLIMPEKS",
-      "img": ""
-    },
-    {
       "name": "KAWJN",
       "img": ""
     },
     {
       "name": "MERCEDES-EQ",
+      "img": ""
+    },
+    {
+      "name": "SOLIMPEKS",
       "img": ""
     },
     {
@@ -147,6 +147,42 @@
         {
           "title": "Machinery & Tooling",
           "desc": "Assembly lines and testing rigs installation."
+        }
+      ]
+    },
+    {
+      "tabName": "Yeni Sekme",
+      "steps": [
+        {
+          "title": "Adım 1",
+          "desc": "Açıklama"
+        }
+      ]
+    },
+    {
+      "tabName": "Yeni Sekme",
+      "steps": [
+        {
+          "title": "Adım 1",
+          "desc": "Açıklama"
+        }
+      ]
+    },
+    {
+      "tabName": "Yeni Sekme",
+      "steps": [
+        {
+          "title": "Adım 1",
+          "desc": "Açıklama"
+        }
+      ]
+    },
+    {
+      "tabName": "Yeni Sekme",
+      "steps": [
+        {
+          "title": "Adım 1",
+          "desc": "Açıklama"
         }
       ]
     }
