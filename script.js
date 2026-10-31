@@ -91,14 +91,14 @@ if (globeContainer) {
         .hexPolygonResolution(3) // Donmayı engelleyen ideal akıcı çözünürlük!
         .hexPolygonMargin(0.42)  // Noktalar sık ve net durur, 0sn'de yüklenir
         .hexPolygonAltitude(0.002)
-        .hexPolygonColor(() => '#e04819')
-        .arcColor(() => ['rgba(255, 90, 35, 0.9)', 'rgba(255, 140, 60, 0.75)'])
+        .hexPolygonColor(() => '#b81d24') // Kıtalar koyu kızıl-kırmızı
+        .arcColor(() => ['rgba(255, 30, 50, 0.95)', 'rgba(220, 20, 40, 0.8)']) // HQ lazer ışınları saf kırmızı!
         .arcDashLength(0.5)
         .arcDashGap(0.25)
         .arcDashInitialGap(() => Math.random())
         .arcDashAnimateTime(2400)
         .arcStroke(0.5)
-        .ringColor(() => t => `rgba(255, 85, 32, ${1 - t})`)
+        .ringColor(() => t => `rgba(255, 30, 50, ${1 - t})`) // Dalgalar saf kırmızı!
         .ringMaxRadius(4.2)
         .ringPropagationSpeed(1.5)
         .ringRepeatPeriod(1200)

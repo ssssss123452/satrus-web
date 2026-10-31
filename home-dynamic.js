@@ -163,10 +163,10 @@ let currentProcessTabIdx = 0;
 let currentFaqTabIdx = 0;
 let currentTestiSlide = 0;
 
-// 1. TEK TUŞLU EN / TR DİL DEĞİŞTİRİCİ (EN İSE EN YAZAR, BASINCA TR OLUR)
+// 1. TEK TUŞLU EN / TR DİL DEĞİŞTİRİCİ (BÜYÜK HARF TR/EN UYUMLU)
 window.toggleSingleLanguage = function() {
-    const current = localStorage.getItem('satrus_lang') || 'en';
-    const next = current === 'en' ? 'tr' : 'en';
+    const current = (localStorage.getItem('satrus_lang') || 'EN').toUpperCase();
+    const next = current === 'EN' ? 'TR' : 'EN';
     localStorage.setItem('satrus_lang', next);
     if (typeof setLanguage === 'function') {
         setLanguage(next);
@@ -177,7 +177,7 @@ window.toggleSingleLanguage = function() {
 function updateSingleLangButtonText() {
     const btn = document.getElementById('singleLangToggleBtn');
     if (!btn) return;
-    const current = (localStorage.getItem('satrus_lang') || 'en').toUpperCase();
+    const current = (localStorage.getItem('satrus_lang') || 'EN').toUpperCase();
     btn.textContent = current;
 }
 
@@ -215,6 +215,12 @@ function renderAllHomeSections() {
     renderProductsShowcase();
     renderProcessSection();
     renderFaqSection();
+
+    // Dinamik bölümler yüklendikten sonra seçili dili (TR/EN) uygula
+    const activeLang = (localStorage.getItem('satrus_lang') || 'EN').toUpperCase();
+    if (typeof setLanguage === 'function') {
+        setLanguage(activeLang);
+    }
 }
 
 // 3. KAYAR LOGOLAR VE ANİMASYONLU SAYAÇLAR (90+, 45+, 500+)

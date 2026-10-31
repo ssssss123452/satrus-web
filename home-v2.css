@@ -14,22 +14,20 @@
 
 .center-text { text-align: center; }
 
-/* Tek Tuşlu EN / TR Dil Değiştirici */
+/* Tek Tuşlu EN / TR Dil Değiştirici (Görseldeki Gibi Çerçevesiz Sade Görünüm) */
 .single-lang-btn {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    color: #ffffff;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    font-weight: 700;
-    padding: 7px 14px;
-    border-radius: 999px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.88);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 10px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
 }
 .single-lang-btn:hover {
-    background: #dc1428;
-    border-color: #ff1e32;
+    color: #ff2a3c;
 }
 
 /* 1. HERO & MERKEZ 3D DÜNYA */
