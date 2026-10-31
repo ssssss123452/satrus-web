@@ -493,18 +493,41 @@ window.selectFaqTab = function(idx) {
     renderFaqSection();
 };
 
-// 10. 3D DÜNYA RENKLERİNİ VİDEODAKİ KOYU KIRMIZI HALELİ VE GÜMÜŞ NOKTALI STİLE UYARLAMA
 document.addEventListener('DOMContentLoaded', () => {
     loadDynamicHomeContent();
 
     setTimeout(() => {
         if (typeof world !== 'undefined' && world) {
             world
-                .width(580)
-                .height(580)
-                .atmosphereColor('#dc1428')
-                .atmosphereAltitude(0.22)
-                .hexPolygonColor(() => 'rgba(215, 215, 220, 0.36)');
+                .width(760)
+                .height(760)
+                .pointOfView({ lat: 34, lng: 30, altitude: 1.62 });
         }
-    }, 350);
+    }, 250);
+
+    // KIRMIZI NİŞANGAH TIKLAMA ŞOK DALGASI (RIPPLE) VE HOVER EFEKTİ
+    const ring = document.getElementById('cursor-ring');
+    window.addEventListener('mousedown', (e) => {
+        if (ring) ring.classList.add('cursor-clicking');
+
+        const ripple = document.createElement('div');
+        ripple.className = 'cursor-click-ripple';
+        ripple.style.left = `${e.clientX}px`;
+        ripple.style.top = `${e.clientY}px`;
+        document.body.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 550);
+    });
+
+    window.addEventListener('mouseup', () => {
+        if (ring) ring.classList.remove('cursor-clicking');
+    });
+
+    document.addEventListener('mouseover', (e) => {
+        if (!ring) return;
+        if (e.target.closest('a, button, input, select, textarea, .v2-prod-card, .globe-pin-wrap')) {
+            ring.classList.add('cursor-hovering');
+        } else {
+            ring.classList.remove('cursor-hovering');
+        }
+    });
 });

@@ -61,9 +61,9 @@
 .v2-globe-stage {
     position: relative;
     width: 100%;
-    max-width: 680px;
-    height: 580px;
-    margin: 0 auto;
+    max-width: 820px;
+    height: 700px;
+    margin: -10px auto -25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,11 +71,11 @@
 
 .v2-red-halo {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(220, 20, 35, 0.42) 0%, rgba(180, 10, 20, 0.18) 55%, transparent 75%);
-    filter: blur(28px);
+    background: radial-gradient(circle, rgba(220, 20, 35, 0.46) 0%, rgba(180, 10, 20, 0.2) 55%, transparent 74%);
+    filter: blur(32px);
     pointer-events: none;
     z-index: 0;
 }

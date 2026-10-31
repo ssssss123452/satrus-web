@@ -79,8 +79,8 @@ if (globeContainer) {
     const initialStations = getActiveStations();
 
     world = Globe({ animateIn: false })(globeContainer)
-        .width(580)
-        .height(580)
+        .width(760)
+        .height(760)
         .backgroundColor('rgba(0,0,0,0)')
         .showGlobe(true)
         .showGraticules(true)
@@ -199,7 +199,7 @@ if (globeContainer) {
             });
     }
 
-    world.pointOfView({ lat: 34, lng: 30, altitude: 2.05 });
+    world.pointOfView({ lat: 34, lng: 30, altitude: 1.62 });
     world.controls().autoRotate = true;
     world.controls().autoRotateSpeed = 0.65;
     world.controls().enableZoom = false;

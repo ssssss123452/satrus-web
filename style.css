@@ -1341,3 +1341,63 @@ html.media-ready .story-img {
 .has-custom-media .photo-badge {
     display: none !important;
 }
+/* SİSTEM MOUSE İMLECİNİ TAMAMEN GİZLE (SADECE BİZİM KIRMIZI NİŞANGAH GÖRÜNSÜN) */
+@media (pointer: fine) {
+    *,
+    *::before,
+    *::after,
+    html,
+    body,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    .globe-pin,
+    .globe-pin-wrap,
+    #globe-container {
+        cursor: none !important;
+    }
+}
+
+/* Tıklama Anında Nişangahın Tepkisi */
+#cursor-ring.cursor-clicking {
+    width: 18px !important;
+    height: 18px !important;
+    border-color: #ff1e32 !important;
+    background: rgba(255, 30, 50, 0.28);
+    box-shadow: 0 0 20px #ff1e32;
+}
+
+#cursor-ring.cursor-hovering {
+    width: 38px;
+    height: 38px;
+    border-color: #ff1e32;
+    background: rgba(220, 20, 40, 0.1);
+}
+
+/* Tıklanan Yerde Çıkan Kırmızı Radar / Şok Dalgası Efekti */
+.cursor-click-ripple {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #ff1e32;
+    background: rgba(255, 30, 50, 0.35);
+    box-shadow: 0 0 18px #ff1e32;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%) scale(0.4);
+    animation: satrusClickPulse 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes satrusClickPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.4);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(4.2);
+        opacity: 0;
+    }
+}
